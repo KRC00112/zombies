@@ -1,0 +1,4 @@
+[
+  { "id": 1, "name": "Emily Johnson in r&d", "life": 72, "scoutSkill": 91, "rdSkill": 4, "cookingSkill": 77, "profileLocation": "/staff-profiles/female_type_a.PNG" },
+  { "id": 2, "name": "David Brown in r&d", "life": 16, "scoutSkill": 37, "rdSkill": 72, "cookingSkill": 21, "profileLocation": "/staff-profiles/male_type_b.PNG" }
+]

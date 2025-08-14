@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Sophia Taylor in scouting", "life": 31, "scoutSkill": 96, "rdSkill": 14, "cookingSkill": 58, "profileLocation": "/staff-profiles/female_type_a.PNG" },
+  { "id": 2, "name": "James Anderson in scouting", "life": 80, "scoutSkill": 48, "rdSkill": 60, "cookingSkill": 12, "profileLocation": "/staff-profiles/male_type_b.PNG" },
+  { "id": 3, "name": "Isabella Thomas in scouting", "life": 24, "scoutSkill": 15, "rdSkill": 38, "cookingSkill": 81, "profileLocation": "/staff-profiles/female_type_b.PNG" },
+  { "id": 4, "name": "Ethan Moore in scouting", "life": 54, "scoutSkill": 79, "rdSkill": 51, "cookingSkill": 25, "profileLocation": "/staff-profiles/male_type_a.PNG" },
+  { "id": 5, "name": "Daniel Wilson in r&d", "life": 62, "scoutSkill": 99, "rdSkill": 89, "cookingSkill": 43, "profileLocation": "/staff-profiles/male_type_a.PNG" }
+
+]

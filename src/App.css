@@ -1,0 +1,308 @@
+
+/******************** GENERAL CSS SETTINGS *******************/
+.set-width-100{
+    width: 100%;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(220, 193, 246, 0.8);
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(51, 51, 51);
+}
+
+/********************  SIDE-BAR CSS ********************/
+
+.side-bar{
+
+    background: #9528fa;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #2a0845, #9528fa);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #2a0845, #9528fa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    width: 150px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.side-bar button{
+
+    padding: 10px;
+    padding-bottom: 0px;
+    width: 100%;
+}
+
+.side-bar button:hover{
+
+    background: #a448f7;
+    color: white;
+}
+
+.management-staff-tab{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+
+}
+
+/******************** STAFF MANAGEMENT TAB HEADER CSS *******************/
+
+.staff-management-tab-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #f4f3f3;
+    padding-inline: 10px;
+    padding-top: 10px;
+    height: 130px;
+    width: 100%;
+
+
+
+}
+
+.tab-title-and-resources-display{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab-title-and-resources-display h1{
+
+    background-color: black;
+    color: white;
+    padding: 5px;
+    padding-left: 2px;
+    padding-right: 10px;
+
+
+}
+
+/******************** STAFF MANAGEMENT TAB BODY CSS *******************/
+
+.staff-management-tab-body{
+
+    border-top: 2px solid #000000;
+    position: relative;
+    height: 100%;
+
+
+}
+
+
+/******************** STAFF MANAGEMENT TAB LIST CSS *******************/
+.staff-management-tab-list{
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    position: absolute;
+    bottom: 100%;
+    padding-left: 5px;
+
+
+}
+.staff-management-tab-list li button{
+    border: 2px solid black;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 5px;
+    border-bottom: none;
+
+}
+
+/******************** STAFF DETAILS LIST CSS *******************/
+.main-management-container{
+
+    height: 100%;
+    background: #AA076B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #61045F, #AA076B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #61045F, #AA076B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-top: 1px;
+
+}
+
+.staff-Details{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 100px;
+    padding-top: 50px;
+
+
+
+}
+
+
+/******************** STAFF MEMBERS BOX LIST CSS *******************/
+
+.members-list-box{
+    max-width:400px ;
+    min-width:400px ;
+    max-height: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+
+}
+.members-list{
+    background: #e2e2dd60;
+    overflow-y: auto;
+    height:100%;
+    flex:1;
+    width: 100%;
+
+
+
+}
+.members-list-box-heading{
+    color: white;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid rgba(46, 3, 76, 0.3);
+    width: 100%;
+    padding-block: 5px;
+    background: rgba(0, 0, 0, 0.9);
+}
+.member-list-names{
+    padding-block: 2px;
+
+    border-bottom:1px solid rgb(255, 255, 255);
+    width: 100%;
+    display: flex;
+    padding: 0;
+    color: white;
+}
+
+.member-list-names:last-child{
+    border-bottom: none;
+
+}
+
+.member-list-names button{
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+
+
+.member-list-names:not(.selected):hover {
+
+    background: rgba(100, 13, 175, 0.5);
+    font-weight: 600;
+    color: white;
+
+
+}
+/******************** MEMBERS STATS BOX CSS *******************/
+
+.members-stats-box{
+    max-width:400px ;
+    min-width:400px ;
+    max-height: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10px;
+
+
+}
+/******************** SKILL PROGRESS BAR CSS *******************/
+
+.skill-progress-bars{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+
+}
+.member-profile-image-box{
+    max-width:325px ;
+    min-width:325px ;
+    max-height: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+
+.department-name-and-head-count{
+    margin-top: 30px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 30px;
+    color: white;
+    font-size: 30px;
+}
+.department-name{
+
+
+    padding-left: 2px;
+    padding-right: 20px;
+}
+
+.level-and-member-count{
+    display: flex;
+    gap:30px;
+
+}
+
+.member-count{
+    display: flex;
+    gap:5px;
+}
+
+
+.staff-operations{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    gap:20px;
+}
+
+.staff-operations button{
+   padding: 5px;
+
+}
+.transfer-buttons{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+
+.transfer-buttons button{
+    background-color: #34da34;
+}
+
+.kick-out-button{
+    background-color: #137a8f;
+    height: fit-content;
+}
+
