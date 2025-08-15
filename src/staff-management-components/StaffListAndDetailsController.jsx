@@ -1,21 +1,37 @@
 import {useState, useEffect, useMemo} from 'react'
 import ProgressBar from "@ramonak/react-progress-bar";
 
-function StaffListAndDetails({department,jsonLocation}) {
+function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
     const [membersList, setMembersList] = useState([]);
     const [detailsOfMember, setDetailsOfMember] = useState({});
+
+    const scoutTeamCount=fullDataset.filter(obj => {
+
+        return obj.department==='scout_team'
+
+    }).length;
+
+    const waitingRoomCount=fullDataset.filter(obj => {
+
+        return obj.department==='waiting_room'
+
+    }).length;
+
+    const rAndDdeptCount=fullDataset.filter(obj => {
+
+        return obj.department==='r&d_dept'
+
+    }).length;
+
+    const kitchenStaffCount=fullDataset.filter(obj => {
+
+        return obj.department==='kitchen_staff'
+
+    }).length;
 
     const onListNameClick=(member)=>{
         setDetailsOfMember(member)
     }
-
-
-    const onKickOutClick=(memberId)=>{
-        setMembersList(membersList.filter(member=>member.id !== memberId))
-    }
-
-
-
     const resetToFirstMemberOfList=() => {
         if(membersList.length>0){
             setDetailsOfMember(membersList[0]);
@@ -23,12 +39,35 @@ function StaffListAndDetails({department,jsonLocation}) {
     }
 
     useEffect(()=>resetToFirstMemberOfList(), [membersList]);
-    useEffect(()=>{
 
-            fetch(`/${jsonLocation}.json`)
-                .then((res) => res.json())
-                .then((data) => setMembersList(data))
-    },[jsonLocation])
+    useEffect(() => {
+        let temp=''
+        if(departmentTab==='waiting_room'){
+            temp=fullDataset.filter((object) => {
+                return object.department==='waiting_room';
+            })
+        }
+        if(departmentTab==='scout_team'){
+            temp=fullDataset.filter((object) => {
+                return object.department==='scout_team';
+            })
+        }
+        if(departmentTab==='r&d_dept'){
+            temp=fullDataset.filter((object) => {
+                return object.department==='r&d_dept';
+            })
+        }
+        if(departmentTab==='kitchen_staff'){
+            temp=fullDataset.filter((object) => {
+                return object.department==='kitchen_staff';
+            })
+        }
+
+        setMembersList(temp)
+    }, [departmentTab,fullDataset]);
+
+
+
 
 
 
@@ -46,7 +85,7 @@ function StaffListAndDetails({department,jsonLocation}) {
 
     const getDepartmentDisplayName=()=>{
 
-        switch (department){
+        switch (departmentTab){
 
             case 'waiting_room':
                 return 'Waiting Room'
@@ -64,7 +103,7 @@ function StaffListAndDetails({department,jsonLocation}) {
 
     const aggregateSkillPointsOfDept=useMemo(()=>membersList.reduce((accu,currentVal)=>{
 
-        switch(department){
+        switch(departmentTab){
             case 'r&d_dept':
                 accu=accu+currentVal.rdSkill
                 break;
@@ -78,16 +117,16 @@ function StaffListAndDetails({department,jsonLocation}) {
                 accu=0;
         }
         return accu;
-    },0),[membersList,department]);
+    },0),[membersList,departmentTab]);
 
     return (
         <div className='main-management-container '>
             <div className='department-name-and-head-count'>
                 <div className='department-name'>{getDepartmentDisplayName()}</div>
                 <div className='level-and-member-count'>
-                    {department!=='waiting_room'?<div>Lvl.{aggregateSkillPointsOfDept}</div>:null}
+                    {departmentTab!=='waiting_room'?<div>Lvl.{aggregateSkillPointsOfDept}</div>:null}
                     <div className='member-count'>
-                        <img src='/icons/head.png' width='20px' />
+                        <img src='/icons/head.png' width='20px' draggable='false'/>
                         :   {membersList.length}/20
                     </div>
 
@@ -99,7 +138,7 @@ function StaffListAndDetails({department,jsonLocation}) {
                     <ul className='members-list'>{memberListNames}</ul>
                 </div>
                 <div className='member-profile-image-box'>
-                    <img src={membersList.length>0?detailsOfMember.profileLocation:"/staff-profiles/default.png"} width='270px' />
+                    <img src={membersList.length>0?detailsOfMember.profileLocation:"/staff-profiles/default.png"} width='270px' draggable='false'/>
                 </div>
                 <div className='members-stats-box'>
                     {/*<div>{JSON.stringify(detailsOfMember)}</div>*/}
@@ -163,10 +202,11 @@ function StaffListAndDetails({department,jsonLocation}) {
                 <div className='staff-operations'>
                     <button className='kick-out-button' onClick={()=>onKickOutClick(detailsOfMember.id)}>Kick out {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))}</button>
                     <div className='transfer-buttons'>
-                        {department!=='scout_team'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Scout team</button>:null}
-                        {department!=='r&d_dept'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to R&D</button>:null}
-                        {department!=='kitchen_staff'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Kitchen</button>:null}
-                        {department!=='waiting_room'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Waiting Room</button>:null}
+
+                        {departmentTab!=='scout_team'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Scout team[{scoutTeamCount}/20]</button>:null}
+                        {departmentTab!=='r&d_dept'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to R&D[{rAndDdeptCount}/20]</button>:null}
+                        {departmentTab!=='kitchen_staff'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Kitchen[{kitchenStaffCount}/20]</button>:null}
+                        {departmentTab!=='waiting_room'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Waiting Room[{waitingRoomCount}/20]</button>:null}
 
                     </div>
                 </div>:null}

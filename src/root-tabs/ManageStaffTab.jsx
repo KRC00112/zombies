@@ -1,31 +1,41 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import StaffManagementTabHeader from "../staff-management-components/StaffManagementTabHeader.jsx";
 import StaffListAndDetailsController from "../staff-management-components/StaffListAndDetailsController.jsx";
 import {useState} from "react";
 
 function ManageStaffTab() {
     const [tab, setTab] = useState('waiting_room');
-    const [jsonLocation,setJsonLocation] = useState('waiting_room_members_list');
+    const [fullDataset, setFullDataset] = useState([]);
+    useEffect(()=>{
+
+        fetch(`/all_depts.json`)
+            .then((res) => res.json())
+            .then((data) => setFullDataset(data))
+    },[])
     const onWaitingRoomTabClick = () => {
         setTab('waiting_room');
-        setJsonLocation('waiting_room_members_list')
+
 
     }
     const onScoutTeamTabClick = () => {
         setTab('scout_team');
-        setJsonLocation('scout_team_members_list')
+
 
     }
     const onRandDDeptTabClick = () => {
         setTab('r&d_dept');
-        setJsonLocation('r&d_team_members_list')
+
 
     }
     const onKitchenStaffTabClick = () => {
         setTab('kitchen_staff');
-        setJsonLocation('kitchen_staff_members_list')
 
     }
+
+    const handleKickOutClick=(memberId)=>{
+        setFullDataset(fullDataset.filter(member=>member.id !== memberId))
+    }
+
     return (
         <div className='management-staff-tab'>
             <StaffManagementTabHeader/>
@@ -37,7 +47,7 @@ function ManageStaffTab() {
                     <li><button onClick={onRandDDeptTabClick} className={tab==='r&d_dept'?'bg-[#AA076B] text-white':null}>R&D Department</button></li>
                     <li><button onClick={onKitchenStaffTabClick} className={tab==='kitchen_staff'?'bg-[#AA076B] text-white':null}>Kitchen Staff</button></li>
                 </ul>
-                <StaffListAndDetailsController department={tab} jsonLocation={jsonLocation}/>
+                <StaffListAndDetailsController departmentTab={tab} fullDataset={fullDataset} onKickOutClick={handleKickOutClick}/>
 
             </section>
         </div>
