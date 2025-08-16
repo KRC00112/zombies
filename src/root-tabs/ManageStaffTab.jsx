@@ -22,11 +22,21 @@ function ManageStaffTab() {
     }
 
     const handleTeamTransfer=(memberId,departmentName)=>{
-        const object=fullDataset.find(obj=>obj.id===memberId)
-        setFullDataset(f=>f.filter(member=>member!== object))
-        setFullDataset(f=>[...f,{...object,department:departmentName}])
-    }
+        // const object=fullDataset.find(obj=>obj.id===memberId)
+        // setFullDataset(f=>f.filter(member=>member!== object))
+        // setFullDataset(f=>[...f,{...object,department:departmentName}])
 
+        console.log(memberId, departmentName);
+        setFullDataset(
+            fullDataset.map((obj) => {
+                if (obj.id === memberId) {
+                    return { ...obj, department: departmentName };
+                } else {
+                    return obj;
+                }
+            })
+        );
+    }
     return (
         <div className='management-staff-tab'>
             <StaffManagementTabHeader/>
