@@ -3,7 +3,6 @@ import StaffManagementTabHeader from "../staff-management-components/StaffManage
 import StaffListAndDetailsController from "../staff-management-components/StaffListAndDetailsController.jsx";
 import {useState} from "react";
 
-
 function ManageStaffTab() {
     const [tab, setTab] = useState('waiting_room');
     const [fullDataset, setFullDataset] = useState([]);
