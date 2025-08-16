@@ -1,5 +1,0 @@
-[
-  { "id": 1, "name": "John Doe in kitchen", "life": 57, "scoutSkill": 87, "rdSkill": 42, "cookingSkill": 16, "profileLocation": "/staff-profiles/male_type_b.PNG" },
-  { "id": 2, "name": "Jane Doe in kitchen", "life": 3, "scoutSkill": 53, "rdSkill": 95, "cookingSkill": 8, "profileLocation": "/staff-profiles/female_type_a.PNG" },
-  { "id": 3, "name": "Alice Carter in kitchen", "life": 89, "scoutSkill": 12, "rdSkill": 66, "cookingSkill": 34, "profileLocation": "/staff-profiles/female_type_b.PNG" }
-]

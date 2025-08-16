@@ -1,19 +1,19 @@
 [
-  { "id": 11, "name": "Olivia Harris in waiting", "life": 200, "scoutSkill": 42, "rdSkill": 73, "cookingSkill": 19, "profileLocation": "/staff-profiles/female_type_b.PNG", "department": "waiting_room"  },
-  { "id": 12, "name": "Liam Walker in waiting", "life": 90, "scoutSkill": 58, "rdSkill": 21, "cookingSkill": 64, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "waiting_room"  },
-  { "id": 13, "name": "Ava Robinson in waiting", "life": 45, "scoutSkill": 83, "rdSkill": 29, "cookingSkill": 47, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "waiting_room"  },
-  { "id": 14, "name": "Mason Carter in waiting", "life": 12, "scoutSkill": 36, "rdSkill": 88, "cookingSkill": 53, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "waiting_room"  },
+  { "id": 11, "name": "Olivia Harris", "life": 200, "scoutSkill": 42, "rdSkill": 73, "cookingSkill": 19, "profileLocation": "/staff-profiles/female_type_b.PNG", "department": "waiting_room"  },
+  { "id": 12, "name": "Liam Walker", "life": 90, "scoutSkill": 58, "rdSkill": 21, "cookingSkill": 64, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "waiting_room"  },
+  { "id": 13, "name": "Ava Robinson", "life": 45, "scoutSkill": 83, "rdSkill": 29, "cookingSkill": 47, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "waiting_room"  },
+  { "id": 14, "name": "Mason Carter", "life": 12, "scoutSkill": 36, "rdSkill": 88, "cookingSkill": 53, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "waiting_room"  },
 
-  { "id": 6, "name": "Sophia Taylor in scouting", "life": 31, "scoutSkill": 96, "rdSkill": 14, "cookingSkill": 58, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "scout_team"  },
-  { "id": 7, "name": "James Anderson in scouting", "life": 80, "scoutSkill": 48, "rdSkill": 60, "cookingSkill": 12, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "scout_team"  },
-  { "id": 8, "name": "Isabella Thomas in scouting", "life": 24, "scoutSkill": 15, "rdSkill": 38, "cookingSkill": 81, "profileLocation": "/staff-profiles/female_type_b.PNG", "department": "scout_team"  },
-  { "id": 9, "name": "Ethan Moore in scouting", "life": 54, "scoutSkill": 79, "rdSkill": 51, "cookingSkill": 25, "profileLocation": "/staff-profiles/male_type_a.PNG", "department": "scout_team"  },
-  { "id": 10, "name": "Daniel Wilson in scouting", "life": 62, "scoutSkill": 99, "rdSkill": 89, "cookingSkill": 43, "profileLocation": "/staff-profiles/male_type_a.PNG", "department": "scout_team"  },
+  { "id": 6, "name": "Sophia Taylor", "life": 31, "scoutSkill": 96, "rdSkill": 14, "cookingSkill": 58, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "scout_team"  },
+  { "id": 7, "name": "James Anderson", "life": 80, "scoutSkill": 48, "rdSkill": 60, "cookingSkill": 12, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "scout_team"  },
+  { "id": 8, "name": "Isabella Thomas", "life": 24, "scoutSkill": 15, "rdSkill": 38, "cookingSkill": 81, "profileLocation": "/staff-profiles/female_type_b.PNG", "department": "scout_team"  },
+  { "id": 9, "name": "Ethan Moore", "life": 54, "scoutSkill": 79, "rdSkill": 51, "cookingSkill": 25, "profileLocation": "/staff-profiles/male_type_a.PNG", "department": "scout_team"  },
+  { "id": 10, "name": "Daniel Wilson", "life": 62, "scoutSkill": 99, "rdSkill": 89, "cookingSkill": 43, "profileLocation": "/staff-profiles/male_type_a.PNG", "department": "scout_team"  },
 
-  { "id": 4, "name": "Emily Johnson in r&d", "life": 72, "scoutSkill": 91, "rdSkill": 4, "cookingSkill": 77, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "r&d_dept"  },
-  { "id": 5, "name": "David Brown in r&d", "life": 16, "scoutSkill": 37, "rdSkill": 72, "cookingSkill": 21, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "r&d_dept"  },
+  { "id": 4, "name": "Emily Johnson", "life": 72, "scoutSkill": 91, "rdSkill": 4, "cookingSkill": 77, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "r&d_dept"  },
+  { "id": 5, "name": "David Brown", "life": 16, "scoutSkill": 37, "rdSkill": 72, "cookingSkill": 21, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "r&d_dept"  },
 
-  { "id": 1, "name": "John Doe in kitchen", "life": 57, "scoutSkill": 87, "rdSkill": 42, "cookingSkill": 16, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "kitchen_staff" },
-  { "id": 2, "name": "Jane Doe in kitchen", "life": 3, "scoutSkill": 53, "rdSkill": 95, "cookingSkill": 8, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "kitchen_staff" },
-  { "id": 3, "name": "Alice Carter in kitchen", "life": 89, "scoutSkill": 12, "rdSkill": 66, "cookingSkill": 34, "profileLocation": "/staff-profiles/female_type_b.PNG", "department": "kitchen_staff" }
+  { "id": 1, "name": "John Doe", "life": 57, "scoutSkill": 87, "rdSkill": 42, "cookingSkill": 16, "profileLocation": "/staff-profiles/male_type_b.PNG", "department": "kitchen_staff" },
+  { "id": 2, "name": "Jane Doe", "life": 3, "scoutSkill": 53, "rdSkill": 95, "cookingSkill": 8, "profileLocation": "/staff-profiles/female_type_a.PNG", "department": "kitchen_staff" },
+  { "id": 3, "name": "Alice Carter", "life": 89, "scoutSkill": 12, "rdSkill": 66, "cookingSkill": 34, "profileLocation": "/staff-profiles/female_type_b.PNG", "department": "kitchen_staff" }
 ]

@@ -1,7 +1,0 @@
-[
-  { "id": 1, "name": "Olivia Harris in waiting", "life": 200, "scoutSkill": 42, "rdSkill": 73, "cookingSkill": 19, "profileLocation": "/staff-profiles/female_type_b.PNG" },
-  { "id": 2, "name": "Liam Walker in waiting", "life": 90, "scoutSkill": 58, "rdSkill": 21, "cookingSkill": 64, "profileLocation": "/staff-profiles/male_type_b.PNG" },
-  { "id": 3, "name": "Ava Robinson in waiting", "life": 45, "scoutSkill": 83, "rdSkill": 29, "cookingSkill": 47, "profileLocation": "/staff-profiles/female_type_a.PNG" },
-  { "id": 4, "name": "Mason Carter in waiting", "life": 12, "scoutSkill": 36, "rdSkill": 88, "cookingSkill": 53, "profileLocation": "/staff-profiles/male_type_b.PNG" }
-
-]

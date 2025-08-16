@@ -1,11 +1,15 @@
 import React from 'react'
+import {TypeAnimation} from "react-type-animation";
 
 function StaffManagementTabHeader() {
     return (
         <header className="staff-management-tab-header">
             <div className='tab-title-and-resources-display'>
-                <h1>MANAGE STAFF</h1>
-                <div>Resources: </div>
+                    <TypeAnimation
+                    sequence={['MANAGE STAFF']}
+                    wrapper="h1"
+                    speed={50}
+                    cursor={false}/>
             </div>
         </header>
     )

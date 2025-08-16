@@ -1,10 +1,9 @@
 import {useState, useEffect, useMemo} from 'react'
 import ProgressBar from "@ramonak/react-progress-bar";
 
-function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
+function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransferToTeamClick}) {
     const [membersList, setMembersList] = useState([]);
     const [detailsOfMember, setDetailsOfMember] = useState({});
-
     const scoutTeamCount=fullDataset.filter(obj => {
 
         return obj.department==='scout_team'
@@ -41,7 +40,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
     useEffect(()=>resetToFirstMemberOfList(), [membersList]);
 
     useEffect(() => {
-        let temp=''
+        let temp=[]
         if(departmentTab==='waiting_room'){
             temp=fullDataset.filter((object) => {
                 return object.department==='waiting_room';
@@ -72,14 +71,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
 
 
 
-    const memberListNames=membersList.map((member)=>{
 
-        return <li className={`${member.id===detailsOfMember.id?"selected bg-[#61045F] text-white font-bold":''} member-list-names`}
-                   key={member.id}>
-            <button onClick={()=>onListNameClick(member)}>{member.name}</button>
-        </li>
-
-    })
 
 
 
@@ -126,8 +118,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
                 <div className='level-and-member-count'>
                     {departmentTab!=='waiting_room'?<div>Lvl.{aggregateSkillPointsOfDept}</div>:null}
                     <div className='member-count'>
-                        <img src='/icons/head.png' width='20px' draggable='false'/>
-                        :   {membersList.length}/20
+                        <img src='/icons/head.png' width='20px' draggable='false'/>:   {membersList.length}/20
                     </div>
 
                 </div>
@@ -135,7 +126,13 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
             <div className='staff-Details'>
                 <div className='members-list-box'>
                     <div className='members-list-box-heading'>Names</div>
-                    <ul className='members-list'>{memberListNames}</ul>
+                    <ul className='members-list'>
+                        {membersList.map((member)=> (
+                        <li key={member.id} className={`${member.id===detailsOfMember.id?"selected bg-[#61045F] text-white font-bold":''} member-list-names`}>
+                            <button onClick={()=>onListNameClick(member)}>{member.name}</button>
+                        </li>
+                        ))}
+                    </ul>
                 </div>
                 <div className='member-profile-image-box'>
                     <img src={membersList.length>0?detailsOfMember.profileLocation:"/staff-profiles/default.png"} width='270px' draggable='false'/>
@@ -152,6 +149,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
                             bgColor="#d11010"
                             customLabel="LIFE"
                             labelColor="#ffffff"
+                            labelClassName="progress-bar-label life-label"
                             maxCompleted={200}
                             baseBgColor="#e2e2dd60"
                             isLabelVisible={true}
@@ -161,11 +159,12 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
 
                         <ProgressBar
                             completed={membersList.length>0?detailsOfMember.scoutSkill:0}
-                            customLabel="scout skills"
+                            customLabel="scouting skills"
                             height="50px"
                             borderRadius="0"
                             labelAlignment="left"
                             bgColor="#FFFFFF"
+                            labelClassName="progress-bar-label"
                             labelColor="#000000"
                             baseBgColor="#e2e2dd60"
                             isLabelVisible={true}
@@ -177,6 +176,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
                             borderRadius="0"
                             bgColor="#ffffff"
                             labelAlignment="left"
+                            labelClassName="progress-bar-label"
                             labelColor="#000000"
                             baseBgColor="#e2e2dd60"
                             isLabelVisible={true}
@@ -188,6 +188,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
                             bgColor="#ffffff"
                             borderRadius="0"
                             labelAlignment="left"
+                            labelClassName="progress-bar-label"
                             labelColor="#000000"
                             baseBgColor="#e2e2dd60"
                             isLabelVisible={true}
@@ -202,12 +203,10 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick}) {
                 <div className='staff-operations'>
                     <button className='kick-out-button' onClick={()=>onKickOutClick(detailsOfMember.id)}>Kick out {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))}</button>
                     <div className='transfer-buttons'>
-
-                        {departmentTab!=='scout_team'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Scout team[{scoutTeamCount}/20]</button>:null}
-                        {departmentTab!=='r&d_dept'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to R&D[{rAndDdeptCount}/20]</button>:null}
-                        {departmentTab!=='kitchen_staff'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Kitchen[{kitchenStaffCount}/20]</button>:null}
-                        {departmentTab!=='waiting_room'?<button className='transfer'>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Waiting Room[{waitingRoomCount}/20]</button>:null}
-
+                        {departmentTab!=='scout_team'?<button className='transfer' onClick={()=>onTransferToTeamClick(detailsOfMember.id,'scout_team')}>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Scout team[{scoutTeamCount}/20]</button>:null}
+                        {departmentTab!=='r&d_dept'?<button className='transfer' onClick={()=>onTransferToTeamClick(detailsOfMember.id,'r&d_dept')}>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to R&D[{rAndDdeptCount}/20]</button>:null}
+                        {departmentTab!=='kitchen_staff'?<button className='transfer' onClick={()=>onTransferToTeamClick(detailsOfMember.id,'kitchen_staff')}>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Kitchen[{kitchenStaffCount}/20]</button>:null}
+                        {departmentTab!=='waiting_room'?<button className='transfer' onClick={()=>onTransferToTeamClick(detailsOfMember.id,'waiting_room')}>Transfer {detailsOfMember.name.substring(0,detailsOfMember.name.indexOf(" "))} to Waiting Room[{waitingRoomCount}/20]</button>:null}
                     </div>
                 </div>:null}
 

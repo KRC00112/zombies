@@ -1,9 +1,5 @@
-/*@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');*/
-/*body {*/
-/*    font-family: "VT323", monospace;*/
-/*    font-weight: 100;*/
-/*    font-style: normal;*/
-/*}*/
+
+
 /******************** GENERAL CSS SETTINGS *******************/
 .set-width-100{
     width: 100%;
@@ -91,7 +87,9 @@
     color: white;
     padding: 5px;
     padding-left: 2px;
-    padding-right: 10px;
+    padding-right: 30px;
+    display: inline-block;
+    font-size: 2em;
 
 
 }
@@ -168,23 +166,25 @@
     height:100%;
     flex:1;
     width: 100%;
-
-
+    border: 2px solid #e2e2dd90;
+    border-top: none;
 
 }
 .members-list-box-heading{
     color: white;
     display: flex;
     justify-content: center;
-    border-bottom: 2px solid rgba(46, 3, 76, 0.3);
     width: 100%;
     padding-block: 5px;
     background: rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(0, 0, 0, 0.56);
+    border-bottom: 2px solid rgba(46, 3, 76, 0.3);
+
 }
 .member-list-names{
     padding-block: 2px;
 
-    border-bottom:1px solid rgb(255, 255, 255);
+    border-bottom:2px solid #e2e2dd90;
     width: 100%;
     display: flex;
     padding: 0;
@@ -292,7 +292,8 @@
 }
 
 .staff-operations button{
-   padding: 5px;
+    padding: 5px;
+    border-radius: 2px;
 
 }
 .transfer-buttons{
@@ -307,7 +308,18 @@
 }
 
 .kick-out-button{
-    background-color: #137a8f;
+    background-color: #f13461;
+    color: white;
     height: fit-content;
+
+
+}
+.progress-bar-label{
+    white-space: nowrap;
+    padding-left: 10px;
+}
+.life-label{
+    color: white;
+    padding-block: 7px;
 }
 
