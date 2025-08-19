@@ -1,5 +1,3 @@
-
-
 /******************** GENERAL CSS SETTINGS *******************/
 .set-width-100{
     width: 100%;
@@ -33,9 +31,12 @@
     background: linear-gradient(to top, #2a0845, #9528fa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     width: 150px;
-    height: 100vh;
+    height: auto;
+    align-self: stretch;
     display: flex;
     flex-direction: column;
+    border-right: black solid 2px;
+
 }
 
 
@@ -44,6 +45,7 @@
     padding: 10px;
     padding-bottom: 0px;
     width: 100%;
+    white-space: nowrap;
 }
 
 .side-bar button:hover{
@@ -52,7 +54,7 @@
     color: white;
 }
 
-.management-staff-tab{
+.management-staff-tab,.development-tab{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -62,7 +64,7 @@
 
 /******************** STAFF MANAGEMENT TAB HEADER CSS *******************/
 
-.staff-management-tab-header{
+.staff-management-tab-header,.development-tab-header{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -76,12 +78,12 @@
 
 }
 
-.tab-title-and-resources-display{
+.tab-title-display{
     display: flex;
     justify-content: space-between;
 }
 
-.tab-title-and-resources-display h1{
+.tab-title-display h1{
 
     background-color: black;
     color: white;
@@ -96,7 +98,7 @@
 
 /******************** STAFF MANAGEMENT TAB BODY CSS *******************/
 
-.staff-management-tab-body{
+.staff-management-tab-body,.development-tab-body{
 
     border-top: 2px solid #000000;
     position: relative;
@@ -106,8 +108,8 @@
 }
 
 
-/******************** STAFF MANAGEMENT TAB LIST CSS *******************/
-.staff-management-tab-list{
+/******************** STAFF MANAGEMENT DEPARTMENT TAB LIST CSS *******************/
+.staff-management-department-tab-list,.development-type-tab-list{
     display: flex;
     flex-direction: row;
     gap: 0;
@@ -117,7 +119,7 @@
 
 
 }
-.staff-management-tab-list li button{
+.staff-management-department-tab-list li button,.development-type-tab-list li button{
     border: 2px solid black;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -127,7 +129,7 @@
 }
 
 /******************** STAFF DETAILS LIST CSS *******************/
-.main-management-container{
+.main-management-container,.main-development-container{
 
     height: 100%;
     background: #AA076B;  /* fallback for old browsers */
@@ -142,7 +144,7 @@
     justify-content: space-between;
     width: 100%;
     padding-inline: 100px;
-    padding-top: 50px;
+    margin-top: 10px;
 
 
 
@@ -158,6 +160,7 @@
     min-height: 300px;
     display: flex;
     flex-direction: column;
+
 
 }
 .members-list{
@@ -183,7 +186,6 @@
 }
 .member-list-names{
     padding-block: 2px;
-
     border-bottom:2px solid #e2e2dd90;
     width: 100%;
     display: flex;
@@ -218,6 +220,8 @@
 
 
 }
+
+
 /******************** MEMBERS STATS BOX CSS *******************/
 
 .members-stats-box{
@@ -229,6 +233,7 @@
     flex-direction: column;
     justify-content: center;
     gap:10px;
+    margin-top: 30px;
 
 
 }
@@ -240,7 +245,20 @@
     flex-direction: column;
     gap:5px;
 
+
 }
+.progress-bar-label{
+    white-space: nowrap;
+    padding-left: 10px;
+}
+.life-label{
+    color: white;
+    padding-block: 7px;
+}
+
+
+/******************** PROFILE PICTURE CSS *******************/
+
 .member-profile-image-box{
     max-width:325px ;
     min-width:325px ;
@@ -250,12 +268,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
 
 
 
 }
+/******************** DEPARTMENT TAB NAME AND LEVEL AND HEAD COUNT*******************/
 
-.department-name-and-head-count{
+.department-name-and-level-and-head-count{
     margin-top: 30px;
     margin-left: 10px;
     display: flex;
@@ -264,12 +284,7 @@
     color: white;
     font-size: 30px;
 }
-.department-name{
 
-
-    padding-left: 2px;
-    padding-right: 20px;
-}
 
 .level-and-member-count{
     display: flex;
@@ -282,6 +297,7 @@
     gap:5px;
 }
 
+/******************** OPERATIONS TO PERFORM ON STAFF MEMBERS*******************/
 
 .staff-operations{
     display: flex;
@@ -296,30 +312,69 @@
     border-radius: 2px;
 
 }
-.transfer-buttons{
-    display: flex;
-    flex-direction: column;
-    gap:10px;
 
-}
-
-.transfer-buttons button{
+.transfer-buttons li button{
     background-color: #34da34;
+    margin-bottom: 7px;
+    width: 100%;
+    text-align: left;
+    padding-inline: 10px;
 }
 
 .kick-out-button{
     background-color: #f13461;
     color: white;
     height: fit-content;
+}
+/******************** SORTING DROP DOWN *******************/
 
 
+.sort-drop-down{
+    display: flex;
+    gap:7px;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+
 }
-.progress-bar-label{
-    white-space: nowrap;
-    padding-left: 10px;
-}
-.life-label{
+.drop-down-selection-box{
+    background: #ffffff60;
+    border: 2px solid #ffffff;
     color: white;
-    padding-block: 7px;
+    outline: none;
+    padding-right: 10px;
+
 }
+/******************** DEVELOPMENT TYPE TITLE NAME*******************/
+
+.development-type-name{
+
+    margin-top: 30px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 30px;
+    color: white;
+    font-size: 30px;
+
+}
+
+.items-development-box,.item-type-list,.items-of-specific-type{
+    border: black 2px solid;
+
+}
+.item-type-list{
+    height: 40px;
+}
+.items-development-box{
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    margin-inline: 40px;
+    margin-top: 10px;
+}
+
+.items-of-specific-type{
+    flex-grow:1
+}
+
 

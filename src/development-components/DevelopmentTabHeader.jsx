@@ -1,12 +1,12 @@
 import React from 'react'
 import {TypeAnimation} from "react-type-animation";
 
-function StaffManagementTabHeader() {
+function DevelopmentTabHeader() {
     return (
-        <header className="staff-management-tab-header">
+        <header className="development-tab-header">
             <div className='tab-title-display'>
-                    <TypeAnimation
-                    sequence={['MANAGE STAFF']}
+                <TypeAnimation
+                    sequence={['DEVELOPMENT']}
                     wrapper="h1"
                     speed={50}
                     cursor={false}/>
@@ -15,4 +15,4 @@ function StaffManagementTabHeader() {
     )
 }
 
-export default StaffManagementTabHeader
+export default DevelopmentTabHeader

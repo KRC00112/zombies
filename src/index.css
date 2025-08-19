@@ -8,10 +8,12 @@ body {
     font-style: normal;
 }
 
-.page-default-alignment{
+.page-default-alignment {
     display: flex;
-
+    min-height: 100vh;
+    /* Don't set height: 100vh! */
 }
+
 
 
 

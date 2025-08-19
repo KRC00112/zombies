@@ -27,7 +27,7 @@ function App() {
     }
 
   return (
-    <div className="page-default-alignment  ">
+    <div className="page-default-alignment">
         <SideBar
             onHomeClick={handleHomeClick}
             onManageStaffClick={handleManageStaffClick}
