@@ -346,7 +346,7 @@
 }
 /******************** DEVELOPMENT TYPE TITLE NAME*******************/
 
-.development-type-name{
+.development-type-name-and-item-type{
 
     margin-top: 30px;
     margin-left: 10px;
@@ -358,23 +358,57 @@
 
 }
 
-.items-development-box,.item-type-list,.items-of-specific-type{
-    border: black 2px solid;
+.item-type-name{
+    margin-right: 20px;
+    color: white;
+}
+
+.item-type-list{
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 2px solid #ffffff;
+}
+
+
+.item-type-list li{
+
+    align-self: flex-end;
+    display: flex;
 
 }
-.item-type-list{
-    height: 40px;
+.item-type-list li button{
+
+    color: white;
+    border-bottom:none;
+    padding: 10px;
+    align-self: flex-end;
+
+
 }
+
+.item-tab-selected{
+    background: #ffffff60;
+    border: 2px solid #ffffff;
+}
+
+
+
 .items-development-box{
     display: flex;
     flex-direction: column;
     height: 450px;
     margin-inline: 40px;
     margin-top: 10px;
+
 }
 
-.items-of-specific-type{
-    flex-grow:1
+.items-to-develop{
+    flex-grow:1;
+    background: #ffffff60;
+    border: 2px solid #ffffff;
+    border-top: none;
+    color: white;
+    overflow-y: auto;
 }
 
 
