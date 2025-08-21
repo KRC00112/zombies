@@ -116,7 +116,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                 </div>
                 <div className='members-stats-box'>
                     {/*<div>{JSON.stringify(selectedMember)}</div>*/}
-                    <div className="life">
+                    <div className="life-and-base-ap">
                         <ProgressBar
                             className='life'
                             completed={membersList.length>0?selectedMember?.life:0}
@@ -131,6 +131,10 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                             baseBgColor="#e2e2dd60"
                             isLabelVisible={true}
                         />
+                        <div className='base-ap'>
+                            <label className='base-ap-label'>ACTION POINTS:</label>
+                            <div className='base-ap-value'>{membersList.length>0?7+Math.floor((selectedMember?.scoutSkill)/12):0}</div>
+                        </div>
                     </div>
                     <div className='skill-progress-bars'>
 
