@@ -66,13 +66,14 @@
 
 .staff-management-tab-header,.development-tab-header{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     background: #f4f3f3;
     padding-inline: 10px;
     padding-top: 10px;
     height: 130px;
     width: 100%;
+    padding-right: 30px;
 
 
 
@@ -92,6 +93,7 @@
     padding-right: 30px;
     display: inline-block;
     font-size: 2em;
+    height: fit-content;
 
 
 }
@@ -445,8 +447,8 @@
     border: 2px solid #ffffff;
     color: white;
     display: flex;
-    width: fit-content;
-    height: fit-content;
+    min-width: 200px;
+    height: 200px;
     gap:10px;
     padding: 5px;
 }
@@ -456,21 +458,98 @@
     width: fit-content;
     padding-left:2px;
     padding-right: 10px;
-    white-space: nowrap;
+    white-space: normal;
 }
 .item-details{
     padding: 2px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    width: 100%;
+
 }
 
-.department-reqs{
-    color: #042d93;
-}
 
-.start-development-btn{
+.item-card-btn{
     background: #34da34;
     border: 2px solid #000000;
     padding:10px;
-    font-size: 15px;
+    font-size: 14px;
     color: #000000;
+    width: 100%;
+
+
 }
 
+.item-card-btn-developing{
+    background: #f1b534;
+    border: 2px solid #000000;
+    padding:10px;
+    font-size: 14px;
+    color: #000000;
+    width: 100%;
+}
+.item-card-btn-unmet-requirements{
+    background: #959697;
+    border: 2px solid #000000;
+    padding:10px;
+    font-size: 14px;
+    color: #000000;
+    width: 100%;
+
+}
+
+.item-desc{
+    font-size: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex:1
+}
+
+
+
+.start-development-and-see-reqs-btn{
+    margin-top: auto;
+}
+
+.close-show-req-btn{
+    background: #8ee8b5;
+    padding-left:2px;
+    padding-right: 10px;
+}
+.all-requirements{
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.home-tab{
+    width: 100%;
+    height: 100%;
+}
+.home-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 20px;
+    padding-block: 30px;
+    background: #000000;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(56, 50, 50, 0.84) 100%);
+}
+.user-name-handle{
+    border-left: 2px solid #ffffff;
+    padding-inline: 10px;
+    color: white;
+
+}
+.home-title{
+    color: white;
+}
+.items-resources-requirements {
+    max-height: 80px;
+    overflow-y: auto;
+    padding-right: 10px;
+}

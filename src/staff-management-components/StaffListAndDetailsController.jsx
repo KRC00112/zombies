@@ -1,29 +1,9 @@
 import {useState, useEffect, useMemo} from 'react'
 import ProgressBar from "@ramonak/react-progress-bar";
 
-function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransferToTeamClick,handleSelection,dropDownValue,dropDownOptions}) {
+function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransferToTeamClick,handleSelection,dropDownValue,dropDownOptions,tabsInfo}) {
+
     const tabs_list=['scout_team','r&d_dept','kitchen_staff','waiting_room'];
-
-    const waitRoomList=fullDataset.filter((object) => {return object.department==='waiting_room';})
-    const scoutTeamList=fullDataset.filter((object) => {return object.department==='scout_team';})
-    const rAndDdeptList=fullDataset.filter((object) => {return object.department==='r&d_dept';})
-    const kitchenStaffList=fullDataset.filter((object) => {return object.department==='kitchen_staff';})
-
-    const tabsAndTeamCount={
-        'waiting_room':[waitRoomList.length,'Waiting Room'],
-        'scout_team':[scoutTeamList.length, 'Scout  Team'],
-        'r&d_dept':[rAndDdeptList.length, 'R&D Dept'],
-        'kitchen_staff':[kitchenStaffList.length, 'Kitchen Staff'],
-    }
-    const departmentTitleNames={
-
-        'waiting_room':'Waiting Room',
-        'scout_team':'Scout Team',
-        'r&d_dept':'Research And Development Department',
-        'kitchen_staff':'Kitchen Staff',
-    }
-
-
     let membersList = useMemo(() => {
         return fullDataset.filter(member => member.department === departmentTab);
     }, [fullDataset, departmentTab]);
@@ -47,24 +27,6 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
 
     useEffect(()=>setSkipReset(false),[departmentTab])
 
-    const aggregateSkillPointsOfDept=useMemo(()=>membersList.reduce((accu,currentVal)=>{
-
-        switch(departmentTab){
-            case 'r&d_dept':
-                accu=accu+currentVal.rdSkill
-                break;
-            case 'scout_team':
-                accu=accu+currentVal.scoutSkill
-                break;
-            case 'kitchen_staff':
-                accu=accu+currentVal.cookingSkill
-                break;
-            default:
-                return accu;
-        }
-        return accu;
-    },0),[membersList,departmentTab]);
-
     const afterSelectedMemberManipulation=()=>{
         setSelectedId(membersList.indexOf(selectedMember)>0?  membersList[membersList.indexOf(selectedMember)-1].id:membersList[1]?.id)
         setSkipReset(true);
@@ -73,9 +35,12 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
     return (
         <div className='main-management-container '>
             <div className='department-name-and-level-and-head-count'>
-                <div className='department-name'>{departmentTitleNames[departmentTab]}</div>
+                <div className='department-name'>{tabsInfo[departmentTab][0]}</div>
                 <div className='level-and-member-count'>
-                    {departmentTab!=='waiting_room'?<div>Lvl.{aggregateSkillPointsOfDept}</div>:null}
+
+                    {departmentTab==='r&d_dept'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
+                    {departmentTab==='scout_team'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
+                    {departmentTab==='kitchen_staff'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
                     <div className='member-count'>
                         <img src='/icons/head.png' width='20px' draggable='false'/>:   {membersList.length}/20
                     </div>
@@ -133,7 +98,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                         />
                         <div className='base-ap'>
                             <label className='base-ap-label'>ACTION POINTS:</label>
-                            <div className='base-ap-value'>{membersList.length>0?7+Math.floor((selectedMember?.scoutSkill)/12):0}</div>
+                            <div className='base-ap-value'>{membersList.length>0 && selectedMember?7+Math.floor((selectedMember?.scoutSkill)/12):0}</div>
                         </div>
                     </div>
                     <div className='skill-progress-bars'>
@@ -192,7 +157,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                             {departmentTab!==tab?<button onClick={()=>{
                                 onTransferToTeamClick(selectedMember.id, tab)
                                 afterSelectedMemberManipulation()
-                            }}>Transfer {selectedMember.name.substring(0,selectedMember.name.indexOf(" "))} to {tabsAndTeamCount[tab][1]} [{tabsAndTeamCount[tab][0]}/20]</button>:null}
+                            }}>Transfer {selectedMember.name.substring(0,selectedMember.name.indexOf(" "))} to {tabsInfo[tab][2]} [{tabsInfo[tab][1]}/20]</button>:null}
                         </li>
                         ))}
                     </ul>

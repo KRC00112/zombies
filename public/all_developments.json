@@ -1,0 +1,53 @@
+[
+  [
+    {"id":1,"name":"stick","resources":{"wood":2},"rd_team_level_required":0,"kitchen_staff_level_required":0,"scout_team_level_required":0,"time_to_develop":"instant","ap_consumption":2,"dmg":3,"development_status":"unmet_requirements"},
+    {"id":2,"name":"knife","resources":{"metal":3,"wood":1},"rd_team_level_required":2,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"1 mission","ap_consumption":3,"dmg":6,"development_status":"unmet_requirements"},
+    {"id":3,"name":"bo staff","resources":{"wood":4,"cloth":1},"rd_team_level_required":2,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"1 mission","ap_consumption":4,"dmg":8,"development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"M1911","resources":{"metal":8,"wood":2,"gunpowder":5},"rd_team_level_required":3,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"2 missions","ap_consumption":6,"dmg":10,"development_status":"unmet_requirements"},
+    {"id":2,"name":"SOCOM","resources":{"metal":10,"electronics":2,"gunpowder":6},"rd_team_level_required":4,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"3 missions","ap_consumption":7,"dmg":12,"development_status":"unmet_requirements"},
+    {"id":3,"name":"Mk22","resources":{"metal":9,"wood":1,"gunpowder":5},"rd_team_level_required":4,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"2 missions","ap_consumption":6,"dmg":11,"development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Remington 870","resources":{"metal":12,"wood":3,"gunpowder":8},"rd_team_level_required":4,"kitchen_staff_level_required":0,"scout_team_level_required":3,"time_to_develop":"3 missions","ap_consumption":8,"dmg":14,"development_status":"unmet_requirements"},
+    {"id":2,"name":"Mossberg 590","resources":{"metal":14,"wood":3,"gunpowder":9},"rd_team_level_required":5,"kitchen_staff_level_required":0,"scout_team_level_required":3,"time_to_develop":"3 missions","ap_consumption":9,"dmg":16,"development_status":"unmet_requirements"},
+    {"id":3,"name":"SPAS-12","resources":{"metal":16,"electronics":2,"gunpowder":10},"rd_team_level_required":5,"kitchen_staff_level_required":0,"scout_team_level_required":4,"time_to_develop":"4 missions","ap_consumption":10,"dmg":18,"development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Frag Grenade","resources":{"metal":4,"gunpowder":6},"rd_team_level_required":3,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"2 missions","ap_consumption":10,"dmg":25,"development_status":"unmet_requirements"},
+    {"id":2,"name":"Smoke Grenade","resources":{"metal":3,"chemicals":4},"rd_team_level_required":2,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"1 mission","ap_consumption":5,"dmg":0,"development_status":"unmet_requirements"},
+    {"id":3,"name":"Molotov Cocktail","resources":{"glass":1,"cloth":1,"fuel":2},"rd_team_level_required":1,"kitchen_staff_level_required":0,"scout_team_level_required":0,"time_to_develop":"instant","ap_consumption":8,"dmg":15,"development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"First Aid Kit","resources":{"cloth":2,"medicine":2,"alcohol":1},"rd_team_level_required":1,"kitchen_staff_level_required":1,"scout_team_level_required":0,"time_to_develop":"instant","ap_consumption":2,"health_recovered":10,"development_status":"unmet_requirements"},
+    {"id":2,"name":"Medpack","resources":{"cloth":3,"medicine":3,"alcohol":2},"rd_team_level_required":2,"kitchen_staff_level_required":2,"scout_team_level_required":0,"time_to_develop":"1 mission","ap_consumption":5,"health_recovered":50,"development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Adrenaline Shot","resources":{"chemicals":3,"medicine":2,"alcohol":1},"rd_team_level_required":2,"kitchen_staff_level_required":1,"scout_team_level_required":0,"time_to_develop":"1 mission","ap_consumption":3,"ap_recovered":10,"development_status":"unmet_requirements"},
+    {"id":2,"name":"Stimulant Pills","resources":{"chemicals":2,"medicine":1},"rd_team_level_required":2,"kitchen_staff_level_required":1,"scout_team_level_required":0,"time_to_develop":"instant","ap_consumption":6,"ap_recovered":8,"development_status":"unmet_requirements"},
+    {"id":3,"name":"Energy Drink","resources":{"water":1,"chemicals":1,"sugar":1},"rd_team_level_required":1,"kitchen_staff_level_required":1,"scout_team_level_required":0,"time_to_develop":"instant","ap_consumption":4,"ap_recovered":5,"development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Wheat Seeds","resources":{"seeds":5,"soil":1},"rd_team_level_required":1,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"instant","description":"For when you feel like farming AND fighting.","development_status":"unmet_requirements"},
+    {"id":2,"name":"Corn Seeds","resources":{"seeds":6,"soil":1},"rd_team_level_required":1,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"instant","description":"Grow tall, stay fed.","development_status":"unmet_requirements"},
+    {"id":3,"name":"Soybean Seeds","resources":{"seeds":7,"soil":1},"rd_team_level_required":2,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"1 mission","description":"Protein packed and plot convenient.","development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Bungalow","resources":{"wood":20,"metal":15,"cement":10},"rd_team_level_required":6,"kitchen_staff_level_required":0,"scout_team_level_required":4,"time_to_develop":"5 missions","description":"Bigger house, bigger ambitions.","development_status":"unmet_requirements"},
+    {"id":2,"name":"Villa","resources":{"wood":15,"metal":10,"stone":10,"glass": 5,"electronics": 10},"rd_team_level_required":4,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"3 missions","description":"Is it really a zombie apocalypse at this point.","development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Watchtower","resources":{"wood":15,"metal":5,"stone":5},"rd_team_level_required":3,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"2 missions","description":"Keep an eye out… mostly for trouble, sometimes for birds.","development_status":"unmet_requirements"},
+    {"id":2,"name":"Barbed Wire Fence","resources":{"metal":8,"wire":6,"wood":4},"rd_team_level_required":2,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"1 mission","description":"prickly welcome for unwanted guests.","development_status":"unmet_requirements"},
+    {"id":3,"name":"Searchlights","resources":{"metal":5,"electronics":3,"glass":2},"rd_team_level_required":3,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"2 missions","description":"Spot intruders… or make your soldiers squint.","development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Vegetable Patch","resources":{"seeds":10,"wood":5,"water":5},"rd_team_level_required":2,"kitchen_staff_level_required":0,"scout_team_level_required":1,"time_to_develop":"1 mission","description":"Grow your greens and keep your soldiers fed.","development_status":"unmet_requirements"},
+    {"id":2,"name":"Chicken Coop","resources":{"wood":12,"metal":4,"livestock":5},"rd_team_level_required":2,"kitchen_staff_level_required":1,"scout_team_level_required":1,"time_to_develop":"2 missions","description":"Fresh eggs daily, morale boost guaranteed.","development_status":"unmet_requirements"},
+    {"id":3,"name":"Irrigation System","resources":{"metal":8,"wood":6,"water":10},"rd_team_level_required":3,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"3 missions","description":"Watering your crops like a pro, minus the garden gnome.","development_status":"unmet_requirements"}
+  ],
+  [
+    {"id":1,"name":"Shooting Range","resources":{"wood":10,"metal":10,"stone":5},"rd_team_level_required":7,"kitchen_staff_level_required":0,"scout_team_level_required":2,"time_to_develop":"3 missions","description":"Practice makes perfect… ","development_status":"unmet_requirements"}
+  ]
+]

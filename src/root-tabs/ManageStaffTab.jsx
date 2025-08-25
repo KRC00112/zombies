@@ -1,20 +1,14 @@
-import React, {useEffect, useMemo} from 'react'
 import StaffManagementTabHeader from "../staff-management-components/StaffManagementTabHeader.jsx";
 import StaffListAndDetailsController from "../staff-management-components/StaffListAndDetailsController.jsx";
-import {useState} from "react";
+import {useMemo, useState} from "react";
 
-function ManageStaffTab() {
+function ManageStaffTab({handleKickOutClick,handleTeamTransfer,fullDataset,tabsInfo}) {
     const [tab, setTab] = useState('waiting_room');
+
 
     const dropDownOptions = ["Alphabetical", "Scouting skills", "R&D skills", "Cooking skills", "Life"];
     const [dropDownValue, setDropDownValue] = useState(dropDownOptions[0]);
-    const [fullDataset, setFullDataset] = useState([]);
-    useEffect(()=>{
 
-        fetch(`/all_depts.json`)
-            .then((res) => res.json())
-            .then((data) => setFullDataset(data))
-    },[])
 
     const onSelection=(e)=>{
         setDropDownValue(e.target.value)
@@ -56,24 +50,7 @@ function ManageStaffTab() {
 
 
     }
-    const handleKickOutClick=(memberId)=>{
-        setFullDataset(fullDataset.filter(member=>member.id !== memberId))
-    }
 
-    const handleTeamTransfer=(memberId,departmentName)=>{
-        // const object=fullDataset.find(obj=>obj.id===memberId)
-        // setFullDataset(f=>f.filter(member=>member!== object))
-        // setFullDataset(f=>[...f,{...object,department:departmentName}])
-        setFullDataset(
-            fullDataset.map((obj) => {
-                if (obj.id === memberId) {
-                    return { ...obj, department: departmentName };
-                } else {
-                    return obj;
-                }
-            })
-        );
-    }
     return (
         <div className='management-staff-tab'>
             <StaffManagementTabHeader/>
@@ -91,7 +68,8 @@ function ManageStaffTab() {
                     onTransferToTeamClick={handleTeamTransfer}
                     handleSelection={onSelection}
                     dropDownValue={dropDownValue}
-                    dropDownOptions={dropDownOptions}/>
+                    dropDownOptions={dropDownOptions}
+                    tabsInfo={tabsInfo}/>
             </section>
         </div>
     )

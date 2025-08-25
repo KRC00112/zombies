@@ -1,8 +1,17 @@
 import React from 'react'
+import HomeTabHeader from "../home-components/HomeTabHeader.jsx";
+import DevelopmentScreenController from "../development-components/DevelopmentScreenController.jsx";
+import HomeScreenController from "../home-components/HomeScreenController.jsx";
 
 function HomeTab() {
     return (
-        <div>Home</div>
+        <div className='home-tab bg-blue-100'>
+            <HomeTabHeader />
+            <section className='home-tab-body'>
+
+                <HomeScreenController/>
+            </section>
+        </div>
     )
 }
 
