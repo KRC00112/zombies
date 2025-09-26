@@ -553,3 +553,17 @@
     overflow-y: auto;
     padding-right: 10px;
 }
+.cycling-button{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 100px;
+}
+.cycling-button button{
+    color: black;
+    background-color: #34da34;
+    padding: 10px;
+    border: black solid 1px;
+}
+.canvas-container {
+    background-color: #ff3375;
+}

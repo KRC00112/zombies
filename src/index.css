@@ -2,6 +2,7 @@
 @import "tailwindcss";
 
 
+html,body { height:100%; }
 body {
     font-family: "Space Mono", monospace;
     font-weight: 400;

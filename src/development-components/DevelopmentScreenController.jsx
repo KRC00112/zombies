@@ -4,7 +4,7 @@ import {TypeAnimation} from "react-type-animation";
 const resourceList=['alcohol', 'cement', 'chemicals', 'cloth', 'electronics', 'fuel', 'glass',
     'gunpowder', 'kitchenware', 'livestock', 'medicine', 'metal', 'seeds', 'soil',
     'stone', 'sugar', 'tools', 'water', 'wire', 'wood']
-function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,kitchenStaffLevel}) {
+function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,kitchenStaffLevel,fullDevelopmentDataset}) {
 
     const DevelopmentTypeTitleNames={
 
@@ -23,29 +23,18 @@ function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,
     const weaponTabTypesName=['melee','handgun','shotgun','throwables'];
     const aidTabTypesName=['health','action_points','seeds'];
     const baseTabTypesName=['the_house','perimeter','farm','training_area'];
-    const [fullDevelopmentDataset, setFullDevelopmentDataset] = useState([]);
 
-    useEffect(()=>{
-
-        fetch(`/all_developments.json`)
-            .then((res) => {
-                if(!res.ok) {
-                    return
-                }
-                return res.json()
-            })
-            .then((data) => setFullDevelopmentDataset(data))
-            .catch((err) => console.log(err));
-    },[])
 
 
     const melee_weapons_list=fullDevelopmentDataset[0]
     const handguns_list=fullDevelopmentDataset[1]
     const shotguns_list=fullDevelopmentDataset[2]
     const throwables_list=fullDevelopmentDataset[3]
+
     const health_list=fullDevelopmentDataset[4]
     const action_points_list=fullDevelopmentDataset[5]
     const seeds_list=fullDevelopmentDataset[6]
+
     const the_house_list=fullDevelopmentDataset[7]
     const perimeter_list=fullDevelopmentDataset[8]
     const farm_list=fullDevelopmentDataset[9]
@@ -158,15 +147,33 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
     },[rAndDLevel,scoutTeamLevel,kitchenStaffLevel])
 
     const changeDevelopmentStatus=()=>{
+        if(developmentStatus!=='unmet_requirements'){
+            if(developmentStatus==='not_started'){
 
-        if(developmentStatus==='not_started'){
+                setDevelopmentStatus('developing')
+            }else{
+                setDevelopmentStatus('not_started')
+            }
 
-            setDevelopmentStatus('developing')
-        }else{
-            setDevelopmentStatus('not_started')
+
         }
 
+
     }
+
+    let itemCardButtonTextName=''
+    let itemCardButtonClassName=''
+    if(developmentStatus==='not_started'){
+        itemCardButtonTextName='START DEVELOPMENT'
+        itemCardButtonClassName='item-card-btn'
+    }else if(developmentStatus==='developing'){
+        itemCardButtonTextName='CANCEL DEVELOPMENT'
+        itemCardButtonClassName='item-card-btn-developing'
+    }else if(developmentStatus==='unmet_requirements'){
+        itemCardButtonTextName='CAN\'T DEVELOP YET'
+        itemCardButtonClassName='item-card-btn-unmet-requirements'
+    }
+
 
     return (
         <div className='item-card'>
@@ -212,13 +219,9 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
                 </div>
                 <div className='start-development-and-see-reqs-btn'>
                     <button className='item-card-btn' onClick={()=>setShowReqs(true)}>SEE REQUIREMENTS</button>
-                    {developmentStatus==='unmet_requirements'?<button className='item-card-btn-unmet-requirements'>CAN'T DEVELOP YET</button>:null}
-                    {developmentStatus==='not_started'?<button className='item-card-btn' onClick={()=>changeDevelopmentStatus()}>START DEVELOPMENT</button>:null}
-                    {developmentStatus==='developing'?<button className='item-card-btn-developing' onClick={()=>changeDevelopmentStatus()}>CANCEL DEVELOPMENT</button>:null}
-
+                    <button className={itemCardButtonClassName} onClick={changeDevelopmentStatus}>{itemCardButtonTextName}</button>
                 </div>
-
-                 </div>}
+                </div>}
             </div>
         </div>
     );

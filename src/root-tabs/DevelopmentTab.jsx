@@ -3,8 +3,10 @@ import DevelopmentTabHeader from "../development-components/DevelopmentTabHeader
 import DevelopmentScreenController from "../development-components/DevelopmentScreenController.jsx";
 
 
-function DevelopmentTab({rAndDLevel,scoutTeamLevel,kitchenStaffLevel}) {
+function DevelopmentTab({rAndDLevel,scoutTeamLevel,kitchenStaffLevel,fullDevelopmentDataset}) {
     const [tab, setTab] = useState('weapon');
+
+
     const onTabClick = (typeName) => {
         setTab(typeName);
 
@@ -26,7 +28,8 @@ function DevelopmentTab({rAndDLevel,scoutTeamLevel,kitchenStaffLevel}) {
                     developmentType={tab}
                     rAndDLevel={rAndDLevel}
                     scoutTeamLevel={scoutTeamLevel}
-                    kitchenStaffLevel={kitchenStaffLevel}/>
+                    kitchenStaffLevel={kitchenStaffLevel}
+                    fullDevelopmentDataset={fullDevelopmentDataset}/>
             </section>
         </div>
     )

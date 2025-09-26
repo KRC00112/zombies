@@ -16,6 +16,20 @@ function InteractionInterface({currentTab}) {
     const scoutTeamList=fullDataset.filter((object) => {return object.department==='scout_team';})
     const rAndDdeptList=fullDataset.filter((object) => {return object.department==='r&d_dept';})
     const kitchenStaffList=fullDataset.filter((object) => {return object.department==='kitchen_staff';})
+    const [fullDevelopmentDataset, setFullDevelopmentDataset] = useState([]);
+
+    useEffect(()=>{
+
+        fetch(`/all_developments.json`)
+            .then((res) => {
+                if(!res.ok) {
+                    return
+                }
+                return res.json()
+            })
+            .then((data) => setFullDevelopmentDataset(data))
+            .catch((err) => console.log(err));
+    },[])
 
 
     const scoutTeamSkillAggregatePoints=scoutTeamList.reduce((accu,currentVal)=>{
@@ -78,7 +92,8 @@ function InteractionInterface({currentTab}) {
             {currentTab==='developmentTab' && <DevelopmentTab
                 rAndDLevel={tabsInfo['r&d_dept'][3]}
                 scoutTeamLevel={tabsInfo['scout_team'][3]}
-                kitchenStaffLevel={tabsInfo['kitchen_staff'][3]}/>}
+                kitchenStaffLevel={tabsInfo['kitchen_staff'][3]}
+                fullDevelopmentDataset={fullDevelopmentDataset}/>}
         </div>
     )
 }
