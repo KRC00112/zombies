@@ -18,6 +18,39 @@ function InteractionInterface({currentTab}) {
     const kitchenStaffList=fullDataset.filter((object) => {return object.department==='kitchen_staff';})
     const [fullDevelopmentDataset, setFullDevelopmentDataset] = useState([]);
 
+
+
+
+    const changeDevelopmentStatus=(itemDevelopmentStatus,itemName)=>{
+        console.log(itemName);
+        if(itemDevelopmentStatus!=='unmet_requirements'){
+            if(itemDevelopmentStatus==='not_started'){
+
+                setFullDevelopmentDataset(
+                    fullDevelopmentDataset.map((obj) => {
+                        if (obj.name === itemName) {
+                            return { ...obj, development_status: "developing" };
+                        } else {
+                            return obj;
+                        }
+                    })
+                );
+            }else{
+                setFullDevelopmentDataset(
+                    fullDevelopmentDataset.map((obj) => {
+                        if (obj.name === itemName) {
+                            return { ...obj, development_status: "not_started" };
+                        } else {
+                            return obj;
+                        }
+                    })
+                );
+            }
+
+
+        }
+
+    }
     useEffect(()=>{
 
         fetch(`/all_developments.json`)
@@ -44,7 +77,6 @@ function InteractionInterface({currentTab}) {
         accu=accu+currentVal.cookingSkill
         return accu;
     },0)
-
 
 
     const tabsInfo={
@@ -93,7 +125,8 @@ function InteractionInterface({currentTab}) {
                 rAndDLevel={tabsInfo['r&d_dept'][3]}
                 scoutTeamLevel={tabsInfo['scout_team'][3]}
                 kitchenStaffLevel={tabsInfo['kitchen_staff'][3]}
-                fullDevelopmentDataset={fullDevelopmentDataset}/>}
+                fullDevelopmentDataset={fullDevelopmentDataset}
+                changeDevelopmentStatus={changeDevelopmentStatus}/>}
         </div>
     )
 }

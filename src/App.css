@@ -473,6 +473,7 @@
 .item-card-btn{
     background: #34da34;
     border: 2px solid #000000;
+
     padding:10px;
     font-size: 14px;
     color: #000000;
@@ -481,14 +482,7 @@
 
 }
 
-.item-card-btn-developing{
-    background: #f1b534;
-    border: 2px solid #000000;
-    padding:10px;
-    font-size: 14px;
-    color: #000000;
-    width: 100%;
-}
+
 .item-card-btn-unmet-requirements{
     background: #959697;
     border: 2px solid #000000;
@@ -567,3 +561,35 @@
 .canvas-container {
     background-color: #ff3375;
 }
+
+.item-card-btn-developing {
+    border: 2px solid #000000;
+    padding:10px;
+    font-size: 14px;
+    color: #000000;
+    width: 100%;
+    text-decoration: none;
+    transition: 0.4s;
+    background-image: linear-gradient(
+            131deg,
+            #ffd680 25%,
+            #eba422 25%,
+            #eba422 50%,
+            #ffd680 50%,
+            #ffd680 75%,
+            #eba422 75%,
+            #eba422 100%
+    );
+    background-size: 53px 60px;
+    animation: stripes 4s linear infinite;
+}
+
+@keyframes stripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 160px 0;
+    }
+}
+

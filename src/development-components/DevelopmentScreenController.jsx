@@ -4,7 +4,8 @@ import {TypeAnimation} from "react-type-animation";
 const resourceList=['alcohol', 'cement', 'chemicals', 'cloth', 'electronics', 'fuel', 'glass',
     'gunpowder', 'kitchenware', 'livestock', 'medicine', 'metal', 'seeds', 'soil',
     'stone', 'sugar', 'tools', 'water', 'wire', 'wood']
-function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,kitchenStaffLevel,fullDevelopmentDataset}) {
+
+function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,kitchenStaffLevel,fullDevelopmentDataset,changeDevelopmentStatus}) {
 
     const DevelopmentTypeTitleNames={
 
@@ -26,19 +27,50 @@ function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,
 
 
 
-    const melee_weapons_list=fullDevelopmentDataset[0]
-    const handguns_list=fullDevelopmentDataset[1]
-    const shotguns_list=fullDevelopmentDataset[2]
-    const throwables_list=fullDevelopmentDataset[3]
+    const melee_weapons_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'MELEE_WEAPONS';
+    });
 
-    const health_list=fullDevelopmentDataset[4]
-    const action_points_list=fullDevelopmentDataset[5]
-    const seeds_list=fullDevelopmentDataset[6]
+    const handguns_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'HANDGUNS';
+    });
 
-    const the_house_list=fullDevelopmentDataset[7]
-    const perimeter_list=fullDevelopmentDataset[8]
-    const farm_list=fullDevelopmentDataset[9]
-    const training_area_list=fullDevelopmentDataset[10]
+    const shotguns_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'SHOTGUNS';
+    });
+
+    const throwables_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'THROWABLES';
+    });
+
+    const health_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'HEALTH';
+    });
+
+    const action_points_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'ACTION_POINTS';
+    });
+
+    const seeds_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'SEEDS';
+    });
+
+    const the_house_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'THE_HOUSE';
+    });
+
+    const perimeter_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'PERIMETER';
+    });
+
+    const farm_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'FARM';
+    });
+
+    const training_area_list = fullDevelopmentDataset.filter(record => {
+        return record.subtype === 'TRAINING_AREA';
+    });
+
 
 
 
@@ -122,7 +154,9 @@ function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,
                                     itemDevelopmentStatus={item.development_status}
                                     rAndDLevel={rAndDLevel}
                                     scoutTeamLevel={scoutTeamLevel}
-                                    kitchenStaffLevel={kitchenStaffLevel}/>
+                                    kitchenStaffLevel={kitchenStaffLevel}
+                                    changeDevelopmentStatus={changeDevelopmentStatus}
+                                    fullDevelopmentDataset={fullDevelopmentDataset}/>
                             </li>
                         ))}
                     </ul>
@@ -135,41 +169,34 @@ function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,
 }
 
 
-function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTeamReq, itemApCost,itemDesc,itemDmg,itemHealthRecovery,itemApRecovery,itemResources,itemDevelopmentStatus,rAndDLevel,scoutTeamLevel,kitchenStaffLevel}) {
+function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTeamReq, itemApCost,itemDesc,itemDmg,itemHealthRecovery,itemApRecovery,itemResources,itemDevelopmentStatus,rAndDLevel,scoutTeamLevel,kitchenStaffLevel,changeDevelopmentStatus}) {
     const [showReqs,setShowReqs] = useState(false)
-    const [developmentStatus, setDevelopmentStatus] = useState(itemDevelopmentStatus)
 
 
-    useEffect(()=>{
-        if(rAndDLevel>=itemRandDlevelReq && scoutTeamLevel>=itemScoutTeamReq && kitchenStaffLevel>=itemKitchenStaffReq){
-            setDevelopmentStatus('not_started')
-        }
-    },[rAndDLevel,scoutTeamLevel,kitchenStaffLevel])
+    // useEffect(()=>{
+    //     if(rAndDLevel>=itemRandDlevelReq && scoutTeamLevel>=itemScoutTeamReq && kitchenStaffLevel>=itemKitchenStaffReq){
+    //         setFullDevelopmentDataset(
+    //             fullDevelopmentDataset.map((obj) => {
+    //                 if (obj.id === itemName) {
+    //                     return { ...obj, development_status: "not_started" };
+    //                 } else {
+    //                     return obj;
+    //                 }
+    //             })
+    //         );
+    //     }
+    // },[rAndDLevel,scoutTeamLevel,kitchenStaffLevel])
 
-    const changeDevelopmentStatus=()=>{
-        if(developmentStatus!=='unmet_requirements'){
-            if(developmentStatus==='not_started'){
-
-                setDevelopmentStatus('developing')
-            }else{
-                setDevelopmentStatus('not_started')
-            }
-
-
-        }
-
-
-    }
 
     let itemCardButtonTextName=''
     let itemCardButtonClassName=''
-    if(developmentStatus==='not_started'){
+    if(itemDevelopmentStatus==='not_started'){
         itemCardButtonTextName='START DEVELOPMENT'
         itemCardButtonClassName='item-card-btn'
-    }else if(developmentStatus==='developing'){
+    }else if(itemDevelopmentStatus==='developing'){
         itemCardButtonTextName='CANCEL DEVELOPMENT'
         itemCardButtonClassName='item-card-btn-developing'
-    }else if(developmentStatus==='unmet_requirements'){
+    }else if(itemDevelopmentStatus==='unmet_requirements'){
         itemCardButtonTextName='CAN\'T DEVELOP YET'
         itemCardButtonClassName='item-card-btn-unmet-requirements'
     }
@@ -219,7 +246,7 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
                 </div>
                 <div className='start-development-and-see-reqs-btn'>
                     <button className='item-card-btn' onClick={()=>setShowReqs(true)}>SEE REQUIREMENTS</button>
-                    <button className={itemCardButtonClassName} onClick={changeDevelopmentStatus}>{itemCardButtonTextName}</button>
+                    <button className={itemCardButtonClassName} onClick={()=>changeDevelopmentStatus(itemDevelopmentStatus,itemName)}>{itemCardButtonTextName}</button>
                 </div>
                 </div>}
             </div>
