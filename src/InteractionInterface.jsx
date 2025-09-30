@@ -22,7 +22,6 @@ function InteractionInterface({currentTab}) {
 
 
     const changeDevelopmentStatus=(itemDevelopmentStatus,itemName)=>{
-        console.log(itemName);
         if(itemDevelopmentStatus!=='unmet_requirements'){
             if(itemDevelopmentStatus==='not_started'){
 
@@ -77,6 +76,22 @@ function InteractionInterface({currentTab}) {
         accu=accu+currentVal.cookingSkill
         return accu;
     },0)
+
+    useEffect(() => {
+        setFullDevelopmentDataset(
+            fullDevelopmentDataset.map((obj) => {
+                if(calculateDeptLevel(rAndDdeptSkillAggregatePoints)>=obj.rd_team_level_required && calculateDeptLevel(scoutTeamSkillAggregatePoints)>=obj.scout_team_level_required && calculateDeptLevel(kitchenStaffSkillAggregatePoints)>=obj.kitchen_staff_level_required){
+
+                    return { ...obj, development_status: "not_started" };
+                }else{
+                    return { ...obj, development_status: "unmet_requirements" };
+                }
+
+            })
+        )
+
+    }, [rAndDdeptSkillAggregatePoints,scoutTeamSkillAggregatePoints,kitchenStaffSkillAggregatePoints]);
+
 
 
     const tabsInfo={

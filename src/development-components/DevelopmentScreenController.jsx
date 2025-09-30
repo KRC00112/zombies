@@ -173,19 +173,7 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
     const [showReqs,setShowReqs] = useState(false)
 
 
-    // useEffect(()=>{
-    //     if(rAndDLevel>=itemRandDlevelReq && scoutTeamLevel>=itemScoutTeamReq && kitchenStaffLevel>=itemKitchenStaffReq){
-    //         setFullDevelopmentDataset(
-    //             fullDevelopmentDataset.map((obj) => {
-    //                 if (obj.id === itemName) {
-    //                     return { ...obj, development_status: "not_started" };
-    //                 } else {
-    //                     return obj;
-    //                 }
-    //             })
-    //         );
-    //     }
-    // },[rAndDLevel,scoutTeamLevel,kitchenStaffLevel])
+
 
 
     let itemCardButtonTextName=''

@@ -9,7 +9,7 @@
     "time_to_develop": "instant",
     "ap_consumption": 2,
     "dmg": 3,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "MELEE_WEAPONS"
   },
@@ -23,7 +23,7 @@
     "time_to_develop": "1 mission",
     "ap_consumption": 3,
     "dmg": 6,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "MELEE_WEAPONS"
   },
@@ -37,7 +37,7 @@
     "time_to_develop": "1 mission",
     "ap_consumption": 4,
     "dmg": 8,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "MELEE_WEAPONS"
   },
@@ -51,7 +51,7 @@
     "time_to_develop": "2 missions",
     "ap_consumption": 6,
     "dmg": 10,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "HANDGUNS"
   },
@@ -65,7 +65,7 @@
     "time_to_develop": "3 missions",
     "ap_consumption": 7,
     "dmg": 12,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "HANDGUNS"
   },
@@ -79,7 +79,7 @@
     "time_to_develop": "2 missions",
     "ap_consumption": 6,
     "dmg": 11,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "HANDGUNS"
   },
@@ -93,7 +93,7 @@
     "time_to_develop": "3 missions",
     "ap_consumption": 8,
     "dmg": 14,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "SHOTGUNS"
   },
@@ -107,7 +107,7 @@
     "time_to_develop": "3 missions",
     "ap_consumption": 9,
     "dmg": 16,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "SHOTGUNS"
   },
@@ -121,7 +121,7 @@
     "time_to_develop": "4 missions",
     "ap_consumption": 10,
     "dmg": 18,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "SHOTGUNS"
   },
@@ -135,7 +135,7 @@
     "time_to_develop": "2 missions",
     "ap_consumption": 10,
     "dmg": 25,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "THROWABLES"
   },
@@ -149,7 +149,7 @@
     "time_to_develop": "1 mission",
     "ap_consumption": 5,
     "dmg": 0,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "THROWABLES"
   },
@@ -163,7 +163,7 @@
     "time_to_develop": "instant",
     "ap_consumption": 8,
     "dmg": 15,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "weapon",
     "subtype": "THROWABLES"
   },
@@ -177,7 +177,7 @@
     "time_to_develop": "instant",
     "ap_consumption": 2,
     "health_recovered": 10,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "HEALTH"
   },
@@ -191,7 +191,7 @@
     "time_to_develop": "1 mission",
     "ap_consumption": 5,
     "health_recovered": 50,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "HEALTH"
   },
@@ -205,7 +205,7 @@
     "time_to_develop": "1 mission",
     "ap_consumption": 3,
     "ap_recovered": 10,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "ACTION_POINTS"
   },
@@ -219,7 +219,7 @@
     "time_to_develop": "instant",
     "ap_consumption": 6,
     "ap_recovered": 8,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "ACTION_POINTS"
   },
@@ -233,7 +233,7 @@
     "time_to_develop": "instant",
     "ap_consumption": 4,
     "ap_recovered": 5,
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "ACTION_POINTS"
   },
@@ -246,7 +246,7 @@
     "scout_team_level_required": 1,
     "time_to_develop": "instant",
     "description": "For when you feel like farming AND fighting.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "SEEDS"
   },
@@ -259,7 +259,7 @@
     "scout_team_level_required": 1,
     "time_to_develop": "instant",
     "description": "Grow tall, stay fed.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "SEEDS"
   },
@@ -272,7 +272,7 @@
     "scout_team_level_required": 1,
     "time_to_develop": "1 mission",
     "description": "Protein packed and plot convenient.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "aid",
     "subtype": "SEEDS"
   },
@@ -285,7 +285,7 @@
     "scout_team_level_required": 4,
     "time_to_develop": "5 missions",
     "description": "Bigger house, bigger ambitions.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "THE_HOUSE"
   },
@@ -298,7 +298,7 @@
     "scout_team_level_required": 2,
     "time_to_develop": "3 missions",
     "description": "Is it really a zombie apocalypse at this point.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "THE_HOUSE"
   },
@@ -311,7 +311,7 @@
     "scout_team_level_required": 2,
     "time_to_develop": "2 missions",
     "description": "Keep an eye out… mostly for trouble, sometimes for birds.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "PERIMETER"
   },
@@ -324,7 +324,7 @@
     "scout_team_level_required": 1,
     "time_to_develop": "1 mission",
     "description": "prickly welcome for unwanted guests.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "PERIMETER"
   },
@@ -337,7 +337,7 @@
     "scout_team_level_required": 1,
     "time_to_develop": "2 missions",
     "description": "Spot intruders… or make your soldiers squint.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "PERIMETER"
   },
@@ -350,7 +350,7 @@
     "scout_team_level_required": 1,
     "time_to_develop": "1 mission",
     "description": "Grow your greens and keep your soldiers fed.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "FARM"
   },
@@ -363,7 +363,7 @@
     "scout_team_level_required": 1,
     "time_to_develop": "2 missions",
     "description": "Fresh eggs daily, morale boost guaranteed.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "FARM"
   },
@@ -376,7 +376,7 @@
     "scout_team_level_required": 2,
     "time_to_develop": "3 missions",
     "description": "Watering your crops like a pro, minus the garden gnome.",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "FARM"
   },
@@ -389,7 +389,7 @@
     "scout_team_level_required": 2,
     "time_to_develop": "3 missions",
     "description": "Practice makes perfect… ",
-    "development_status": "not_started",
+    "development_status": "unmet_requirements",
     "type": "base",
     "subtype": "TRAINING_AREA"
   }
