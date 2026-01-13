@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import HomeTab from "./root-tabs/HomeTab.jsx";
 import ManageStaffTab from "./root-tabs/ManageStaffTab.jsx";
 import DevelopmentTab from "./root-tabs/DevelopmentTab.jsx";
+import TeamAndMissionSelectTab from "./root-tabs/TeamAndMissionSelectTab.jsx";
 
 function calculateDeptLevel(total_points){
 
@@ -9,7 +10,7 @@ function calculateDeptLevel(total_points){
 }
 
 
-function InteractionInterface({currentTab}) {
+function InteractionInterface({currentTab,handleStartMission}) {
     const [fullDataset, setFullDataset] = useState([]);
 
     const waitRoomList=fullDataset.filter((object) => {return object.department==='waiting_room';})
@@ -18,6 +19,69 @@ function InteractionInterface({currentTab}) {
     const kitchenStaffList=fullDataset.filter((object) => {return object.department==='kitchen_staff';})
     const [fullDevelopmentDataset, setFullDevelopmentDataset] = useState([]);
 
+    const [itemFor, setItemFor] = useState({});
+    const [inventoryItemNo, setInventoryItemNo] = useState(null);
+    const [itemObtained, setItemObtained] = useState(null);
+    const [showInventorySelectBox,setShowInventorySelectBox] = useState(false);
+
+
+
+    const handleItemObtained = (item) => {
+        setItemObtained(item)
+    }
+
+    const handleClearSelection=(slotNo, item)=>{
+
+        setFullDataset(fullDataset.map((obj) => {
+            if(obj.id===item.id){
+
+                let newArray=[...obj.inventory];
+                newArray[slotNo-1]=null;
+                return {...obj, inventory:newArray}
+            }
+           return obj;
+
+        }))
+
+        setItemObtained(null);
+
+    }
+
+    const handleItemAssign =(itemNo, scout)=>{
+
+        setShowInventorySelectBox(!showInventorySelectBox);
+        setItemFor(scout);
+        setInventoryItemNo(itemNo);
+
+
+    }
+
+    const closeInventoryBox=()=>{
+
+
+
+        setFullDataset(fullDataset.map(obj=>{
+                if(obj.id===itemFor.id){
+
+                    let newArray=[...obj.inventory];
+                    if(itemObtained) {
+                        newArray[inventoryItemNo - 1] = itemObtained;
+                    }
+
+                    return {...obj, inventory:newArray}
+
+
+                }
+                return obj;
+            }
+        ))
+
+
+        setShowInventorySelectBox(false);
+        setItemFor({});
+        setItemObtained(null)
+        setInventoryItemNo(null);
+    }
 
 
 
@@ -28,6 +92,11 @@ function InteractionInterface({currentTab}) {
                 setFullDevelopmentDataset(
                     fullDevelopmentDataset.map((obj) => {
                         if (obj.name === itemName) {
+
+                            if(obj.time_to_develop==="instant"){
+                                return { ...obj, development_status: "developed" };
+                            }
+
                             return { ...obj, development_status: "developing" };
                         } else {
                             return obj;
@@ -37,7 +106,7 @@ function InteractionInterface({currentTab}) {
             }else{
                 setFullDevelopmentDataset(
                     fullDevelopmentDataset.map((obj) => {
-                        if (obj.name === itemName) {
+                        if (obj.name === itemName && obj.development_status!=='developed') {
                             return { ...obj, development_status: "not_started" };
                         } else {
                             return obj;
@@ -95,10 +164,10 @@ function InteractionInterface({currentTab}) {
 
 
     const tabsInfo={
-        'waiting_room':['Waiting Room',waitRoomList.length,'Waiting Room',0],
-        'scout_team':['Scout Team',scoutTeamList.length, 'Scout  Team',calculateDeptLevel(scoutTeamSkillAggregatePoints)],
-        'r&d_dept':['Research And Development Department',rAndDdeptList.length, 'R&D Dept',calculateDeptLevel(rAndDdeptSkillAggregatePoints)],
-        'kitchen_staff':['Kitchen Staff',kitchenStaffList.length, 'Kitchen Staff',calculateDeptLevel(kitchenStaffSkillAggregatePoints)],
+        'waiting_room':['Waiting Room',waitRoomList.length,'Waiting Room',0,50],
+        'scout_team':['Scout Team',scoutTeamList.length, 'Scout  Team',calculateDeptLevel(scoutTeamSkillAggregatePoints),10],
+        'r&d_dept':['Research And Development Department',rAndDdeptList.length, 'R&D Dept',calculateDeptLevel(rAndDdeptSkillAggregatePoints),10],
+        'kitchen_staff':['Kitchen Staff',kitchenStaffList.length, 'Kitchen Staff',calculateDeptLevel(kitchenStaffSkillAggregatePoints),5],
     }
 
 
@@ -128,7 +197,19 @@ function InteractionInterface({currentTab}) {
     },[])
 
     return (
-        <div className='set-width-100 '>
+        <div className='set-width-100 ' style={{overflow: 'hidden'}}>
+            {currentTab==='TeamAndMissionSelectionTab' && <TeamAndMissionSelectTab
+                fullDataset={fullDataset}
+                fullDevelopmentDataset={fullDevelopmentDataset}
+                itemFor={itemFor}
+                itemObtained={itemObtained}
+                inventoryItemNo={inventoryItemNo}
+                showInventorySelectBox={showInventorySelectBox}
+                handleItemObtained={handleItemObtained}
+                handleItemAssign={handleItemAssign}
+                closeInventoryBox={closeInventoryBox}
+                handleClearSelection={handleClearSelection}
+                handleStartMission={handleStartMission}/>}
             {currentTab==='homeTab' && <HomeTab />}
             {currentTab==='staffManagementTab' && <ManageStaffTab
                 handleKickOutClick={handleKickOutClick}

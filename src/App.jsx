@@ -1,11 +1,21 @@
 import './App.css'
-import SideBar from "./SideBar.jsx";
+import NavBar from "./NavBar.jsx";
 import InteractionInterface from "./InteractionInterface.jsx";
 import {useState} from "react";
+import GameBoard from "./GameBoard.jsx";
 
 function App() {
 
-    const [currentTab, setCurrentTab] = useState('homeTab');
+    const [currentTab, setCurrentTab] = useState('TeamAndMissionSelectionTab');
+
+    const quitMissionGameBoard = () => {
+        setCurrentTab('homeTab');
+    }
+
+    const handleStartMission=()=>{
+        setCurrentTab('GameBoard');
+    }
+
 
     const handleHomeClick=()=>{
 
@@ -25,15 +35,28 @@ function App() {
 
 
     }
+    const handleMissionSelectionClick=()=>{
+
+        setCurrentTab('TeamAndMissionSelectionTab');
+
+
+    }
 
   return (
     <div className="page-default-alignment">
-        <SideBar
-            onHomeClick={handleHomeClick}
-            onManageStaffClick={handleManageStaffClick}
-            onDevelopmentClick={handleDevelopmentClick}
-            currentTab={currentTab}/>
-        <InteractionInterface currentTab={currentTab}/>
+
+        {currentTab==='GameBoard'?<GameBoard quitMissionGameBoard={quitMissionGameBoard}/>:
+            <>
+                <NavBar
+                    onHomeClick={handleHomeClick}
+                    onManageStaffClick={handleManageStaffClick}
+                    onDevelopmentClick={handleDevelopmentClick}
+                    onMissionSelectionClick={handleMissionSelectionClick}
+                    currentTab={currentTab}/>
+                <InteractionInterface currentTab={currentTab} handleStartMission={handleStartMission}/>
+            </>
+        }
+
     </div>
   )
 }

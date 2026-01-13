@@ -169,7 +169,7 @@ function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,
 }
 
 
-function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTeamReq, itemApCost,itemDesc,itemDmg,itemHealthRecovery,itemApRecovery,itemResources,itemDevelopmentStatus,rAndDLevel,scoutTeamLevel,kitchenStaffLevel,changeDevelopmentStatus}) {
+function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTeamReq, itemApCost,itemDesc,itemDmg,itemHealthRecovery,itemApRecovery,itemResources,itemDevelopmentStatus,changeDevelopmentStatus}) {
     const [showReqs,setShowReqs] = useState(false)
 
 
@@ -187,6 +187,9 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
     }else if(itemDevelopmentStatus==='unmet_requirements'){
         itemCardButtonTextName='CAN\'T DEVELOP YET'
         itemCardButtonClassName='item-card-btn-unmet-requirements'
+    }else if(itemDevelopmentStatus==='developed'){
+        itemCardButtonTextName='DEVELOPED'
+        itemCardButtonClassName='item-card-btn-developed'
     }
 
 

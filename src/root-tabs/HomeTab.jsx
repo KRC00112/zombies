@@ -5,7 +5,7 @@ import HomeScreenController from "../home-components/HomeScreenController.jsx";
 
 function HomeTab() {
     return (
-        <div className='home-tab bg-blue-100'>
+        <div className='home-tab bg-black'>
             <HomeTabHeader />
             <section className='home-tab-body'>
 

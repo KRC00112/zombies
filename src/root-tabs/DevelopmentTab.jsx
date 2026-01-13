@@ -20,9 +20,9 @@ function DevelopmentTab({rAndDLevel,scoutTeamLevel,kitchenStaffLevel,fullDevelop
 
             <section className='development-tab-body'>
                 <ul className='development-type-tab-list'>
-                    <li><button onClick={()=>onTabClick('weapon')} className={tab==='weapon'?'bg-[#AA076B] text-white':''}>Weapon</button></li>
-                    <li><button onClick={()=>onTabClick('aid')} className={tab==='aid'?'bg-[#AA076B] text-white':''}>Aid</button></li>
-                    <li><button onClick={()=>onTabClick('base')} className={tab==='base'?'bg-[#AA076B] text-white':''}>Base</button></li>
+                    <li><button onClick={()=>onTabClick('weapon')} className={tab==='weapon'?'bg-black text-white':''}>Weapon</button></li>
+                    <li><button onClick={()=>onTabClick('aid')} className={tab==='aid'?'bg-black text-white':''}>Aid</button></li>
+                    <li><button onClick={()=>onTabClick('base')} className={tab==='base'?'bg-black text-white':''}>Base</button></li>
                 </ul>
                 <DevelopmentScreenController
                     developmentType={tab}

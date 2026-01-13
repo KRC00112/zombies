@@ -1,5 +1,6 @@
 import {useState, useEffect, useMemo} from 'react'
 import ProgressBar from "@ramonak/react-progress-bar";
+import ListBox from "../generic-components/ListBox.jsx";
 
 function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransferToTeamClick,handleSelection,dropDownValue,dropDownOptions,tabsInfo}) {
 
@@ -11,7 +12,6 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
     const [selectedId, setSelectedId] = useState(null);
     const selectedMember=membersList.find(member=>member.id===selectedId);
     const [skipReset, setSkipReset] = useState(false);
-
 
     const onListNameClick=(member)=>{
         setSelectedId(member.id)
@@ -42,7 +42,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                     {departmentTab==='scout_team'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
                     {departmentTab==='kitchen_staff'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
                     <div className='member-count'>
-                        <img src='/icons/head.png' width='20px' draggable='false'/>:   {membersList.length}/20
+                        <img src='/icons/head.png' width='20px' draggable='false'/>:   {membersList.length}/{tabsInfo[departmentTab][4]}
                     </div>
 
                 </div>
@@ -61,24 +61,14 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                             ))}
                         </select>
                     </div>
-                    <div className='members-list-box'>
-                        <div className='members-list-box-heading'>Names</div>
-                        <ul className='members-list'>
-                            {membersList.map((member) => (
-                                <li key={member.id}
-                                    className={`${member.id === selectedMember?.id ? "selected bg-[#61045F] text-white font-bold" : ''} member-list-names`}>
-                                    <button onClick={() => onListNameClick(member)}>{member.name}</button>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
+                 <ListBox listTypeLabel={"Names"} list={membersList} selectedItemId={selectedId} handleListItemClick={onListNameClick}/>
                 </div>
 
                 <div className='member-profile-image-box'>
-                    <img src={membersList.length > 0 ? selectedMember?.profileLocation : "/staff-profiles/default.png"}
+                    <img className={membersList.length>0 ?`border-5 border-solid border-white`:``}  src={membersList.length > 0 ? selectedMember?.profileLocation : "/staff-profiles/default.png"}
                          width='270px' draggable='false'/>
                 </div>
+
                 <div className='members-stats-box'>
                     {/*<div>{JSON.stringify(selectedMember)}</div>*/}
                     <div className="life-and-base-ap">
@@ -98,7 +88,8 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                         />
                         <div className='base-ap'>
                             <label className='base-ap-label'>ACTION POINTS:</label>
-                            <div className='base-ap-value'>{membersList.length>0 && selectedMember?7+Math.floor((selectedMember?.scoutSkill)/12):0}</div>
+                            <div className='base-ap-value'>{membersList.length>0 && selectedMember?7+Math.floor((selectedMember?.scoutSkill)/12):'--'}</div>
+                        {/*for every 12 points in the scout skill, add one point to the base value. if scout skill=48 ap value=7+1+1+1+1*/}
                         </div>
                     </div>
                     <div className='skill-progress-bars'>
@@ -154,10 +145,11 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                     <ul className='transfer-buttons'>
                         {tabs_list.map((tab)=>(
                             <li key={tab}>
-                            {departmentTab!==tab?<button onClick={()=>{
+                            {departmentTab!==tab?<button disabled={tabsInfo[tab][1]>=tabsInfo[tab][4]} className={tabsInfo[tab][1]>=tabsInfo[tab][4]?'disabled':''} onClick={()=>{
                                 onTransferToTeamClick(selectedMember.id, tab)
                                 afterSelectedMemberManipulation()
-                            }}>Transfer {selectedMember.name.substring(0,selectedMember.name.indexOf(" "))} to {tabsInfo[tab][2]} [{tabsInfo[tab][1]}/20]</button>:null}
+
+                            }}>Transfer {selectedMember.name.substring(0,selectedMember.name.indexOf(" "))} to {tabsInfo[tab][2]} {tabsInfo[tab][1]>=tabsInfo[tab][4]?"[FULL]":`[${tabsInfo[tab][1]}/${tabsInfo[tab][4]}]`}   </button>:null}
                         </li>
                         ))}
                     </ul>

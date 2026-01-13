@@ -1,26 +1,10 @@
-import React from 'react'
+import CommunityGrid from "./CommunityGrid.jsx";
 
 function HomeScreenController() {
     return (
         <div className="home-screen">
-            <div className='cycling-button'>
-                <button>next house</button>
-                <button>next fence</button>
-                <button>next practice range</button>
-            </div>
-
-            <Canvas />
-
+            <CommunityGrid/>
         </div>
-
     )
 }
-
-
-function Canvas(){
-    return (
-        <div className='canvas-container'>s</div>
-    )
-}
-
 export default HomeScreenController

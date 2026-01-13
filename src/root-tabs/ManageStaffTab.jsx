@@ -6,7 +6,7 @@ function ManageStaffTab({handleKickOutClick,handleTeamTransfer,fullDataset,tabsI
     const [tab, setTab] = useState('waiting_room');
 
 
-    const dropDownOptions = ["Alphabetical", "Scouting skills", "R&D skills", "Cooking skills", "Life"];
+    const dropDownOptions = ["Alphabetical", "Scouting skills (AP Points)", "R&D skills", "Cooking skills", "Life"];
     const [dropDownValue, setDropDownValue] = useState(dropDownOptions[0]);
 
 
@@ -56,10 +56,10 @@ function ManageStaffTab({handleKickOutClick,handleTeamTransfer,fullDataset,tabsI
             <StaffManagementTabHeader/>
             <section className='staff-management-tab-body'>
                 <ul className='staff-management-department-tab-list'>
-                    <li><button onClick={()=>onTabClick('waiting_room')} className={tab==='waiting_room'?'bg-[#AA076B] text-white':''}>Waiting Room</button></li>
-                    <li><button onClick={()=>onTabClick('scout_team')} className={tab==='scout_team'?'bg-[#AA076B] text-white':''}>Scout Team</button></li>
-                    <li><button onClick={()=>onTabClick('r&d_dept')} className={tab==='r&d_dept'?'bg-[#AA076B] text-white':''}>R&D Department</button></li>
-                    <li><button onClick={()=>onTabClick('kitchen_staff')} className={tab==='kitchen_staff'?'bg-[#AA076B] text-white':''}>Kitchen Staff</button></li>
+                    <li><button onClick={()=>onTabClick('waiting_room')} className={tab==='waiting_room'?'bg-black text-white':''}>Waiting Room</button></li>
+                    <li><button onClick={()=>onTabClick('scout_team')} className={tab==='scout_team'?'bg-black text-white':''}>Scout Team</button></li>
+                    <li><button onClick={()=>onTabClick('r&d_dept')} className={tab==='r&d_dept'?'bg-black text-white':''}>R&D Department</button></li>
+                    <li><button onClick={()=>onTabClick('kitchen_staff')} className={tab==='kitchen_staff'?'bg-black text-white':''}>Kitchen Staff</button></li>
                 </ul>
                 <StaffListAndDetailsController
                     departmentTab={tab}

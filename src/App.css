@@ -1,3 +1,5 @@
+
+
 /******************** GENERAL CSS SETTINGS *******************/
 .set-width-100{
     width: 100%;
@@ -8,7 +10,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: rgba(220, 193, 246, 0.8);
+    background: rgba(255, 255, 255, 0.2);
 
 }
 
@@ -22,35 +24,36 @@
     background: rgb(51, 51, 51);
 }
 
-/********************  SIDE-BAR CSS ********************/
+/********************  NAV-BAR CSS ********************/
 
-.side-bar{
+.nav-bar{
 
-    background: #9528fa;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #2a0845, #9528fa);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #2a0845, #9528fa); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #000000;
     width: 150px;
     height: auto;
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    border-right: black solid 2px;
+    border-right: white solid 2px;
+    color: white;
 
 }
 
 
-.side-bar button{
+.nav-bar button{
 
     padding: 10px;
     padding-bottom: 0px;
     width: 100%;
     white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.side-bar button:hover{
+.nav-bar button:hover:not(.selected){
 
-    background: #a448f7;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
 }
 
@@ -134,9 +137,7 @@
 .main-management-container,.main-development-container{
 
     height: 100%;
-    background: #AA076B;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #61045F, #AA076B);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #61045F, #AA076B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: black;
     padding-top: 1px;
 
 }
@@ -181,9 +182,9 @@
     justify-content: center;
     width: 100%;
     padding-block: 5px;
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid rgba(0, 0, 0, 0.56);
-    border-bottom: 2px solid rgba(46, 3, 76, 0.3);
+
+    border: 2px solid #e2e2dd90;
+
 
 }
 .member-list-names{
@@ -192,13 +193,13 @@
     width: 100%;
     display: flex;
     padding: 0;
-    color: white;
-}
-
-.member-list-names:last-child{
-    border-bottom: none;
 
 }
+
+/*.member-list-names:last-child{*/
+/*    border-bottom: none;*/
+
+/*}*/
 
 .member-list-names button{
     flex: 1;
@@ -209,16 +210,23 @@
     padding: 0;
     text-align: left;
     padding-left: 10px;
+
 }
 
 
+.member-list-names:not(.selected){
+
+
+    color: white;
+
+
+}
 
 
 .member-list-names:not(.selected):hover {
 
-    background: rgba(100, 13, 175, 0.5);
-    font-weight: 600;
-    color: white;
+    background: rgba(213, 204, 218, 0.5);
+    color: black;
 
 
 }
@@ -337,12 +345,17 @@
 }
 
 .transfer-buttons li button{
-    background-color: #34da34;
+    background-color: #02c602;
     margin-bottom: 7px;
     width: 100%;
     text-align: left;
     padding-inline: 10px;
 
+}
+
+.transfer-buttons li button:disabled{
+    cursor: not-allowed;
+    background-color: #59ed59;
 }
 
 .kick-out-button{
@@ -471,8 +484,23 @@
 
 
 .item-card-btn{
-    background: #34da34;
-    border: 2px solid #000000;
+    background: #000000;
+    border: 2px solid #ffffff;
+
+    padding:10px;
+    font-size: 14px;
+    color: #ffffff;
+    width: 100%;
+
+
+}
+.item-card-btn:first-child{
+    border-bottom: 0;
+}
+
+.item-card-btn-developed{
+    background: #2461fb;
+    border: 2px solid #ffffff;
 
     padding:10px;
     font-size: 14px;
@@ -482,10 +510,9 @@
 
 }
 
-
 .item-card-btn-unmet-requirements{
     background: #959697;
-    border: 2px solid #000000;
+    border: 2px solid #ffffff;
     padding:10px;
     font-size: 14px;
     color: #000000;
@@ -509,8 +536,10 @@
 }
 
 .close-show-req-btn{
-    background: #8ee8b5;
-    padding-left:2px;
+    /*background: #8ee8b5;*/
+    background: #ffffff60;
+    border: 0.5px solid #ffffff;
+    padding-left:5px;
     padding-right: 10px;
 }
 .all-requirements{
@@ -523,15 +552,22 @@
 .home-tab{
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
 }
+
+
+
 .home-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-inline: 20px;
     padding-block: 30px;
-    background: #000000;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(56, 50, 50, 0.84) 100%);
+    background: rgba(255,255,255,0.5);
+    z-index: 10;
 }
 .user-name-handle{
     border-left: 2px solid #ffffff;
@@ -563,7 +599,7 @@
 }
 
 .item-card-btn-developing {
-    border: 2px solid #000000;
+    border: 2px solid #ffffff;
     padding:10px;
     font-size: 14px;
     color: #000000;
@@ -593,3 +629,466 @@
     }
 }
 
+.canvas{
+
+    display: flex;
+    flex-direction: row;
+    height: 900px;
+    width: 100vw;
+    overflow: hidden;
+
+
+}
+.toolbox{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: calc(100vw - 60px);
+
+    button {
+        margin-left: 10px;
+        width: 2em;
+        background-color: red;
+    }
+}
+
+.mission-select-screen{
+    height: 100vh;
+    /*background-image:url("/map/world_map.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    background-color: black;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.selected-scout-profile{
+    background: #b30b0b;
+    display: flex;
+    width:fit-content;
+    margin-right: 20px;
+    border: 1px solid white;
+}
+.scout-face{
+    background: white;
+    border: 1px solid white;
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: black;
+}
+.scout-inventory{
+    background: black;
+    display:flex;
+    flex-direction: column;
+    color: white;
+}
+.scout-inventory button{
+    /*background: #ffd680;*/
+    flex-grow: 1;
+    border: 1px solid white;
+    padding-inline: 3px;
+    width:70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+}
+.selected-members-showcase{
+    display: flex;
+}
+.team-members-and-start{
+    display: flex;
+    align-items: center;
+    margin-top: 70px;
+
+
+}
+
+
+.mission-start-btn {
+    align-self: flex-end;
+    appearance: none;
+    background-color: black;
+    border: 1px solid white;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Clarkson, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1em;
+    margin: 0;
+    opacity: 1;
+    outline: 0;
+    padding: 1.5em 2.2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: geometricprecision;
+    text-transform: uppercase;
+    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),
+    background-color 100ms cubic-bezier(.694, 0, 0.335, 1),
+    color 100ms cubic-bezier(.694, 0, 0.335, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+.mission-start-btn.fill-enabled:before {
+    animation: opacityFallbackOut .5s step-end forwards;
+    backface-visibility: hidden;
+    background-color: white;
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateZ(0);
+    transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1),
+    -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+    width: 100%;
+}
+
+.mission-start-btn.fill-enabled:hover:before {
+    animation: opacityFallbackIn 0s step-start forwards;
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+.mission-start-btn.fill-enabled:after {
+    background-color: #FFFFFF;
+
+}
+
+.mission-start-btn.fill-enabled span {
+    z-index: 1;
+    position: relative;
+    transition: color 200ms cubic-bezier(.694, 0, 0.335, 1);
+}
+
+.mission-start-btn.fill-enabled:hover span {
+    color: black;
+}
+.mission-start-btn.fill-enabled span {
+    z-index: 1;
+    position: relative;
+
+}
+
+.inventory-items-select-container{
+    max-width:500px ;
+    min-width:500px ;
+    min-height: fit-content;
+    width: fit-content;
+    position: absolute;
+    background: rgba(60, 60, 59, 0.90);
+    border: 2px solid #e2e2dd90;
+    padding: 10px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+
+}
+
+.inventory-items-select-container-title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.close-inventory-items-select-container{
+    /*background: #ff3375;*/
+    padding: 3px;
+    padding-inline: 10px;
+}
+
+
+.inventory-items-select-list{
+
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 2px solid #e2e2dd90;
+
+
+
+}
+.inventory-items-select-list li{
+
+    align-self: flex-end;
+    display: flex;
+
+
+
+
+}
+
+.inventory-items-select-list li button{
+
+    color: white;
+    border-bottom:none;
+    padding: 10px;
+    align-self: flex-end;
+
+
+
+}
+.active-tab{
+    border: 2px solid #e2e2dd90;
+
+
+
+}
+
+.all-developed-items{
+
+    /*background-color: red;*/
+    max-height: 280px;
+    min-height: 280px;
+    overflow-y: auto;
+
+
+}
+.item-category{
+    margin-top: 10px;
+
+}
+.item-category-heading{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    color: black;
+    padding: 10px;
+
+}
+
+.item-category-heading h3{
+  align-self: center;
+}
+
+.item-category-expand-collapse-btn{
+
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    padding: 5px;
+    padding-inline: 11px;
+
+
+}
+
+table{
+    margin-top: 10px;
+    width: 100%;
+
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+
+}
+.clear-selection-btn{
+    margin-top: 10px;
+    background: black;
+    border-radius: 1.5rem;
+    padding:8px;
+    font-size: 13px;
+    cursor: pointer;
+
+}
+
+.clear-selection-btn-and-label{
+    align-self: flex-end;
+}
+
+.clear-selection-btn:hover{
+    background: white;
+    color: black;
+
+}
+
+.team-members-and-mission-select-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height:300px;
+
+}
+
+.mission-select-section{
+    padding: 0;
+    display: flex;
+    border: 1px solid white;
+    justify-content: flex-start;
+}
+
+
+/****************************** MAP AND SELECTOR STYLES**********************************/
+
+.map-window{
+    width:500px;
+
+    border:2px solid #e2e2dd90;
+    overflow: hidden;
+    position:relative;
+    display: flex;
+
+    border-right: none;
+}
+
+.map-and-missions{
+    display:flex;
+    height: 100%;
+    justify-content: space-between;
+    flex: 1;
+    margin-left: 50px;
+
+}
+.missions-list{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border:2px solid #e2e2dd90;
+
+
+}
+.mission-list-item-active{
+    background-color: #d11010;
+
+}
+
+.mission-list-item{
+    padding-block: 2px;
+    width: 100%;
+    display: flex;
+    padding: 0;
+
+}
+.mission-list-item-btn{
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+/************************************GAME BOARD CSS****************************/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.cell {
+    background-color: #d88e45;
+    border: 0.5px solid white;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none
+
+
+}
+
+.cell:hover{
+    background-color: #eda45b;
+}
+
+
+.board-columns {
+
+    width: fit-content;
+    /*display: grid;*/
+    /*grid-template-columns: repeat(8, 80px);*/
+    /*gap: 0;*/
+    display: flex;
+
+}
+
+.player-cell{
+    background-color: #34da34;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: 0.5px solid white;*/
+}
+
+.enemy-cell{
+    background-color: #2b7cea;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: 0.5px solid white;*/
+}
+
+.playerSelectBorder{
+    border: 5px solid #45ed45;
+    background-color: #eda45b;
+}
+
+.enemySelectBorder{
+    border: 5px solid #ff0026;
+    background-color: #eda45b;
+
+}
+
+.attackLocationsSelectBorder{
+    border: 1px solid #fae800;
+    background-color: #eda45b;
+
+}
+
+
+.gameplay-area{
+    display: flex;
+}
+
+.end-turn-btn{
+    padding: 20px;
+    border: 1px solid black;
+
+}
+
+.img-flip{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.inventory-items{
+    display: flex;
+    flex-direction: row;
+}
+.inventory-items-btn{
+    padding: 20px;
+    border: 1px solid black;
+
+}
+
+.active-click{
+    background-color: #34da34;
+    border: 1px solid black;
+}
+
+.go-back-button{
+    padding: 10px;
+    border: 1px solid black;
+}
