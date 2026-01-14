@@ -39,14 +39,11 @@ function GameBoard({quitMissionGameBoard}) {
 
 
     let players = [
-        { id: 'P1', row: 0, col: 0, imgSrc: 'Soldier.png', inventory: [medkit, stick, gun], AP: 100, HP: 100 },
-        { id: 'P2', row: 0, col: 4, imgSrc: 'Soldier.png', inventory: [stick, gun], AP: 100, HP: 80 },
-        { id: 'P3', row: 1, col: 6, imgSrc: 'Soldier.png', inventory: [medkit, gun], AP: 100, HP: 90 },
+        { id: 'P1', row: 0, col: 0, imgSrc: 'Soldier.png', inventory: [medkit, stick, gun], AP: 5, HP: 100 },
+        { id: 'P2', row: 0, col: 4, imgSrc: 'Soldier.png', inventory: [stick, gun], AP: 3, HP: 80 },
+        { id: 'P3', row: 1, col: 6, imgSrc: 'Soldier.png', inventory: [medkit, gun], AP:4, HP: 90 },
 
-        { id: 'P4', row: 2, col: 1, imgSrc: 'Soldier.png', inventory: [medkit, stick], AP: 90, HP: 85 },
-        { id: 'P5', row: 2, col: 5, imgSrc: 'Soldier.png', inventory: [gun], AP: 110, HP: 75 },
-        { id: 'P6', row: 3, col: 3, imgSrc: 'Soldier.png', inventory: [medkit, gun], AP: 100, HP: 95 },
-        { id: 'P7', row: 4, col: 0, imgSrc: 'Soldier.png', inventory: [stick, gun], AP: 95, HP: 88 }
+
     ];
 
     let enemies = [
@@ -205,15 +202,31 @@ function GameBoard({quitMissionGameBoard}) {
             })
         );
 
-        if(killedPlayerId){
-            setEnemyCells(prev=>prev.map(obj => {
-                if(obj.targetPlayerId===killedPlayerId){
-                    return {...obj, targetPlayerId:""};
-                }
-                return obj;
-            }))
-        }
+        // if(killedPlayerId){
+        //     setEnemyCells(prev=>prev.map(obj => {
+        //         if(obj.targetPlayerId===killedPlayerId){
+        //             return {...obj, targetPlayerId:""};
+        //         }
+        //         return obj;
+        //     }))
+        // }
+        //TODO:THE BELOW LINE IS CAUSING BUG
+        // setPlayerCells(prev=>prev.filter(obj=>obj.id!==killedPlayerId))
     }
+
+
+    useEffect(() => {
+        const killedPlayers=playerCells.filter((player)=>player.HP===0).map(player=>player.id);
+        if (killedPlayers.length === 0) return;
+        setEnemyCells(prev=>prev.map(obj => {
+            if(killedPlayers.includes(obj.targetPlayerId)){
+                return {...obj, targetPlayerId:""}
+            }
+            return obj;
+        }))
+        setPlayerCells(prev=>prev.filter(obj=>!killedPlayers.includes(obj.id)))
+
+    }, [playerCells,enemyCells]);
 
 
     function handleEndTurn(){
@@ -239,16 +252,16 @@ function GameBoard({quitMissionGameBoard}) {
                 });
             });
 
-            console.log(`enemy num in lsit: ${enemyNumInList.current}`);
+            // console.log(`enemy num in lsit: ${enemyNumInList.current}`);
             setActiveEnemyCellId(enemyCells[enemyNumInList.current].id)
         }
-        console.log("=============")
+        // console.log("=============")
     }
 
 
     function onInventoryItemClick(itemId){
 
-        console.log(currentActiveItemId)
+        // console.log(currentActiveItemId)
         if(itemId===currentActiveItemId){
             setCurrentActiveItemId("")
         }else{
@@ -260,8 +273,8 @@ function GameBoard({quitMissionGameBoard}) {
 
     function EnemyNavigation(){
 
-        console.log("players: ",playerCells)
-        console.log(activeEnemy.targetPlayerId)
+        // console.log("players: ",playerCells)
+        // console.log(activeEnemy.targetPlayerId)
 
         // let target_player_exits_check=playerCells.find(obj=>obj.id===activeEnemy.targetPlayerId)
         //
@@ -274,8 +287,9 @@ function GameBoard({quitMissionGameBoard}) {
 
         let currentEnemyRow=activeEnemy.row;
         let currentEnemyCol=activeEnemy.col;
-        console.log("active enemy: ",activeEnemy)
-        console.log("player to attack: ",player_to_attack)
+        // console.log("active enemy: ",activeEnemy)
+        // console.log("player to attack: ",player_to_attack)
+        console.log("enemyCells: ",enemyCells)
 
         let targetRow = player_to_attack.row;
         let targetCol = player_to_attack.col;
@@ -304,7 +318,7 @@ function GameBoard({quitMissionGameBoard}) {
                 }
                 if (enemyAP <= 0 ||(currentEnemyRow===targetRow && (currentEnemyCol===targetCol-1||currentEnemyCol===targetCol+1))){
                     if(enemyAP>0) {
-                        console.log("hit player: ",player_to_attack)
+                        // console.log("hit player: ",player_to_attack)
                         attackPlayer(player_to_attack.id);
 
                     }
@@ -347,7 +361,7 @@ function GameBoard({quitMissionGameBoard}) {
         let playerAP=selectedPlayer.AP
         return new Promise((resolve)=>{
             const interval = setInterval(() => {
-                console.log("running")
+                // console.log("running")
                 if(playerAP>0){
                     playerAP--;
                     if(targetRow!==currentPlayerRow){
@@ -424,8 +438,8 @@ function GameBoard({quitMissionGameBoard}) {
                 }
             })
         }
-        return <div className={`cell ${borderCellDesign}`} onClick={()=>onCellClick(id,row,column,imageSrc)}>
-            {imageSrc===''? `${cellNumber} (${row},${column})` :<img src={`/gameplay_files/${imageSrc}`} alt='cell'/>}
+        return <div className={`cell ${borderCellDesign}`} title={id} onClick={()=>onCellClick(id,row,column,imageSrc)}>
+            {imageSrc===''? `${cellNumber} (${row},${column})` :<img src={`/gameplay_files/${imageSrc}`} alt='cell' />}
         </div>
     }
 
@@ -487,5 +501,7 @@ function GameBoard({quitMissionGameBoard}) {
 }
 
 export default GameBoard
+
+
 
 

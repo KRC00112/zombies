@@ -6,7 +6,7 @@ import GameBoard from "./GameBoard.jsx";
 
 function App() {
 
-    const [currentTab, setCurrentTab] = useState('TeamAndMissionSelectionTab');
+    const [currentTab, setCurrentTab] = useState('GameBoard');
 
     const quitMissionGameBoard = () => {
         setCurrentTab('homeTab');
