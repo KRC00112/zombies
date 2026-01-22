@@ -24,24 +24,25 @@ const goToMission = (setTransform, id, mapRef,mapContainerRef,Locations) => {
 };
 
 const MissionsList = ({setTransform, mapRef,mapContainerRef,handleMissionSelect, selectedMission, Locations  }) => (
-    <ul className='missions-list'>
-        {Locations.map(obj => {
-            return <li className={`mission-list-item ${selectedMission===obj.id?'mission-list-item-active':''}`} key={obj.id}>
+    <div className='mission-list-div'>
+        <ul className='missions-list'>
+            {Locations.map(obj => {
+                return <li className={`mission-list-item ${selectedMission===obj.id?'mission-list-item-active':''}`} key={obj.id}>
                     <button className='mission-list-item-btn' onClick={() => {goToMission(setTransform, obj.id, mapRef,mapContainerRef,Locations);handleMissionSelect(obj.id)}}>{obj.name}</button><
                 /li>
-        })}
-    </ul>
+            })}
+        </ul>
+    </div>
+
 );
 
-function MapAndSelector({Locations}) {
+function MapAndSelector({Locations,selectedMission,handleMissionSelect}) {
     const mapRef = useRef(null);
     const mapContainerRef = useRef(null);
-    const [selectedMission, setSelectedMission] = useState('M1');
 
 
-    const handleMissionSelect=(missionName)=>{
-        setSelectedMission(missionName);
-    }
+
+
 
 
     return (
@@ -57,7 +58,7 @@ function MapAndSelector({Locations}) {
             limitToBounds={false}
         >
             {(utils) => (
-                <div className='header-and-map-and-missions'>
+
                     <div className='map-and-missions'>
 
                         <div className="map-window" ref={mapContainerRef}>
@@ -73,8 +74,12 @@ function MapAndSelector({Locations}) {
                             </TransformComponent>
                         </div>
                         <MissionsList {...utils}  mapRef={mapRef} mapContainerRef={mapContainerRef} handleMissionSelect={handleMissionSelect} selectedMission={selectedMission} Locations={Locations}/>
+
+
+
+
                     </div>
-                </div>
+
 
             )}
         </TransformWrapper>

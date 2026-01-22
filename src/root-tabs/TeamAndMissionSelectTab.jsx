@@ -2,26 +2,16 @@ import React, {useEffect, useState} from 'react'
 import ListBox from "../generic-components/ListBox.jsx";
 import ProgressBar from "@ramonak/react-progress-bar";
 import MapAndSelector from "../generic-components/MapAndSelector.jsx";
+import {TypeAnimation} from "react-type-animation";
 
 
 
-const Locations=[{id:'M1',name:'find survivors', top:'50', left:'45'},
-    {id:'M2',name:'find supplies', top:'45', left:'47'},
-    {id:'M3',name:'Investigate the Abandoned Mine', top:'38', left:'34'}    ]
 
-function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, itemObtained, inventoryItemNo, showInventorySelectBox, handleItemObtained, handleItemAssign, closeInventoryBox,handleClearSelection,handleStartMission}) {
+
+function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, itemObtained, inventoryItemNo, showInventorySelectBox, handleItemObtained, handleItemAssign, closeInventoryBox,handleClearSelection,handleStartMission,onListNameClick,selectedIds, Locations,selectedMission,handleMissionSelect}) {
     const ScoutTeamData=[...fullDataset].sort((a, b) => b.scoutSkill-a.scoutSkill).filter(member => member.department === "scout_team");
-    const [selectedIds, setSelectedIds] = useState([]);
-    const onListNameClick=(member)=>{
 
 
-            if (selectedIds.includes(member.id)) {
-                return setSelectedIds(selectedIds.filter(id => id !== member.id));
-            }
-            if(selectedIds.length<6) {
-                return setSelectedIds([...selectedIds, member.id])
-            }
-    }
 
     useEffect(()=>{
         console.log(selectedIds);
@@ -42,8 +32,22 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
             <div className='team-selection-and-mission-start'>
                 <section className='team-members-and-mission-select-section'>
                     <ListBox listTypeLabel={"Pick Your Team"} list={ScoutTeamData} selectedItemId={selectedIds} handleListItemClick={onListNameClick} showAP={true}/>
-                    <MapAndSelector Locations={Locations}/>
-                </section>
+                    <div className='header-and-map-and-missions'>
+                        <div className='select-mission-header'><TypeAnimation
+
+                            sequence={['SELECT A MISSION:']}
+                            wrapper="h1"
+                            speed={70}
+                            cursor={false}/>
+                        </div>
+                         <MapAndSelector Locations={Locations} selectedMission={selectedMission} handleMissionSelect={handleMissionSelect}/>
+                        <div className='mission-name-and-description'>
+                            <div className='mission-name'>{Locations.find(obj=>obj.id===selectedMission).name.toUpperCase()}</div>
+                            <div className='mission-desc'>{Locations.find(obj=>obj.id===selectedMission).desc}</div>
+                        </div>
+
+                    </div>
+                    </section>
                 <div className='team-members-and-start'>
                     <div className='selected-members-showcase'>
                         <SelectedTeamMember memberId={selectedIds[0]} list={ScoutTeamData} handleItemAssign={handleItemAssign}/>
@@ -53,7 +57,7 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
                         <SelectedTeamMember memberId={selectedIds[4]} list={ScoutTeamData} handleItemAssign={handleItemAssign}/>
                         <SelectedTeamMember memberId={selectedIds[5]} list={ScoutTeamData} handleItemAssign={handleItemAssign}/>
                     </div>
-                    <button className={`mission-start-btn ${selectedIds.length>0?'fill-enabled':''}`} role="button" onClick={handleStartMission}>
+                    <button className={`mission-start-btn ${selectedIds.length>0?'fill-enabled':''}`} role="button" onClick={handleStartMission} disabled={selectedIds.length<=0}>
                         <span className="text">START MISSION</span>
                     </button>
 
@@ -77,7 +81,7 @@ function SelectedTeamMember({memberId, list, handleItemAssign}){
                 <div className='scout-face-and-name'>
                     <img className={member?`border-2 border-solid`:``} src={member?member.profileLocation:"/staff-profiles/default_black.png"} width='90px' draggable='false'/>
                     <p>{member?member.name.slice(0,member.name.indexOf(" ")):"--"}</p>
-                    <p>AP: {member?7+Math.floor((member?.scoutSkill)/12):"--"}</p>
+                    <p>AP: {member? 7+Math.floor((member?.scoutSkill)/12) : "--"}</p>
                 </div>
                 <ProgressBar
                     className='life-in-mission'
@@ -96,11 +100,11 @@ function SelectedTeamMember({memberId, list, handleItemAssign}){
                     transitionDuration="0s"
                 />
             </div>
-            <div className='scout-inventory'>
-                <button onClick={()=>member?.id && handleItemAssign(1,member)}>{(member && member?.inventory && member?.inventory[0]!==null)? member?.inventory[0].name : "item 1"}</button>
-                <button onClick={()=>member?.id && handleItemAssign(2,member)}>{(member && member?.inventory && member?.inventory[1]!==null)? member?.inventory[1].name : "item 2"}</button>
-                <button onClick={()=>member?.id && handleItemAssign(3,member)}>{(member && member?.inventory && member?.inventory[2]!==null)? member?.inventory[2].name : "item 3"}</button>
-            </div>
+            <ul className='scout-inventory'>
+                <li><button className={member && member?.inventory && member?.inventory[0]!==null?'item-in-inventory':''} onClick={()=>member?.id && handleItemAssign(1,member)}>{(member && member?.inventory && member?.inventory[0]!==null)? member?.inventory[0].name : "item 1"}</button></li>
+                <li><button className={member && member?.inventory && member?.inventory[1]!==null?'item-in-inventory':''} onClick={()=>member?.id && handleItemAssign(2,member)}>{(member && member?.inventory && member?.inventory[1]!==null)? member?.inventory[1].name : "item 2"}</button></li>
+                <li><button className={member && member?.inventory && member?.inventory[2]!==null?'item-in-inventory':''} onClick={()=>member?.id && handleItemAssign(3,member)}>{(member && member?.inventory && member?.inventory[2]!==null)? member?.inventory[2].name : "item 3"}</button></li>
+            </ul>
         </div>
     );
 
@@ -141,7 +145,7 @@ function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItem
             </ul>
             {selectedTab==='weapons'?
                 <div className='all-developed-items'>
-                    {melee_weapons.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Melee Weapons" itemList={melee_weapons} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
+                    {melee_weapons.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Melee Weapons" itemList={melee_weapons} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} />}
                     {handguns.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Handguns" itemList={handguns} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
                     {shotguns.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Shotguns" itemList={shotguns} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
                     {throwables.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Throwables" itemList={throwables} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
@@ -162,7 +166,7 @@ function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItem
 
 }
 
-function ItemCategory({selectedTab, itemCategory, itemList, handleItemObtained, itemObtained, itemFor}){
+function ItemCategory({selectedTab, itemCategory, itemList, handleItemObtained}){
     const [showTable, setShowTable] = useState(false);
     return (
         <div className='item-category'>

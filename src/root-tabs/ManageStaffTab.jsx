@@ -6,7 +6,7 @@ function ManageStaffTab({handleKickOutClick,handleTeamTransfer,fullDataset,tabsI
     const [tab, setTab] = useState('waiting_room');
 
 
-    const dropDownOptions = ["Alphabetical", "Scouting skills (AP Points)", "R&D skills", "Cooking skills", "Life"];
+    const dropDownOptions = ["Alphabetical", "Scouting skills", "R&D skills", "Cooking skills", "Life"];
     const [dropDownValue, setDropDownValue] = useState(dropDownOptions[0]);
 
 

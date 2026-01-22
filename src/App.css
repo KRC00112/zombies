@@ -10,19 +10,19 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.2);
-
+    background: rgb(94, 92, 92);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgb(147, 145, 145);
+
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(51, 51, 51);
-}
+/*!* Handle on hover *!*/
+/*::-webkit-scrollbar-thumb:hover {*/
+/*    background: rgb(147, 145, 145);*/
+/*}*/
 
 /********************  NAV-BAR CSS ********************/
 
@@ -549,35 +549,8 @@
 
 }
 
-.home-tab{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    overflow: hidden;
-}
 
 
-
-.home-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 20px;
-    padding-block: 30px;
-    background: rgba(255,255,255,0.5);
-    z-index: 10;
-}
-.user-name-handle{
-    border-left: 2px solid #ffffff;
-    padding-inline: 10px;
-    color: white;
-
-}
-.home-title{
-    color: white;
-}
 .items-resources-requirements {
     max-height: 80px;
     overflow-y: auto;
@@ -593,9 +566,6 @@
     background-color: #34da34;
     padding: 10px;
     border: black solid 1px;
-}
-.canvas-container {
-    background-color: #ff3375;
 }
 
 .item-card-btn-developing {
@@ -629,16 +599,7 @@
     }
 }
 
-.canvas{
 
-    display: flex;
-    flex-direction: row;
-    height: 900px;
-    width: 100vw;
-    overflow: hidden;
-
-
-}
 .toolbox{
     display: flex;
     justify-content: center;
@@ -688,25 +649,47 @@
     flex-direction: column;
     color: white;
 }
-.scout-inventory button{
+.scout-inventory li{
     /*background: #ffd680;*/
     flex-grow: 1;
     border: 1px solid white;
-    padding-inline: 3px;
+    padding: 1.5px 2px 2px 2px;
     width:70px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+    display: flex;
 
 
 }
+.scout-inventory li button{
+    /*background: #ffd680;*/
+    flex-grow: 1;
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 2px;
+    font-size: 14px;
+
+
+
+}
+
+.scout-inventory li button.item-in-inventory {
+    background-color: white;
+    color: black;
+}
+
+
+
+
 .selected-members-showcase{
     display: flex;
 }
 .team-members-and-start{
     display: flex;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 100px;
 
 
 }
@@ -915,13 +898,27 @@ td, th {
     color: black;
 
 }
-
+.team-selection-and-mission-start{
+}
 .team-members-and-mission-select-section{
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     height:300px;
 
+}
+
+
+.select-mission-header{
+    background-color: #d11010;
+    color: white;
+    position:absolute;
+    bottom:90%;
+    padding:10px;
+    padding-right: 30px;
+    margin-left: 25px;
+    padding-bottom: 30px;
+    font-size: 30px;
 }
 
 .mission-select-section{
@@ -944,6 +941,29 @@ td, th {
 
     border-right: none;
 }
+.header-and-map-and-missions{
+    position:relative;
+}
+.mission-name-and-description{
+    background-color: #d11010;
+
+
+    position: absolute;
+    top:80%;
+    left:38%;
+    padding:10px;
+
+}
+
+.mission-name{}
+
+.mission-desc{
+    width: 500px;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 .map-and-missions{
     display:flex;
@@ -953,11 +973,22 @@ td, th {
     margin-left: 50px;
 
 }
+
+.mission-list-div{
+    /*background-color: #34da34;*/
+    border:2px solid #e2e2dd90;
+    padding: 3px;
+}
+
 .missions-list{
     display: flex;
     flex-direction: column;
-    flex: 1;
-    border:2px solid #e2e2dd90;
+    border:0.5px solid #e2e2dd90;
+    overflow: auto;
+    height:230px;
+    width:300px;
+
+
 
 
 }
@@ -971,6 +1002,7 @@ td, th {
     width: 100%;
     display: flex;
     padding: 0;
+    border-bottom: 1px solid #e2e2dd90;
 
 }
 .mission-list-item-btn{
@@ -985,10 +1017,34 @@ td, th {
     padding-right: 10px;
 }
 /************************************GAME BOARD CSS****************************/
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+.board{
+    height: 100vh;
+    /*background-image:url("/map/world_map.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    width: 100vw;
+    background-color: black;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-over-screen{
+    max-width:500px ;
+    min-width:500px ;
+    min-height: fit-content;
+    width: fit-content;
+    position: absolute;
+    background: rgba(60, 60, 59, 0.90);
+    border: 2px solid #e2e2dd90;
+    padding: 10px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
 }
 
 
@@ -1064,7 +1120,7 @@ td, th {
 
 .end-turn-btn{
     padding: 20px;
-    border: 1px solid black;
+    border: 1px solid white;
 
 }
 
@@ -1090,5 +1146,74 @@ td, th {
 
 .go-back-button{
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid white;
+
 }
+/******************************************HOME TAB************************************/
+
+.home-tab{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+.home-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 20px;
+    padding-block: 30px;
+    background: rgba(255,255,255,0.5);
+    z-index: 1;
+}
+.user-name-handle{
+    border-left: 2px solid #ffffff;
+    padding-inline: 10px;
+    color: white;
+
+}
+.home-title{
+    color: white;
+}
+
+
+.resources-display{
+    color: white;
+    width: fit-content;
+    position: absolute;
+    left: 5%;
+    top: 70%;
+
+    min-height: fit-content;
+    background: rgba(60, 60, 59, 0.90);
+    border: 2px solid #e2e2dd90;
+    padding: 10px;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.canvas{
+
+    display: flex;
+    flex-direction: row;
+    height: 900px;
+    width: 100vw;
+    overflow: hidden;
+}
+.base-level-label{
+
+    color: white;
+    width: fit-content;
+    position: absolute;
+
+}
+

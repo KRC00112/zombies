@@ -3,13 +3,13 @@ import HomeTabHeader from "../home-components/HomeTabHeader.jsx";
 import DevelopmentScreenController from "../development-components/DevelopmentScreenController.jsx";
 import HomeScreenController from "../home-components/HomeScreenController.jsx";
 
-function HomeTab() {
+function HomeTab({acquiredResourcesList}) {
     return (
         <div className='home-tab bg-black'>
             <HomeTabHeader />
             <section className='home-tab-body'>
 
-                <HomeScreenController/>
+                <HomeScreenController acquiredResourcesList={acquiredResourcesList}/>
             </section>
         </div>
     )

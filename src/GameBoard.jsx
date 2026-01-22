@@ -2,54 +2,73 @@ import './index.css'
 import './App.css'
 import {useEffect, useRef, useState} from "react";
 
-function GameBoard({quitMissionGameBoard}) {
+
+function calculateAP(member){
+    return 7+Math.floor((member?.scoutSkill)/12);
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i >= 1; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function GameOverScreen({gameOverWinner,unassignedDataset, addReward, mappedMission, quitMissionGameBoard}){
+
+    let randArr=mappedMission.rewards.resources.filter(el=>{
+        let num=Math.floor(Math.random()*2);
+        if(num===1){
+            return el;
+        }
+    })
+    let max_survivor_count=mappedMission.rewards.max_survivors;
+    let unlocked_players=shuffleArray(unassignedDataset).slice(0,Math.floor(Math.random()*(max_survivor_count+1)))
+
+    return(
+        <div className='game-over-screen'>
+            {gameOverWinner==="player"?<>
+                <h1>MISSION ACCOMPLISHED SUCCESSFULLY</h1>
+                <hr/>
+                <h1>REWARDS:</h1>
+                <hr/>
+                {randArr.map(obj=>{
+                    return <div key={obj.name}>
+                        <div>{obj.name}: {obj.amount}</div>
+                    </div>
+                })}
+                <hr/>
+                {unlocked_players.map(obj=>{
+                    return <div key={obj.id}>
+                        <div>{obj.name}</div>
+                    </div>
+                })}
+                <button className='go-back-button' onClick={()=>{addReward(randArr,unlocked_players);quitMissionGameBoard("gameOver");}}>go back to home</button>
+            </>:<>
+                <h1>MISSION FAILED</h1>
+                <button className='go-back-button' onClick={()=>{quitMissionGameBoard("gameOver")}}>go back to home</button>
+            </>}
+
+        </div>
+    )
+
+}
 
 
-    const medkit = {
-        id: 'medkit',
-        name: 'Med Kit',
-        type: 'consumable',
-        heal: 30,
-        ap_consumption: 2,
-        description: 'Restores 30 HP'
-    };
-    const stick = {
-        id: 'stick',
-        name: 'Wooden Stick',
-        type: 'weapon',
-        weaponType: 'melee',
-        dmg: 8,
-        range: 1,
-        ap_consumption: 3,
-        description: 'A basic melee weapon'
-    };
-    const gun = {
-        id: 'gun',
-        name: 'Handgun',
-        type: 'weapon',
-        weaponType: 'ranged',
-        dmg: 20,
-        range: 2,
-        ammo: 6,
-        maxAmmo: 6,
-        ap_consumption: 4,
-        description: 'Standard issue sidearm'
-    };
-
-
-
-    let players = [
-        { id: 'P1', row: 0, col: 0, imgSrc: 'Soldier.png', inventory: [medkit, stick, gun], AP: 5, HP: 100 },
-        { id: 'P2', row: 0, col: 4, imgSrc: 'Soldier.png', inventory: [stick, gun], AP: 3, HP: 80 },
-        { id: 'P3', row: 1, col: 6, imgSrc: 'Soldier.png', inventory: [medkit, gun], AP:4, HP: 90 },
-
-
-    ];
+function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,unassignedDataset}) {
+    let players = mappedDataset.filter(Boolean).map((obj, i) => ({
+            ...obj,
+            inventory: obj.inventory.filter(Boolean),
+            row: mappedMission.cellPositions[i].row,
+            col: mappedMission.cellPositions[i].col,
+            AP:calculateAP(obj),
+        }));
 
     let enemies = [
-        {id:'E1', row:7, col:1, imgSrc:'Orc.png', targetPlayerId:"", AP:20, HP:99, dmg:20, ap_consumption:4},
-        {id:'E2', row:7, col:5, imgSrc:'Orc.png', targetPlayerId:"", AP:20, HP:80, dmg:25, ap_consumption:1},
-        {id:'E3', row:4, col:3, imgSrc:'Orc.png', targetPlayerId:"", AP:20, HP:66, dmg:20, ap_consumption:3},
+        {id:'E1', row:7, col:1, imgSrc:'Orc.png', targetPlayerId:"", AP:20, life:10, dmg:5, ap_consumption:4},
+        {id:'E2', row:7, col:5, imgSrc:'Orc.png', targetPlayerId:"", AP:20, life:5, dmg:5, ap_consumption:1},
+        {id:'E3', row:4, col:3, imgSrc:'Orc.png', targetPlayerId:"", AP:20, life:2, dmg:5, ap_consumption:3},
     ];
     let arr = [
         [1, 2, 3, 4, 5, 6, 7, 8],
@@ -61,7 +80,9 @@ function GameBoard({quitMissionGameBoard}) {
         [49, 50, 51, 52, 53, 54, 55, 56],
         [57, 58, 59, 60, 61, 62, 63, 64],
     ];
+
     const [playerCells, setPlayerCells] = useState(players);
+
     const [selectedPlayerCellId, setSelectedPlayerCellId] = useState("");
     const selectedPlayer=playerCells.find(obj=>obj.id===selectedPlayerCellId);
 
@@ -71,18 +92,57 @@ function GameBoard({quitMissionGameBoard}) {
 
     const [currentActiveItemId, setCurrentActiveItemId]=useState("");
     const [attackableCells, setAttackableCells]=useState([{row:null, col:null}]);
+    const [gameOverWinner, setGameOverWinner]=useState("-");
 
     let currentActiveItem=null;
     if(selectedPlayer){
-        currentActiveItem=selectedPlayer.inventory.find(obj=>obj.id===currentActiveItemId.slice(3,));
+        currentActiveItem=selectedPlayer.inventory.find(obj=>obj.id===Number(currentActiveItemId.slice(currentActiveItemId.indexOf('-')+1,)));
+    }
+
+    const handleOnClickEndTurnBtn=()=>{
+            setEnemyCells(enemyCells.map(obj=>{
+                let currEnemy=enemies.find(enemy=>{
+                    if(obj.id===enemy.id){
+                        return enemy;
+                    }
+                })
+                return {...obj, AP:currEnemy.AP};
+            }))
+            handleEndTurn();
     }
 
 
     let enemyNumInList=useRef(enemyCells.length-1)
-    let APCount=useRef(0);
+    // let APCount=useRef(0);
 
     /*TODO: APCount is causing issues with premature enemy turn trigger(line 31 & 152>=)[SOLVED]*/
-    /*TODO: undefined player_to_attack object causes EnemyNavigation to not proceed (handleEndTurn(), EnemyNavigation() , attackPlayer())*/
+    /*TODO: undefined player_to_atta ck object causes EnemyNavigation to not proceed (handleEndTurn(), EnemyNavigation() , attackPlayer())*/
+
+
+    useEffect(() => {
+        console.log(mappedDataset)
+    }, [mappedDataset]);
+
+    useEffect(() => {
+        console.log(mappedMission)
+    }, [mappedMission]);
+
+
+    useEffect(() => {
+
+        if(enemyCells.every(obj=>obj.life<=0)){
+            setGameOverWinner("player")
+        }
+    }, [enemyCells]);
+
+    useEffect(() => {
+
+        if(playerCells.every(obj=>obj.life<=0)){
+            setGameOverWinner("enemy")
+        }
+    }, [playerCells]);
+
+
 
 
 
@@ -99,6 +159,14 @@ function GameBoard({quitMissionGameBoard}) {
     }, [activeEnemyCellId]);
 
     useEffect(() => {
+
+        console.log({
+            currentActiveItemId,
+            selectedPlayer,
+            inventory: selectedPlayer?.inventory,
+            currentActiveItem
+        });
+
         if (currentActiveItem && selectedPlayer) {
             let minRow = selectedPlayer.row - currentActiveItem.range
             let maxRow = selectedPlayer.row + currentActiveItem.range
@@ -115,7 +183,7 @@ function GameBoard({quitMissionGameBoard}) {
             }
             setAttackableCells(cells);
         }
-    }, [selectedPlayer, currentActiveItem]);
+    }, [selectedPlayer, currentActiveItem, currentActiveItemId]);
 
 
     useEffect(() => {
@@ -126,7 +194,6 @@ function GameBoard({quitMissionGameBoard}) {
 
 
     async function onCellClick(id,row,column){
-
         playerCells.find((obj)=>{
             if(obj.id===id){
                 setSelectedPlayerCellId(obj.id);
@@ -136,7 +203,7 @@ function GameBoard({quitMissionGameBoard}) {
             }
         })
 
-        if(id && id[0]==="E" && currentActiveItem && selectedPlayer.AP>=currentActiveItem.ap_consumption){
+        if(id && id[0]==="E" && currentActiveItem && selectedPlayer && selectedPlayer.AP>=currentActiveItem.ap_consumption){
             let clicked_enemy=enemyCells.find((obj)=>obj.id===id);
             let checkIfClickedEnemyInRange=attackableCells.find(obj=>obj.row===clicked_enemy.row && obj.col===clicked_enemy.col);
             if(checkIfClickedEnemyInRange){
@@ -164,12 +231,12 @@ function GameBoard({quitMissionGameBoard}) {
         }))
         setEnemyCells(prev=>prev.map(obj=>{
             if(obj.id===enemyId){
-                return {...obj, HP:(obj.HP-currentActiveItem.dmg)<0?0:(obj.HP-currentActiveItem.dmg)};
+                return {...obj, life:(obj.life-currentActiveItem.dmg)<0?0:(obj.life-currentActiveItem.dmg)};
             }
             return obj;
         }))
         setEnemyCells(prev=>prev.filter(obj=>{
-            return obj.HP>0;
+            return obj.life>0;
         }))
     }
 
@@ -180,23 +247,19 @@ function GameBoard({quitMissionGameBoard}) {
                 if (obj.id === activeEnemyCellId) {
                     return {
                         ...obj,
-                        AP: (obj.AP - activeEnemy.ap_consumption) < 0
-                            ? 0
-                            : (obj.AP - activeEnemy.ap_consumption)
+                        AP:(obj.AP-activeEnemy.ap_consumption)<0?0:(obj.AP - activeEnemy.ap_consumption)
                     };
                 }
                 return obj;
             })
         );
-        let killedPlayerId=null
+
         setPlayerCells(prev =>
             prev.map(obj => {
                 if (obj.id === playerId) {
-                    const newHP=(obj.HP - activeEnemy.dmg) < 0 ? 0 : (obj.HP - activeEnemy.dmg);
-                    if(newHP===0){
-                        killedPlayerId=obj.id;
-                    }
-                    return {...obj, HP: newHP};
+                    const newLife=(obj.life - activeEnemy.dmg)<0?0:(obj.life - activeEnemy.dmg);
+
+                    return {...obj, life: newLife};
                 }
                 return obj;
             })
@@ -216,7 +279,7 @@ function GameBoard({quitMissionGameBoard}) {
 
 
     useEffect(() => {
-        const killedPlayers=playerCells.filter((player)=>player.HP===0).map(player=>player.id);
+        const killedPlayers=playerCells.filter((player)=>player.life===0).map(player=>player.id);
         if (killedPlayers.length === 0) return;
         setEnemyCells(prev=>prev.map(obj => {
             if(killedPlayers.includes(obj.targetPlayerId)){
@@ -231,7 +294,7 @@ function GameBoard({quitMissionGameBoard}) {
 
     function handleEndTurn(){
 
-        const alivePlayers = playerCells.filter(p => p.HP > 0);
+        const alivePlayers = playerCells.filter(p => p.life > 0);
         if(alivePlayers.length===0)return;
 
         if(enemyCells.length>0) {
@@ -240,8 +303,6 @@ function GameBoard({quitMissionGameBoard}) {
 
             setSelectedPlayerCellId("")
             setCurrentActiveItemId("")
-
-            APCount.current = 0;
             setEnemyCells(prev => {
                 return prev.map(obj => {
                     if (obj.targetPlayerId === "" || !alivePlayers.find(p => p.id === obj.targetPlayerId)) {
@@ -283,7 +344,7 @@ function GameBoard({quitMissionGameBoard}) {
         // }
         //
 
-        let player_to_attack=playerCells.find((obj)=>obj.id===activeEnemy.targetPlayerId)
+        let player_to_attack=playerCells.find((obj)=>obj.id===enemyCells.find(obj=>obj.id===activeEnemyCellId).targetPlayerId)
 
         let currentEnemyRow=activeEnemy.row;
         let currentEnemyCol=activeEnemy.col;
@@ -346,8 +407,6 @@ function GameBoard({quitMissionGameBoard}) {
                 }))
                 return;
             }
-
-
             return handleEndTurn();
         })
     }
@@ -380,9 +439,6 @@ function GameBoard({quitMissionGameBoard}) {
                 }
                 if (playerAP<=0||(currentPlayerRow===targetRow && currentPlayerCol===targetCol)){
 
-                    if(playerAP===0 ){
-                        APCount.current+=1;
-                    }
                     clearInterval(interval);
                     resolve();
                 }
@@ -390,23 +446,24 @@ function GameBoard({quitMissionGameBoard}) {
                     return obj.id === selectedPlayerCellId ? { ...obj, row: currentPlayerRow, col: currentPlayerCol, AP:playerAP } : obj
                 }))
             }, 100);
-        }).then( function(){
-
-            if(APCount.current===playerCells.length){
-                setEnemyCells(enemyCells.map(obj=>{
-                    let currEnemy=enemies.find(enemy=>{
-                        if(obj.id===enemy.id){
-                            return enemy;
-                        }
-                    })
-
-                    return {...obj, AP:currEnemy.AP}
-
-                }))
-                return handleEndTurn();
-            }
         })
     }
+    useEffect(() => {
+        if (playerCells.length === 0) return;
+        const allPlayersExhausted = playerCells.every(player => player.AP === 0);
+        if (allPlayersExhausted) {
+            setEnemyCells(prev =>
+                prev.map(obj => {
+                    const baseEnemy = enemies.find(e => e.id === obj.id);
+                    return { ...obj, AP: baseEnemy.AP };
+                })
+            );
+            handleEndTurn();
+        }
+    }, [playerCells]);
+
+
+
 
     function Cell({cellNumber,row,column}){
         let imageSrc='';
@@ -444,16 +501,17 @@ function GameBoard({quitMissionGameBoard}) {
     }
 
 
-    let playerAps=playerCells.map(obj=>{
-        return <div key={obj.id}>Player {obj.id[1]} | AP: {obj.AP} | HP:{obj.HP}</div>;
+    let playerStats=playerCells.map(obj=>{
+        return <div key={obj.id}>{obj.name.slice(0,obj.name.indexOf(" "))} | AP: {obj.AP} | life:{obj.life}</div>;
     })
-    let enemyAps=enemyCells.map((obj)=>{
-        return <div key={obj.id}>Enemy {obj.id[1]} | AP: {obj.AP} | HP:{obj.HP}</div>;
+    let enemyStats=enemyCells.map((obj)=>{
+        return <div key={obj.id}>Enemy {obj.id[1]} | AP: {obj.AP} | life:{obj.life}</div>;
     })
 
     return (
         <div className="board">
-            <button className='go-back-button' onClick={quitMissionGameBoard}> Go Back </button>
+            {gameOverWinner!=="-" && <GameOverScreen gameOverWinner={gameOverWinner} unassignedDataset={unassignedDataset} addReward={addReward} mappedMission={mappedMission} quitMissionGameBoard={quitMissionGameBoard}/>}
+            <button className='go-back-button' onClick={()=>{quitMissionGameBoard("normalExit")}}> Go Back </button>
             <h1>Board</h1>
             <div className='gameplay-area'>
                 <ul>{arr.map(( subArr,i) => (
@@ -464,43 +522,38 @@ function GameBoard({quitMissionGameBoard}) {
                     }
                     </ul>
                 ))}</ul>
-
-
-                <div className='player-control-pannel'>
-                    <div className='players-list'>{playerAps}</div>
-                    <button className='end-turn-btn' onClick={()=>{
-                        setEnemyCells(enemyCells.map(obj=>{
-                            let currEnemy=enemies.find(enemy=>{
-                                if(obj.id===enemy.id){
-                                    return enemy;
-                                }
-                            })
-                            return {...obj, AP:currEnemy.AP};
-                        }))
-                        handleEndTurn();
-                    }}>END TURN</button>
-                    <div>{enemyAps}</div>
-                    <div className="inventory-items">
-                        {playerCells.map(player=>{
-                            if(player.id===selectedPlayerCellId){
-                                return player.inventory.map((item)=>{
-                                    return <div key={item.id}>
-                                        <button className={`inventory-items-btn ${player.id+"-"+item.id===currentActiveItemId? 'active-click':''}`} onClick={()=>onInventoryItemClick(player.id+"-"+item.id)}>
-                                            {item.name}
-                                        </button>
-                                        {item.description}
-                                    </div>
-                                })
-                            }
-                        })}
-                    </div>
-                </div>
+                <ControlPanel playerStats={playerStats} enemyStats={enemyStats} playerCells={playerCells} selectedPlayerCellId={selectedPlayerCellId} currentActiveItemId={currentActiveItemId} handleOnClickEndTurnBtn={handleOnClickEndTurnBtn} onInventoryItemClick={onInventoryItemClick}/>
             </div>
         </div>
     )
 }
 
+function ControlPanel({playerStats,enemyStats,playerCells,selectedPlayerCellId,currentActiveItemId,handleOnClickEndTurnBtn,onInventoryItemClick}){
+    return(
+        <div className='player-control-pannel'>
+            <div className='players-list'>{playerStats}</div>
+            <button className='end-turn-btn' onClick={handleOnClickEndTurnBtn}>END TURN</button>
+            <div>{enemyStats}</div>
+            <div className="inventory-items">
+                {playerCells.map(player=>{
+                    if(player.id===selectedPlayerCellId){
+                        return player.inventory.map((item)=>{
+                            return <div key={item.id}>
+                                <button  className={`inventory-items-btn ${player.id+"-"+item.id===currentActiveItemId? 'active-click':''}`} onClick={()=>onInventoryItemClick(player.id+"-"+item.id)}>
+                                    {item.name}
+                                </button>
+                            </div>
+                        })
+                    }
+                })}
+            </div>
+        </div>
+    )
+}
+
+
 export default GameBoard
+
 
 
 
