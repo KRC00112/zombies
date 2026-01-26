@@ -1,0 +1,520 @@
+[
+  {
+    "id": 1,
+    "name": "stick",
+    "resources": [{ "name": "wood", "amount": 2 }],
+    "rd_team_level_required": 0,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 0,
+    "time_to_develop": "0m",
+    "ap_consumption": 2,
+    "dmg": 3,
+    "range": 1,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "MELEE_WEAPONS"
+  },
+  {
+    "id": 2,
+    "name": "knife",
+    "resources": [
+      { "name": "metal", "amount": 3 },
+      { "name": "wood", "amount": 1 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "2m",
+    "ap_consumption": 3,
+    "dmg": 6,
+    "range": 3,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "MELEE_WEAPONS"
+  },
+  {
+    "id": 3,
+    "name": "bo staff",
+    "resources": [
+      { "name": "wood", "amount": 4 },
+      { "name": "cloth", "amount": 1 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "1m",
+    "ap_consumption": 4,
+    "dmg": 8,
+    "range": 4,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "MELEE_WEAPONS"
+  },
+  {
+    "id": 4,
+    "name": "M1911",
+    "resources": [
+      { "name": "metal", "amount": 8 },
+      { "name": "wood", "amount": 2 },
+      { "name": "gunpowder", "amount": 5 }
+    ],
+    "rd_team_level_required": 3,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "2m",
+    "ap_consumption": 6,
+    "dmg": 10,
+    "range": 6,
+    "ammo": 7,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "HANDGUNS"
+  },
+  {
+    "id": 5,
+    "name": "SOCOM",
+    "resources": [
+      { "name": "metal", "amount": 10 },
+      { "name": "electronics", "amount": 2 },
+      { "name": "gunpowder", "amount": 6 }
+    ],
+    "rd_team_level_required": 4,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "3m",
+    "ap_consumption": 7,
+    "dmg": 12,
+    "range": 7,
+    "ammo": 12,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "HANDGUNS"
+  },
+  {
+    "id": 6,
+    "name": "Mk22",
+    "resources": [
+      { "name": "metal", "amount": 9 },
+      { "name": "wood", "amount": 1 },
+      { "name": "gunpowder", "amount": 5 }
+    ],
+    "rd_team_level_required": 4,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "2m",
+    "ap_consumption": 6,
+    "dmg": 11,
+    "range": 6,
+    "ammo": 10,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "HANDGUNS"
+  },
+  {
+    "id": 7,
+    "name": "Remington 870",
+    "resources": [
+      { "name": "metal", "amount": 12 },
+      { "name": "wood", "amount": 3 },
+      { "name": "gunpowder", "amount": 8 }
+    ],
+    "rd_team_level_required": 4,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 3,
+    "time_to_develop": "3m",
+    "ap_consumption": 8,
+    "dmg": 14,
+    "range": 5,
+    "ammo": 6,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "SHOTGUNS"
+  },
+  {
+    "id": 8,
+    "name": "Mossberg 590",
+    "resources": [
+      { "name": "metal", "amount": 14 },
+      { "name": "wood", "amount": 3 },
+      { "name": "gunpowder", "amount": 9 }
+    ],
+    "rd_team_level_required": 5,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 3,
+    "time_to_develop": "3m",
+    "ap_consumption": 9,
+    "dmg": 16,
+    "range": 6,
+    "ammo": 8,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "SHOTGUNS"
+  },
+  {
+    "id": 9,
+    "name": "SPAS-12",
+    "resources": [
+      { "name": "metal", "amount": 16 },
+      { "name": "electronics", "amount": 2 },
+      { "name": "gunpowder", "amount": 10 }
+    ],
+    "rd_team_level_required": 5,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 4,
+    "time_to_develop": "4m",
+    "ap_consumption": 10,
+    "dmg": 18,
+    "range": 7,
+    "ammo": 7,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "SHOTGUNS"
+  },
+  {
+    "id": 10,
+    "name": "Frag Grenade",
+    "resources": [
+      { "name": "metal", "amount": 4 },
+      { "name": "gunpowder", "amount": 6 }
+    ],
+    "rd_team_level_required": 3,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "2m",
+    "ap_consumption": 10,
+    "dmg": 25,
+    "range": 4,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "THROWABLES"
+  },
+  {
+    "id": 11,
+    "name": "Smoke Grenade",
+    "resources": [
+      { "name": "metal", "amount": 3 },
+      { "name": "chemicals", "amount": 4 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "1m",
+    "ap_consumption": 5,
+    "dmg": 0,
+    "range": 3,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "THROWABLES"
+  },
+  {
+    "id": 12,
+    "name": "Molotov Cocktail",
+    "resources": [
+      { "name": "glass", "amount": 1 },
+      { "name": "cloth", "amount": 1 },
+      { "name": "fuel", "amount": 2 }
+    ],
+    "rd_team_level_required": 1,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 0,
+    "time_to_develop": "0m",
+    "ap_consumption": 8,
+    "dmg": 15,
+    "range": 2,
+    "development_status": "unmet_requirements",
+    "type": "weapon",
+    "subtype": "THROWABLES"
+  },
+  {
+    "id": 13,
+    "name": "First Aid Kit",
+    "resources": [
+      { "name": "cloth", "amount": 2 },
+      { "name": "medicine", "amount": 2 },
+      { "name": "alcohol", "amount": 1 }
+    ],
+    "rd_team_level_required": 1,
+    "kitchen_staff_level_required": 1,
+    "scout_team_level_required": 0,
+    "time_to_develop": "0m",
+    "ap_consumption": 2,
+    "health_recovered": 10,
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "HEALTH"
+  },
+  {
+    "id": 14,
+    "name": "Medpack",
+    "resources": [
+      { "name": "cloth", "amount": 3 },
+      { "name": "medicine", "amount": 3 },
+      { "name": "alcohol", "amount": 2 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 2,
+    "scout_team_level_required": 0,
+    "time_to_develop": "1m",
+    "ap_consumption": 5,
+    "health_recovered": 50,
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "HEALTH"
+  },
+  {
+    "id": 15,
+    "name": "Adrenaline Shot",
+    "resources": [
+      { "name": "chemicals", "amount": 3 },
+      { "name": "medicine", "amount": 2 },
+      { "name": "alcohol", "amount": 1 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 1,
+    "scout_team_level_required": 0,
+    "time_to_develop": "1m",
+    "ap_consumption": 3,
+    "ap_recovered": 10,
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "ACTION_POINTS"
+  },
+  {
+    "id": 16,
+    "name": "Stimulant Pills",
+    "resources": [
+      { "name": "chemicals", "amount": 2 },
+      { "name": "medicine", "amount": 1 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 1,
+    "scout_team_level_required": 0,
+    "time_to_develop": "0m",
+    "ap_consumption": 6,
+    "ap_recovered": 8,
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "ACTION_POINTS"
+  },
+  {
+    "id": 17,
+    "name": "Energy Drink",
+    "resources": [
+      { "name": "water", "amount": 1 },
+      { "name": "chemicals", "amount": 1 },
+      { "name": "sugar", "amount": 1 }
+    ],
+    "rd_team_level_required": 1,
+    "kitchen_staff_level_required": 1,
+    "scout_team_level_required": 0,
+    "time_to_develop": "0m",
+    "ap_consumption": 4,
+    "ap_recovered": 5,
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "ACTION_POINTS"
+  },
+  {
+    "id": 18,
+    "name": "Wheat Seeds",
+    "resources": [
+      { "name": "seeds", "amount": 5 },
+      { "name": "soil", "amount": 1 }
+    ],
+    "rd_team_level_required": 1,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "0m",
+    "description": "For when you feel like farming AND fighting.",
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "SEEDS"
+  },
+  {
+    "id": 19,
+    "name": "Corn Seeds",
+    "resources": [
+      { "name": "seeds", "amount": 6 },
+      { "name": "soil", "amount": 1 }
+    ],
+    "rd_team_level_required": 1,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "0m",
+    "description": "Grow tall, stay fed.",
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "SEEDS"
+  },
+  {
+    "id": 20,
+    "name": "Soybean Seeds",
+    "resources": [
+      { "name": "seeds", "amount": 7 },
+      { "name": "soil", "amount": 1 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "2m",
+    "description": "Protein packed and plot convenient.",
+    "development_status": "unmet_requirements",
+    "type": "aid",
+    "subtype": "SEEDS"
+  },
+  {
+    "id": 21,
+    "name": "Bungalow",
+    "resources": [
+      { "name": "wood", "amount": 20 },
+      { "name": "metal", "amount": 15 },
+      { "name": "cement", "amount": 10 }
+    ],
+    "rd_team_level_required": 6,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 4,
+    "time_to_develop": "5m",
+    "description": "Bigger house, bigger ambitions.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "THE_HOUSE"
+  },
+  {
+    "id": 22,
+    "name": "Villa",
+    "resources": [
+      { "name": "wood", "amount": 15 },
+      { "name": "metal", "amount": 10 },
+      { "name": "stone", "amount": 10 },
+      { "name": "glass", "amount": 5 },
+      { "name": "electronics", "amount": 10 }
+    ],
+    "rd_team_level_required": 4,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "3m",
+    "description": "Is it really a zombie apocalypse at this point.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "THE_HOUSE"
+  },
+  {
+    "id": 23,
+    "name": "Watchtower",
+    "resources": [
+      { "name": "wood", "amount": 15 },
+      { "name": "metal", "amount": 5 },
+      { "name": "stone", "amount": 5 }
+    ],
+    "rd_team_level_required": 3,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "2m",
+    "description": "Keep an eye out… mostly for trouble, sometimes for birds.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "PERIMETER"
+  },
+  {
+    "id": 24,
+    "name": "Barbed Wire Fence",
+    "resources": [
+      { "name": "metal", "amount": 8 },
+      { "name": "wire", "amount": 6 },
+      { "name": "wood", "amount": 4 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "1m",
+    "description": "prickly welcome for unwanted guests.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "PERIMETER"
+  },
+  {
+    "id": 25,
+    "name": "Searchlights",
+    "resources": [
+      { "name": "metal", "amount": 5 },
+      { "name": "electronics", "amount": 3 },
+      { "name": "glass", "amount": 2 }
+    ],
+    "rd_team_level_required": 3,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "2m",
+    "description": "Spot intruders… or make your soldiers squint.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "PERIMETER"
+  },
+  {
+    "id": 26,
+    "name": "Vegetable Patch",
+    "resources": [
+      { "name": "seeds", "amount": 10 },
+      { "name": "wood", "amount": 5 },
+      { "name": "water", "amount": 5 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 1,
+    "time_to_develop": "1m",
+    "description": "Grow your greens and keep your soldiers fed.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "FARM"
+  },
+  {
+    "id": 27,
+    "name": "Chicken Coop",
+    "resources": [
+      { "name": "wood", "amount": 12 },
+      { "name": "metal", "amount": 4 },
+      { "name": "livestock", "amount": 5 }
+    ],
+    "rd_team_level_required": 2,
+    "kitchen_staff_level_required": 1,
+    "scout_team_level_required": 1,
+    "time_to_develop": "2m",
+    "description": "Fresh eggs daily, morale boost guaranteed.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "FARM"
+  },
+  {
+    "id": 28,
+    "name": "Irrigation System",
+    "resources": [
+      { "name": "metal", "amount": 8 },
+      { "name": "wood", "amount": 6 },
+      { "name": "water", "amount": 10 }
+    ],
+    "rd_team_level_required": 3,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "3m",
+    "description": "Watering your crops like a pro, minus the garden gnome.",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "FARM"
+  },
+  {
+    "id": 29,
+    "name": "Shooting Range",
+    "resources": [
+      { "name": "wood", "amount": 10 },
+      { "name": "metal", "amount": 10 },
+      { "name": "stone", "amount": 5 }
+    ],
+    "rd_team_level_required": 7,
+    "kitchen_staff_level_required": 0,
+    "scout_team_level_required": 2,
+    "time_to_develop": "3m",
+    "description": "Practice makes perfect… ",
+    "development_status": "unmet_requirements",
+    "type": "base",
+    "subtype": "TRAINING_AREA"
+  }
+]
