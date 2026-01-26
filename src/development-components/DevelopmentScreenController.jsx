@@ -1,9 +1,6 @@
 import React, {useEffect, useMemo, useState} from 'react'
 import {TypeAnimation} from "react-type-animation";
 
-const resourceList=['alcohol', 'cement', 'chemicals', 'cloth', 'electronics', 'fuel', 'glass',
-    'gunpowder', 'kitchenware', 'livestock', 'medicine', 'metal', 'seeds', 'soil',
-    'stone', 'sugar', 'tools', 'water', 'wire', 'wood']
 
 function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,kitchenStaffLevel,fullDevelopmentDataset,changeDevelopmentStatus}) {
 
@@ -195,7 +192,7 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
 
     return (
         <div className='item-card'>
-            <img className='item-picture' src='/vite.svg' width='100px'/>
+            <img className='item-picture' src='/icons/WIP.png' style={{height:'100px',width:'100px'}}/>
             <div className='item-details'>
             <TypeAnimation
                 key={itemName}
@@ -216,9 +213,9 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
                     </div>
                     <hr/>
                     <ul className='items-resources-requirements'>
-                        {resourceList.map(item => (
-                            itemResources[item]>0?<li key={item}>
-                                {item[0].toUpperCase()+item.slice(1)}: {itemResources[item]}
+                        {itemResources.map(item => (
+                            item.amount>0?<li key={item.name}>
+                                {item.name[0].toUpperCase()+item.name.slice(1)}: {item.amount}
                             </li>:null
                             ))
                         }
@@ -237,7 +234,7 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
                 </div>
                 <div className='start-development-and-see-reqs-btn'>
                     <button className='item-card-btn' onClick={()=>setShowReqs(true)}>SEE REQUIREMENTS</button>
-                    <button className={itemCardButtonClassName} onClick={()=>changeDevelopmentStatus(itemDevelopmentStatus,itemName)}>{itemCardButtonTextName}</button>
+                    <button className={itemCardButtonClassName} onClick={()=>changeDevelopmentStatus(itemDevelopmentStatus,itemName)} disabled={itemDevelopmentStatus==='developed'}>{itemCardButtonTextName}</button>
                 </div>
                 </div>}
             </div>

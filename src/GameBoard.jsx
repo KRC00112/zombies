@@ -15,7 +15,7 @@ function shuffleArray(array) {
     return array;
 }
 
-function GameOverScreen({gameOverWinner,unassignedDataset, addReward, mappedMission, quitMissionGameBoard}){
+function GameOverScreen({gameOverWinner,unassignedDataset, addReward, mappedMission, quitMissionGameBoard,permanentlyDiscardSelectedPlayers}){
 
     let randArr=mappedMission.rewards.resources.filter(el=>{
         let num=Math.floor(Math.random()*2);
@@ -47,7 +47,7 @@ function GameOverScreen({gameOverWinner,unassignedDataset, addReward, mappedMiss
                 <button className='go-back-button' onClick={()=>{addReward(randArr,unlocked_players);quitMissionGameBoard("gameOver");}}>go back to home</button>
             </>:<>
                 <h1>MISSION FAILED</h1>
-                <button className='go-back-button' onClick={()=>{quitMissionGameBoard("gameOver")}}>go back to home</button>
+                <button className='go-back-button' onClick={()=>{permanentlyDiscardSelectedPlayers();quitMissionGameBoard("gameOver")}}>go back to home</button>
             </>}
 
         </div>
@@ -56,7 +56,9 @@ function GameOverScreen({gameOverWinner,unassignedDataset, addReward, mappedMiss
 }
 
 
-function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,unassignedDataset}) {
+
+
+function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,unassignedDataset,permanentlyDiscardSelectedPlayers}) {
     let players = mappedDataset.filter(Boolean).map((obj, i) => ({
             ...obj,
             inventory: obj.inventory.filter(Boolean),
@@ -98,6 +100,9 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
     if(selectedPlayer){
         currentActiveItem=selectedPlayer.inventory.find(obj=>obj.id===Number(currentActiveItemId.slice(currentActiveItemId.indexOf('-')+1,)));
     }
+
+
+
 
     const handleOnClickEndTurnBtn=()=>{
             setEnemyCells(enemyCells.map(obj=>{
@@ -276,6 +281,8 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
         //TODO:THE BELOW LINE IS CAUSING BUG
         // setPlayerCells(prev=>prev.filter(obj=>obj.id!==killedPlayerId))
     }
+
+
 
 
     useEffect(() => {
@@ -510,7 +517,7 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
 
     return (
         <div className="board">
-            {gameOverWinner!=="-" && <GameOverScreen gameOverWinner={gameOverWinner} unassignedDataset={unassignedDataset} addReward={addReward} mappedMission={mappedMission} quitMissionGameBoard={quitMissionGameBoard}/>}
+            {gameOverWinner!=="-" && <GameOverScreen gameOverWinner={gameOverWinner} unassignedDataset={unassignedDataset} addReward={addReward} mappedMission={mappedMission} quitMissionGameBoard={quitMissionGameBoard} permanentlyDiscardSelectedPlayers={permanentlyDiscardSelectedPlayers}/>}
             <button className='go-back-button' onClick={()=>{quitMissionGameBoard("normalExit")}}> Go Back </button>
             <h1>Board</h1>
             <div className='gameplay-area'>

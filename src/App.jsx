@@ -18,31 +18,25 @@ const Locations = [
 
 
 const acquiredResources = [
-    { name: "wood", amount: 100 },
-    { name: "metal", amount: 80 },
-    { name: "gunpowder", amount: 40 },
-    { name: "electronics", amount: 25 },
-    { name: "cloth", amount: 60 },
-    { name: "glass", amount: 30 },
-    { name: "fuel", amount: 35 },
-    { name: "medicine", amount: 20 },
-    { name: "alcohol", amount: 25 },
-    { name: "chemicals", amount: 45 },
-    { name: "water", amount: 120 },
-    { name: "sugar", amount: 50 },
-    { name: "seeds", amount: 90 },
-    { name: "soil", amount: 70 },
-    { name: "cement", amount: 40 },
-    { name: "stone", amount: 110 },
-    { name: "wire", amount: 30 },
-    { name: "livestock", amount: 10 }
+    { name: "wood", amount: 4, reserved: 0 },
+    { name: "metal", amount: 3, reserved: 0 },
+    { name: "gunpowder", amount: 6, reserved: 0 },
+    { name: "electronics", amount: 2, reserved: 0 },
+    { name: "cloth", amount: 6, reserved: 0 },
+    { name: "glass", amount: 3, reserved: 0 },
+    { name: "fuel", amount: 5, reserved: 0 },
+    { name: "medicine", amount: 2, reserved: 0 },
+    { name: "alcohol", amount: 4, reserved: 0 },
+    { name: "chemicals", amount: 7, reserved: 0 },
+    { name: "water", amount: 9, reserved: 0 },
+    { name: "sugar", amount: 5, reserved: 0 },
+    { name: "seeds", amount: 8, reserved: 0 },
+    { name: "soil", amount: 6, reserved: 0 },
+    { name: "cement", amount: 3, reserved: 0 },
+    { name: "stone", amount: 9, reserved: 0 },
+    { name: "wire", amount: 2, reserved: 0 },
+    { name: "livestock", amount: 1, reserved: 0 }
 ];
-
-
-
-
-
-
 
 
 function App() {
@@ -71,6 +65,8 @@ function App() {
 
 
 
+
+
     const addReward=(resources,survivors)=>{
         setAcquiredResourcesList(prev=>prev.map(obj=>{
             const resource=resources.find(res=>res.name===obj.name)
@@ -91,10 +87,12 @@ function App() {
 
             })
         );
-
-
-
     }
+
+    const permanentlyDiscardSelectedPlayers=()=>{
+        setFullDataset(prev=>prev.filter(obj=>(!selectedIds.includes(obj.id))))
+    }
+
 
     const handleItemObtained = (item) => {
         setItemObtained(item)
@@ -135,7 +133,7 @@ function App() {
 
                     let newArray=[...obj.inventory];
                     if(itemObtained) {
-                        newArray[inventoryItemNo - 1] = itemObtained;
+                        newArray[inventoryItemNo-1]=itemObtained;
                     }
                     return {...obj, inventory:newArray}
                 }
@@ -152,9 +150,12 @@ function App() {
 
 
 
+
     const changeDevelopmentStatus=(itemDevelopmentStatus,itemName)=>{
         if(itemDevelopmentStatus!=='unmet_requirements'){
             if(itemDevelopmentStatus==='not_started'){
+
+
 
                 setFullDevelopmentDataset(
                     fullDevelopmentDataset.map((obj) => {
@@ -170,6 +171,20 @@ function App() {
                         }
                     })
                 );
+
+
+                setAcquiredResourcesList(prev=>prev.map(obj=>{
+
+                    const item=fullDevelopmentDataset.find(i=>i.name===itemName);
+                    const itemResource=item.resources.find(res=>res.name===obj.name);
+                    if(obj.name===itemResource?.name){
+                        return {...obj, amount:obj.amount-itemResource?.amount};
+                    }
+                    return obj;
+
+                }))
+
+
             }else{
                 setFullDevelopmentDataset(
                     fullDevelopmentDataset.map((obj) => {
@@ -181,6 +196,18 @@ function App() {
                         }
                     })
                 );
+                setAcquiredResourcesList(prev=>prev.map(obj=>{
+
+                    const item=fullDevelopmentDataset.find(i=>i.name===itemName);
+                    const itemResource=item.resources.find(res=>res.name===obj.name);
+                    if(obj.name===itemResource?.name){
+                        return {...obj, amount:obj.amount+itemResource?.amount};
+                    }
+                    return obj;
+
+                }))
+
+
             }
 
 
@@ -239,25 +266,67 @@ function App() {
     },[])
 
 
+
+
     useEffect(() => {
+
+
+
+
         setFullDevelopmentDataset(
             fullDevelopmentDataset.map((obj) => {
 
-                const requirementsMet=calculateDeptLevel(rAndDdeptSkillAggregatePoints)>=obj.rd_team_level_required
+
+                const skillsMet= calculateDeptLevel(rAndDdeptSkillAggregatePoints)>=obj.rd_team_level_required
                     && calculateDeptLevel(scoutTeamSkillAggregatePoints)>=obj.scout_team_level_required
                     && calculateDeptLevel(kitchenStaffSkillAggregatePoints)>=obj.kitchen_staff_level_required
 
-                if(!requirementsMet){
+
+
+                const resourcesMet=obj.resources.every(res=>{
+                        const resourceAtHand=acquiredResourcesList.find(obj=>obj.name===res.name);
+                        return res.amount <= resourceAtHand.amount;
+
+                    })
+
+                if(!skillsMet){
+
+                    if(obj.development_status==="developing"){
+
+                        setAcquiredResourcesList(prev=>prev.map(atHandRes=>{
+
+                            const item=fullDevelopmentDataset.find(i=>i.development_status==="developing")
+                            const itemResource=item.resources.find(res=>res.name===atHandRes.name);
+                            if(atHandRes.name===itemResource?.name){
+                                return {...atHandRes, amount:atHandRes.amount+itemResource?.amount};
+                            }
+                            return atHandRes;
+
+                        }))
+
+                    }
+                    if(obj.development_status==="developed"){
+
+
+                        return obj;
+                    }
+
                     return { ...obj, development_status: "unmet_requirements" };
                 }
-                if(obj.development_status==='unmet_requirements'){
+
+                if(obj.development_status==="developed" || obj.development_status==="developing"){
+                    return obj;
+                }
+
+                if(skillsMet && resourcesMet){
                     return { ...obj, development_status: "not_started" };
                 }
-                return obj;
+
+                return { ...obj, development_status: "unmet_requirements" };
             })
         )
 
-    }, [rAndDdeptSkillAggregatePoints,scoutTeamSkillAggregatePoints,kitchenStaffSkillAggregatePoints]);
+    }, [rAndDdeptSkillAggregatePoints,scoutTeamSkillAggregatePoints,kitchenStaffSkillAggregatePoints,acquiredResourcesList]);
 
 
 
@@ -341,7 +410,8 @@ function App() {
                 mappedDataset={fullDataset.filter(obj=>selectedIds.includes(obj.id))}
                 mappedMission={Locations.find(obj=>obj.id===selectedMission)}
                 unassignedDataset={fullDataset.filter(obj=>obj.department==="unassigned")}
-                addReward={addReward}/>:
+                addReward={addReward}
+                permanentlyDiscardSelectedPlayers={permanentlyDiscardSelectedPlayers}/>:
             <>
                 <NavBar
                     onHomeClick={handleHomeClick}
