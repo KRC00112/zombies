@@ -44,7 +44,6 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                     <div className='member-count'>
                         <img src={import.meta.env.BASE_URL + '/icons/head.png'} width='20px' draggable='false'/>:   {membersList.length}/{tabsInfo[departmentTab][4]}
                     </div>
-
                 </div>
             </div>
 
