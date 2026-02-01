@@ -64,7 +64,11 @@ function App() {
     }
 
 
+    useEffect(() => {
 
+        setShowInventorySelectBox(false)
+
+    }, [currentTab]);
 
 
     const addReward=(resources,survivors)=>{
@@ -359,7 +363,6 @@ function App() {
 
     const handleStartMission=()=>{
         setCurrentTab('GameBoard');
-
     }
 
 
