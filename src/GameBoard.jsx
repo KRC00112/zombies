@@ -270,16 +270,6 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
             })
         );
 
-        // if(killedPlayerId){
-        //     setEnemyCells(prev=>prev.map(obj => {
-        //         if(obj.targetPlayerId===killedPlayerId){
-        //             return {...obj, targetPlayerId:""};
-        //         }
-        //         return obj;
-        //     }))
-        // }
-        //TODO:THE BELOW LINE IS CAUSING BUG
-        // setPlayerCells(prev=>prev.filter(obj=>obj.id!==killedPlayerId))
     }
 
 
@@ -503,7 +493,7 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
             })
         }
         return <div className={`cell ${borderCellDesign}`} title={id} onClick={()=>onCellClick(id,row,column,imageSrc)}>
-            {imageSrc===''? `${cellNumber} (${row},${column})` :<img src={`/gameplay_files/${imageSrc}`} alt='cell' />}
+            {imageSrc===''? `${cellNumber} (${row},${column})` :<img src={ import.meta.env.BASE_URL + `/gameplay_files/${imageSrc}`} alt='cell' />}
         </div>
     }
 
@@ -518,8 +508,10 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
     return (
         <div className="board">
             {gameOverWinner!=="-" && <GameOverScreen gameOverWinner={gameOverWinner} unassignedDataset={unassignedDataset} addReward={addReward} mappedMission={mappedMission} quitMissionGameBoard={quitMissionGameBoard} permanentlyDiscardSelectedPlayers={permanentlyDiscardSelectedPlayers}/>}
-            <button className='go-back-button' onClick={()=>{quitMissionGameBoard("normalExit")}}> Go Back </button>
-            <h1>Board</h1>
+            <div className='gameboard-header'>
+                <button className='go-back-button' onClick={()=>{confirm("Quit Mission?") && quitMissionGameBoard("normalExit")}}> Go Back </button>
+                <h1>Board</h1>
+            </div>
             <div className='gameplay-area'>
                 <ul>{arr.map(( subArr,i) => (
                     <ul key={i} className='board-columns'>{

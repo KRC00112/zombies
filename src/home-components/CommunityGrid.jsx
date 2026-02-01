@@ -60,26 +60,24 @@ function CommunityGrid() {
 
 
 
-    let left_facing_fence_Array = Array.from({ length: 30 }, (_, i) => i - 0);
-    let right_facing_fence_Array = Array.from({ length: 31 }, (_, i) => i - 1);
+    let left_facing_fence_Array = Array.from(Array(30)).map((e,i)=>i);
+    let right_facing_fence_Array = Array.from(Array(31)).map((e,i)=>i-1);
 
 
-    let tile_images=['/tiles/snow.png',
-        '/tiles/snow_with_some_grass.png',
-        '/tiles/black_patch_ground_backright_corner_border.png',
-        '/tiles/black_patch_ground_frontleft_corner_border.png',
-        '/tiles/black_patch_ground_backleft_corner_border.png',
-        '/tiles/black_patch_ground_frontright_corner_border.png',
-        '/tiles/black_patch_partial_ground_frontright_border.png',
-        '/tiles/black_patch_partial_ground_frontleft_border.png',
-        '/tiles/black_patch_partial_ground_backleft_border.png',
-        '/tiles/black_patch_partial_ground_backright_border.png',
-        '/tiles/black_patch.png',
-        '/tiles/black_patch_with_some_snow.png',
-        '/tiles/snow_border.png',
-
-
-        '/tiles/sand.png']
+    let tile_images=[import.meta.env.BASE_URL + '/tiles/snow.png',
+        import.meta.env.BASE_URL + '/tiles/snow_with_some_grass.png',
+        import.meta.env.BASE_URL + '/tiles/black_patch_ground_backright_corner_border.png',
+        import.meta.env.BASE_URL + '/tiles/black_patch_ground_frontleft_corner_border.png',
+        import.meta.env.BASE_URL + '/tiles/black_patch_ground_backleft_corner_border.png',
+        import.meta.env.BASE_URL + '/tiles/black_patch_ground_frontright_corner_border.png',
+        import.meta.env.BASE_URL + '/tiles/black_patch_partial_ground_frontright_border.png',
+        import.meta.env.BASE_URL +  '/tiles/black_patch_partial_ground_frontleft_border.png',
+        import.meta.env.BASE_URL +  '/tiles/black_patch_partial_ground_backleft_border.png',
+        import.meta.env.BASE_URL +  '/tiles/black_patch_partial_ground_backright_border.png',
+        import.meta.env.BASE_URL + '/tiles/black_patch.png',
+        import.meta.env.BASE_URL +  '/tiles/black_patch_with_some_snow.png',
+        import.meta.env.BASE_URL +  '/tiles/snow_border.png',
+        import.meta.env.BASE_URL + '/tiles/sand.png']
     return (
         <TransformWrapper
             limitToBounds={false}
@@ -97,17 +95,17 @@ function CommunityGrid() {
                     })}
                     {/*back right perimeter*/}
                     {left_facing_fence_Array.map((num, index) =>{
-                        return <DrawTile imgSrc={'/tiles/fence_face_left.png'} x={num} y={-1} key={num}/>
+                        return <DrawTile imgSrc={import.meta.env.BASE_URL + '/tiles/fence_face_left.png'} x={num} y={-1} key={num}/>
 
                     })}
                     {/*back left perimeter*/}
                     {right_facing_fence_Array.map((num, index) =>{
-                        return <DrawTile imgSrc={'/tiles/fence_face_right.png'} x={0} y={num} key={num}/>
+                        return <DrawTile imgSrc={import.meta.env.BASE_URL + '/tiles/fence_face_right.png'} x={0} y={num} key={num}/>
 
                     })}
                     {/*<DrawTile imgSrc={'/tower.PNG'} x={-1.6} y={-1} />*/}
                     {/*<DrawTile imgSrc={'/tower.PNG'} x={-1.6} y={11} />*/}
-                    <DrawTile imgSrc={'/house_hi.png'} x={9.3} y={10} />
+                    <DrawTile imgSrc={import.meta.env.BASE_URL + '/house_hi.png'} x={9.3} y={10} />
                     {/*<DrawTile imgSrc={'/tower.PNG'} x={10.4} y={11} />*/}
                     {/*<DrawTile imgSrc={'/tower.PNG'} x={10.4} y={-1} />*/}
 
@@ -116,7 +114,7 @@ function CommunityGrid() {
 
 
 
-                        return <DrawTile imgSrc={'/tiles/fence_face_right.png'} x={29} y={num} key={num}/>
+                        return <DrawTile imgSrc={import.meta.env.BASE_URL + '/tiles/fence_face_right.png'} x={29} y={num} key={num}/>
 
                     })}
                     {/*/!*front left perimeter*!/*/}
@@ -127,7 +125,7 @@ function CommunityGrid() {
                         }
 
 
-                        return <DrawTile imgSrc={'/tiles/fence_face_left.png'} x={num} y={29} key={num}/>
+                        return <DrawTile imgSrc={import.meta.env.BASE_URL + '/tiles/fence_face_left.png'} x={num} y={29} key={num}/>
 
                     })}
                 </div>

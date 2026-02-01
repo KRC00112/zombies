@@ -124,8 +124,8 @@ function DevelopmentScreenController({developmentType,rAndDLevel,scoutTeamLevel,
             <section className='items-development-box'>
                 <ul className='item-type-list'>
                     {itemTabTypesName.map(itemType => (
-                        <li key={itemType}><button className={itemTabType===itemType?'item-tab-selected':''} onClick={()=>onItemTabClick(itemType)}>
-                            <img src={`${imageSourceBasedOnDept[developmentType]}${itemType}.png`} width='50px' alt={itemType}/>
+                        <li key={itemType}><button className={itemTabType===itemType?'item-tab-selected':'item-tab-unselected'} onClick={()=>onItemTabClick(itemType)}>
+                            <img src={import.meta.env.BASE_URL + `${imageSourceBasedOnDept[developmentType]}${itemType}.png`} width='50px' alt={itemType}/>
                         </button></li>
                     ))}
 
@@ -192,7 +192,7 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
 
     return (
         <div className='item-card'>
-            <img className='item-picture' src='/icons/WIP.png' style={{height:'100px',width:'100px'}}/>
+            <img className='item-picture' src={import.meta.env.BASE_URL + "/icons/WIP.png"} style={{height:'100px',width:'100px'}}/>
             <div className='item-details'>
             <TypeAnimation
                 key={itemName}

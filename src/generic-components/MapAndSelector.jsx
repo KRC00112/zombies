@@ -41,10 +41,6 @@ function MapAndSelector({Locations,selectedMission,handleMissionSelect}) {
     const mapContainerRef = useRef(null);
 
 
-
-
-
-
     return (
         <TransformWrapper
             panning={{ disabled: true }}
@@ -63,7 +59,7 @@ function MapAndSelector({Locations,selectedMission,handleMissionSelect}) {
 
                         <div className="map-window" ref={mapContainerRef}>
                             <TransformComponent>
-                                <img ref={mapRef} src="/map/world_map.png" alt="map" width='9216px' style={{color:"white"}}/>
+                                <img ref={mapRef} src={import.meta.env.BASE_URL + "/map/world_map.png"} alt="map" width='9216px' style={{color:"white"}}/>
 
 
                                 {Locations.map(location => {
