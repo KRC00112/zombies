@@ -117,7 +117,7 @@ function App() {
 
     const handleItemAssign =(itemNo, scout)=>{
 
-        setShowInventorySelectBox(!showInventorySelectBox);
+        setShowInventorySelectBox(true);
         setItemFor(scout);
         setInventoryItemNo(itemNo);
 
