@@ -64,7 +64,11 @@ function App() {
     }
 
 
+    useEffect(() => {
 
+        setShowInventorySelectBox(false)
+
+    }, [currentTab]);
 
 
     const addReward=(resources,survivors)=>{
@@ -117,7 +121,7 @@ function App() {
 
     const handleItemAssign =(itemNo, scout)=>{
 
-        setShowInventorySelectBox(!showInventorySelectBox);
+        setShowInventorySelectBox(true);
         setItemFor(scout);
         setInventoryItemNo(itemNo);
 
@@ -216,7 +220,7 @@ function App() {
     }
     useEffect(()=>{
 
-        fetch(`/all_developments.json`)
+        fetch(import.meta.env.BASE_URL + `/all_developments.json`)
             .then((res) => {
                 if(!res.ok) {
                     return
@@ -260,7 +264,7 @@ function App() {
     }
     useEffect(()=>{
 
-        fetch(`/all_depts.json`)
+        fetch(import.meta.env.BASE_URL + `/all_depts.json`)
             .then((res) => res.json())
             .then((data) => setFullDataset(data))
     },[])
@@ -290,38 +294,28 @@ function App() {
                     })
 
                 if(!skillsMet){
-
+                    //putting resources back if department skills don't meet
                     if(obj.development_status==="developing"){
-
                         setAcquiredResourcesList(prev=>prev.map(atHandRes=>{
-
                             const item=fullDevelopmentDataset.find(i=>i.development_status==="developing")
                             const itemResource=item.resources.find(res=>res.name===atHandRes.name);
                             if(atHandRes.name===itemResource?.name){
                                 return {...atHandRes, amount:atHandRes.amount+itemResource?.amount};
                             }
                             return atHandRes;
-
                         }))
-
                     }
                     if(obj.development_status==="developed"){
-
-
                         return obj;
                     }
-
                     return { ...obj, development_status: "unmet_requirements" };
                 }
-
                 if(obj.development_status==="developed" || obj.development_status==="developing"){
                     return obj;
                 }
-
                 if(skillsMet && resourcesMet){
                     return { ...obj, development_status: "not_started" };
                 }
-
                 return { ...obj, development_status: "unmet_requirements" };
             })
         )
@@ -369,7 +363,6 @@ function App() {
 
     const handleStartMission=()=>{
         setCurrentTab('GameBoard');
-
     }
 
 

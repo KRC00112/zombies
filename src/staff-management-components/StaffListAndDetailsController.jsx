@@ -42,9 +42,8 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                     {departmentTab==='scout_team'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
                     {departmentTab==='kitchen_staff'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
                     <div className='member-count'>
-                        <img src='/icons/head.png' width='20px' draggable='false'/>:   {membersList.length}/{tabsInfo[departmentTab][4]}
+                        <img src={import.meta.env.BASE_URL + '/icons/head.png'} width='20px' draggable='false'/>:   {membersList.length}/{tabsInfo[departmentTab][4]}
                     </div>
-
                 </div>
             </div>
 
@@ -65,7 +64,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                 </div>
 
                 <div className='member-profile-image-box'>
-                    <img className={membersList.length>0 ?`border-5 border-solid border-white`:``}  src={membersList.length > 0 ? selectedMember?.profileLocation : "/staff-profiles/default.png"}
+                    <img className={membersList.length>0 ?`border-5 border-solid border-white`:``}  src={membersList.length > 0 ?  import.meta.env.BASE_URL + selectedMember?.profileLocation : import.meta.env.BASE_URL + "/staff-profiles/default.png"}
                          width='270px' draggable='false'/>
                 </div>
 

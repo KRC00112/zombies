@@ -79,7 +79,7 @@ function SelectedTeamMember({memberId, list, handleItemAssign}){
     return(<div className='selected-scout-profile'>
             <div className='scout-face'>
                 <div className='scout-face-and-name'>
-                    <img className={member?`border-2 border-solid`:``} src={member?member.profileLocation:"/staff-profiles/default_black.png"} width='90px' draggable='false'/>
+                    <img className={member?`border-2 border-solid`:``} src={member? import.meta.env.BASE_URL + member.profileLocation:import.meta.env.BASE_URL + "/staff-profiles/default_black.png"} width='90px' draggable='false'/>
                     <p>{member?member.name.slice(0,member.name.indexOf(" ")):"--"}</p>
                     <p>AP: {member? 7+Math.floor((member?.scoutSkill)/12) : "--"}</p>
                 </div>
@@ -140,8 +140,8 @@ function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItem
                 <button className='close-inventory-items-select-container' onClick={closeInventoryBox}>X</button>
             </div>
             <ul className='inventory-items-select-list'>
-                <li><button onClick={()=>setSelectedTab('weapons')}  className={selectedTab==='weapons'?'active-tab':''}>Weapons</button></li>
-                <li ><button onClick={()=>setSelectedTab('aid')} className={selectedTab==='aid'?'active-tab':''}>Aid</button></li>
+                <li><button onClick={()=>setSelectedTab('weapons')}  className={selectedTab==='weapons'?'active-tab':'inventory-items-inactive-tab'}>Weapons</button></li>
+                <li ><button onClick={()=>setSelectedTab('aid')} className={selectedTab==='aid'?'active-tab':'inventory-items-inactive-tab'}>Aid</button></li>
             </ul>
             {selectedTab==='weapons'?
                 <div className='all-developed-items'>
@@ -170,14 +170,13 @@ function ItemCategory({selectedTab, itemCategory, itemList, handleItemObtained})
     const [showTable, setShowTable] = useState(false);
     return (
         <div className='item-category'>
-            <div className='item-category-heading'><h3>{itemCategory}</h3>
-                <button className='item-category-expand-collapse-btn'
-                        onClick={()=>setShowTable(!showTable)}>
+            <div className='item-category-heading' onClick={()=>setShowTable(!showTable)}><h3>{itemCategory}</h3>
+                <button className={`item-category-expand-collapse-btn ${showTable && 'after-click'}`}>
                     &gt;
                 </button>
             </div>
             {showTable &&
-                <table>
+                <table className='items-table'>
                     <tbody>
 
 

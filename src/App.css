@@ -429,6 +429,10 @@
     border: 2px solid #ffffff;
 }
 
+.item-tab-unselected{
+    border: 2px solid transparent;
+}
+
 
 
 .items-development-box{
@@ -461,10 +465,11 @@
     border: 2px solid #ffffff;
     color: white;
     display: flex;
-    min-width: 200px;
+    min-width: 300px;
     height: 200px;
     gap:10px;
     padding: 5px;
+    overflow: hidden;
 }
 .item-name{
     background: rgba(0, 0, 0);
@@ -794,6 +799,14 @@
     /*background: #ff3375;*/
     padding: 3px;
     padding-inline: 10px;
+    border: 0.5px solid transparent;
+}
+
+.close-inventory-items-select-container:hover{
+
+    border: 0.5px solid #e2e2dd90;
+    background-color: rgba(251, 251, 249, 0.2);
+
 }
 
 
@@ -801,7 +814,7 @@
 
     display: flex;
     align-items: flex-end;
-    border-bottom: 2px solid #e2e2dd90;
+    border-bottom: 2px solid rgba(244, 244, 241, 0.56);
 
 
 
@@ -825,7 +838,12 @@
 
 
 
+
 }
+.inventory-items-inactive-tab{
+    border: 2px solid transparent;
+}
+
 .active-tab{
     border: 2px solid #e2e2dd90;
 
@@ -843,7 +861,7 @@
 
 }
 .item-category{
-    margin-top: 10px;
+    margin-top: 5px;
 
 }
 .item-category-heading{
@@ -861,16 +879,20 @@
 
 .item-category-expand-collapse-btn{
 
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 50%;
-    padding: 5px;
-    padding-inline: 11px;
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+
+
+}
+.after-click{
+
+    transform: rotate(90deg);
 
 
 }
 
-table{
-    margin-top: 10px;
+.items-table{
+    margin-top: 0px;
     width: 100%;
 
 }
@@ -1018,19 +1040,23 @@ td, th {
     padding-right: 10px;
 }
 /************************************GAME BOARD CSS****************************/
-
+.gameboard-header{
+    display: flex;
+}
 .board{
     height: 100vh;
     /*background-image:url("/map/world_map.png");*/
     /*background-repeat: no-repeat;*/
     /*background-size: cover;*/
+
     width: 100vw;
     background-color: black;
     color: white;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    flex-direction: column;
 }
 
 .game-over-screen{
@@ -1046,6 +1072,8 @@ td, th {
     display: flex;
     flex-direction: column;
     z-index: 1;
+    justify-content: center;
+    align-self: center;
 }
 
 

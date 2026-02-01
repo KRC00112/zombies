@@ -4,7 +4,7 @@ function HomeTabHeader() {
     return (
         <header className='home-header'>
             <div className='home-title'>Your Community</div>
-            <div className='user-name-handle'>username@gmail.com</div>
+            <div className='user-name-handle'>xyz@gmail.com</div>
         </header>
     )
 }
