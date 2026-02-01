@@ -21,6 +21,7 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
     return (
         <div className='mission-select-screen'>
             {showInventorySelectBox &&
+                <div className='inventory-weapons-select-overlay'>
                 <InventoryWeaponsSelectBox
                     fullDevelopmentDataset={fullDevelopmentDataset}
                     itemFor={itemFor}
@@ -28,7 +29,8 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
                     closeInventoryBox={closeInventoryBox}
                     handleItemObtained={handleItemObtained}
                     itemObtained={itemObtained}
-                    handleClearSelection={handleClearSelection}/>}
+                    handleClearSelection={handleClearSelection}/>
+                </div>}
             <div className='team-selection-and-mission-start'>
                 <section className='team-members-and-mission-select-section'>
                     <ListBox listTypeLabel={"Pick Your Team"} list={ScoutTeamData} selectedItemId={selectedIds} handleListItemClick={onListNameClick} showAP={true}/>

@@ -25,7 +25,7 @@ function GameOverScreen({gameOverWinner,unassignedDataset, addReward, mappedMiss
     })
     let max_survivor_count=mappedMission.rewards.max_survivors;
     let unlocked_players=shuffleArray(unassignedDataset).slice(0,Math.floor(Math.random()*(max_survivor_count+1)))
-
+    const gameOverQuotes=["Your team is lost...", "The frost claims your team.", "The cold consumes all."];
     return(
         <div className='game-over-screen'>
             {gameOverWinner==="player"?<>
@@ -44,10 +44,13 @@ function GameOverScreen({gameOverWinner,unassignedDataset, addReward, mappedMiss
                         <div>{obj.name}</div>
                     </div>
                 })}
-                <button className='go-back-button' onClick={()=>{addReward(randArr,unlocked_players);quitMissionGameBoard("gameOver");}}>go back to home</button>
+                <button className='go-back-button' onClick={()=>{addReward(randArr,unlocked_players);quitMissionGameBoard("gameOver");}}>Go back to Home</button>
             </>:<>
                 <h1>MISSION FAILED</h1>
-                <button className='go-back-button' onClick={()=>{permanentlyDiscardSelectedPlayers();quitMissionGameBoard("gameOver")}}>go back to home</button>
+                <hr/>
+                <h1>{gameOverQuotes[Math.floor(Math.random()*gameOverQuotes.length)]}</h1>
+                <hr/>
+                <button className='go-back-button' onClick={()=>{permanentlyDiscardSelectedPlayers();quitMissionGameBoard("gameOver")}}>Go back to Home</button>
             </>}
 
         </div>
@@ -507,7 +510,15 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
 
     return (
         <div className="board">
-            {gameOverWinner!=="-" && <GameOverScreen gameOverWinner={gameOverWinner} unassignedDataset={unassignedDataset} addReward={addReward} mappedMission={mappedMission} quitMissionGameBoard={quitMissionGameBoard} permanentlyDiscardSelectedPlayers={permanentlyDiscardSelectedPlayers}/>}
+            {gameOverWinner!=="-" &&
+                <div className='inventory-weapons-select-overlay'>
+                <GameOverScreen gameOverWinner={gameOverWinner}
+                                unassignedDataset={unassignedDataset}
+                                addReward={addReward}
+                                mappedMission={mappedMission}
+                                quitMissionGameBoard={quitMissionGameBoard}
+                                permanentlyDiscardSelectedPlayers={permanentlyDiscardSelectedPlayers}/>
+                </div>}
             <div className='gameboard-header'>
                 <button className='go-back-button' onClick={()=>{confirm("Quit Mission?") && quitMissionGameBoard("normalExit")}}> Go Back </button>
                 <h1>Board</h1>

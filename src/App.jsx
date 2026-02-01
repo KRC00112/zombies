@@ -94,6 +94,7 @@ function App() {
     }
 
     const permanentlyDiscardSelectedPlayers=()=>{
+
         setFullDataset(prev=>prev.filter(obj=>(!selectedIds.includes(obj.id))))
     }
 
@@ -323,6 +324,9 @@ function App() {
     }, [rAndDdeptSkillAggregatePoints,scoutTeamSkillAggregatePoints,kitchenStaffSkillAggregatePoints,acquiredResourcesList]);
 
 
+    useEffect(() => {
+        console.log("sdads: ",selectedIds)
+    }, [selectedIds]);
 
 
     const onListNameClick=(member)=>{
@@ -339,7 +343,7 @@ function App() {
 
     const quitMissionGameBoard = (quitType) => {
 
-
+        setSelectedIds([]);
         if(quitType==="gameOver") {
             setFullDevelopmentDataset(prev => prev.map((obj) => {
                 if (obj.development_status === 'developing') {
