@@ -10,7 +10,7 @@ function calculateDeptLevel(total_points){
     return Math.min(100, Math.floor(total_points / 60))
 }
 
-const Locations = [
+const MissionsList = [
     { id:'M1', name:'Find Survivors', desc:'Faint signals hint someone endured the collapse.', top:'50', left:'45', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'water',amount:40},{name:'cloth',amount:20},{name:'medicine',amount:12},{name:'seeds',amount:25}], max_survivors:2 }},
     { id:'M2', name:'Find Supplies', desc:'Abandoned stockpiles may still remain untouched.', top:'45', left:'47', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'wood',amount:45},{name:'metal',amount:30},{name:'wire',amount:15},{name:'glass',amount:10},{name:'fuel',amount:12}], max_survivors:1 }},
     { id:'M3', name:'Investigate the Abandoned Mine', desc:'Investigate disturbances reported by passing scouts.', top:'38', left:'34', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'stone',amount:60},{name:'cement',amount:25},{name:'chemicals',amount:18},{name:'gunpowder',amount:12},{name:'electronics',amount:8}], max_survivors:1 }}
@@ -59,6 +59,18 @@ function App() {
     const [selectedMission, setSelectedMission] = useState('M1');
     const [acquiredResourcesList, setAcquiredResourcesList] = useState(acquiredResources);
     let baseDevelopmentDataset=useRef([]);
+
+    const ambientMusic=useRef(null);
+    ambientMusic.current=new Audio(import.meta.env.BASE_URL + '/music/skyrim-like-ambient-442533.mp3')
+    ambientMusic.current.volume = 0.2;
+    ambientMusic.current.loop=true;
+
+    useEffect(() => {
+
+        ambientMusic.current.play();
+    }, []);
+
+
     const handleMissionSelect=(missionName)=>{
         setSelectedMission(missionName);
     }
@@ -248,6 +260,7 @@ function App() {
 
 
     const handleKickOutClick=(memberId)=>{
+
         setFullDataset(fullDataset.filter(member=>member.id !== memberId))
     }
 
@@ -366,6 +379,7 @@ function App() {
     }
 
     const handleStartMission=()=>{
+
         setCurrentTab('GameBoard');
     }
 
@@ -389,7 +403,7 @@ function App() {
 
     }
     const handleMissionSelectionClick=()=>{
-
+        setSelectedIds([])
         setCurrentTab('TeamAndMissionSelectionTab');
 
 
@@ -405,7 +419,7 @@ function App() {
         {currentTab==='GameBoard'?<GameBoard
                 quitMissionGameBoard={quitMissionGameBoard}
                 mappedDataset={fullDataset.filter(obj=>selectedIds.includes(obj.id))}
-                mappedMission={Locations.find(obj=>obj.id===selectedMission)}
+                mappedMission={MissionsList.find(obj=>obj.id===selectedMission)}
                 unassignedDataset={fullDataset.filter(obj=>obj.department==="unassigned")}
                 addReward={addReward}
                 permanentlyDiscardSelectedPlayers={permanentlyDiscardSelectedPlayers}/>:
@@ -441,7 +455,7 @@ function App() {
                                       scoutTeamSkillAggregatePoints={scoutTeamSkillAggregatePoints}
                                       rAndDdeptSkillAggregatePoints={rAndDdeptSkillAggregatePoints}
                                       kitchenStaffSkillAggregatePoints={kitchenStaffSkillAggregatePoints}
-                                      Locations={Locations}
+                                      MissionsList={MissionsList}
                                       selectedMission={selectedMission}
                                       handleMissionSelect={handleMissionSelect}
                                       acquiredResourcesList={acquiredResourcesList}/>

@@ -8,7 +8,7 @@ import {TypeAnimation} from "react-type-animation";
 
 
 
-function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, itemObtained, inventoryItemNo, showInventorySelectBox, handleItemObtained, handleItemAssign, closeInventoryBox,handleClearSelection,handleStartMission,onListNameClick,selectedIds, Locations,selectedMission,handleMissionSelect}) {
+function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, itemObtained, inventoryItemNo, showInventorySelectBox, handleItemObtained, handleItemAssign, closeInventoryBox,handleClearSelection,handleStartMission,onListNameClick,selectedIds, MissionsList,selectedMission,handleMissionSelect}) {
     const ScoutTeamData=[...fullDataset].sort((a, b) => b.scoutSkill-a.scoutSkill).filter(member => member.department === "scout_team");
 
 
@@ -42,10 +42,10 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
                             speed={70}
                             cursor={false}/>
                         </div>
-                         <MapAndSelector Locations={Locations} selectedMission={selectedMission} handleMissionSelect={handleMissionSelect}/>
+                         <MapAndSelector MissionsList={MissionsList} selectedMission={selectedMission} handleMissionSelect={handleMissionSelect}/>
                         <div className='mission-name-and-description'>
-                            <div className='mission-name'>{Locations.find(obj=>obj.id===selectedMission).name.toUpperCase()}</div>
-                            <div className='mission-desc'>{Locations.find(obj=>obj.id===selectedMission).desc}</div>
+                            <div className='mission-name'>{MissionsList.find(obj=>obj.id===selectedMission).name.toUpperCase()}</div>
+                            <div className='mission-desc'>{MissionsList.find(obj=>obj.id===selectedMission).desc}</div>
                         </div>
 
                     </div>
@@ -82,7 +82,7 @@ function SelectedTeamMember({memberId, list, handleItemAssign}){
             <div className='scout-face'>
                 <div className='scout-face-and-name'>
                     <img className={member?`border-2 border-solid`:``} src={member? import.meta.env.BASE_URL + member.profileLocation:import.meta.env.BASE_URL + "/staff-profiles/default_black.png"} width='90px' draggable='false'/>
-                    <p>{member?member.name.slice(0,member.name.indexOf(" ")):"--"}</p>
+                    <p className='name-overflow'>{member?member.name.slice(0,member.name.indexOf(" ")):"--"}</p>
                     <p>AP: {member? 7+Math.floor((member?.scoutSkill)/12) : "--"}</p>
                 </div>
                 <ProgressBar
@@ -138,7 +138,8 @@ function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItem
 
     return (
         <div className='inventory-items-select-container'>
-            <div className='inventory-items-select-container-title'><div>Set {itemFor.name}'s {itemNoInWords} Item</div>
+            <div className='inventory-items-select-container-title'>
+                <div className='name-overflow '>Set {itemFor.name}'s {itemNoInWords} Item</div>
                 <button className='close-inventory-items-select-container' onClick={closeInventoryBox}>X</button>
             </div>
             <ul className='inventory-items-select-list'>

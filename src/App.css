@@ -649,6 +649,20 @@
     justify-content: space-between;
     color: black;
 }
+
+.scout-face-and-name{
+    width: 91px;
+
+
+}
+.name-overflow{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
 .scout-inventory{
     background: black;
     display:flex;
@@ -659,10 +673,11 @@
     /*background: #ffd680;*/
     flex-grow: 1;
     border: 1px solid white;
-    padding: 1.5px 2px 2px 2px;
+
     width:70px;
 
     display: flex;
+    padding: 1.5px;
 
 
 }
@@ -684,6 +699,7 @@
 .scout-inventory li button.item-in-inventory {
     background-color: white;
     color: black;
+
 }
 
 
