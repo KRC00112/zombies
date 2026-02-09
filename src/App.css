@@ -359,7 +359,9 @@
 
 .transfer-buttons li button:disabled{
     cursor: not-allowed;
-    background-color: #59ed59;
+    background-color: #087108;
+    box-shadow: none;
+
 }
 
 .kick-out-button{
