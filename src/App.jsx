@@ -60,14 +60,14 @@ function App() {
     const [acquiredResourcesList, setAcquiredResourcesList] = useState(acquiredResources);
     let baseDevelopmentDataset=useRef([]);
 
-    const ambientMusic=useRef(null);
-    ambientMusic.current=new Audio(import.meta.env.BASE_URL + '/music/skyrim-like-ambient-442533.mp3')
-    ambientMusic.current.volume = 0.2;
-    ambientMusic.current.loop=true;
+    const music=useRef(null);
+    music.current=new Audio(import.meta.env.BASE_URL + '/music/skyrim-like-ambient-442533.mp3')
+    music.current.volume = 0.2;
+    music.current.loop=true;
 
     useEffect(() => {
 
-        ambientMusic.current.play();
+        music.current.play();
     }, []);
 
 

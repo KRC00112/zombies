@@ -107,6 +107,8 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
 
 
 
+
+
     const handleOnClickEndTurnBtn=()=>{
             setEnemyCells(enemyCells.map(obj=>{
                 let currEnemy=enemies.find(enemy=>{
@@ -519,30 +521,33 @@ function GameBoard({quitMissionGameBoard,mappedDataset, mappedMission,addReward,
                                 quitMissionGameBoard={quitMissionGameBoard}
                                 permanentlyDiscardSelectedPlayers={permanentlyDiscardSelectedPlayers}/>
                 </div>}
-            <div className='gameboard-header'>
-                <button className='go-back-button' onClick={()=>{confirm("Quit Mission?") && quitMissionGameBoard("normalExit")}}> Go Back </button>
-                <h1>Board</h1>
-            </div>
-            <div className='gameplay-area'>
-                <ul>{arr.map(( subArr,i) => (
-                    <ul key={i} className='board-columns'>{
-                        subArr.map((el,j)=> {
-                            return <Cell key={el} cellNumber={el} row={i} column={j}/>
-                        })
-                    }
-                    </ul>
-                ))}</ul>
-                <ControlPanel playerStats={playerStats} enemyStats={enemyStats} playerCells={playerCells} selectedPlayerCellId={selectedPlayerCellId} currentActiveItemId={currentActiveItemId} handleOnClickEndTurnBtn={handleOnClickEndTurnBtn} onInventoryItemClick={onInventoryItemClick}/>
+            <div  className='gameplay-area'>
+                <div className="gameboard-header">
+                    <button className='go-back-button' onClick={()=>{confirm("Quit Mission?") && quitMissionGameBoard("normalExit")}}> Go Back </button>
+                    <div>{mappedMission.name}</div>
+                </div>
+
+                <div className="game-and-panel">
+                    <ul>{arr.map(( subArr,i) => (
+                        <ul key={i} className='board-columns'>{
+                            subArr.map((el,j)=> {
+                                return <Cell key={el} cellNumber={el} row={i} column={j}/>
+                            })
+                        }
+                        </ul>
+                    ))}</ul>
+                    <ControlPanel playerStats={playerStats} enemyStats={enemyStats} playerCells={playerCells} selectedPlayerCellId={selectedPlayerCellId} currentActiveItemId={currentActiveItemId} activeEnemyCellId={activeEnemyCellId} handleOnClickEndTurnBtn={handleOnClickEndTurnBtn} onInventoryItemClick={onInventoryItemClick}/>
+                </div>
             </div>
         </div>
     )
 }
 
-function ControlPanel({playerStats,enemyStats,playerCells,selectedPlayerCellId,currentActiveItemId,handleOnClickEndTurnBtn,onInventoryItemClick}){
+function ControlPanel({playerStats,enemyStats,playerCells,selectedPlayerCellId,currentActiveItemId,handleOnClickEndTurnBtn,onInventoryItemClick,activeEnemyCellId}){
     return(
-        <div className='player-control-pannel'>
+        <div className='player-control-panel'>
             <div className='players-list'>{playerStats}</div>
-            <button className='end-turn-btn' onClick={handleOnClickEndTurnBtn}>END TURN</button>
+            <button className='end-turn-btn' onClick={handleOnClickEndTurnBtn} disabled={activeEnemyCellId!==""}>{activeEnemyCellId===""?"END TURN":"ENEMY TURN"}</button>
             <div>{enemyStats}</div>
             <div className="inventory-items">
                 {playerCells.map(player=>{

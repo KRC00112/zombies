@@ -4,7 +4,7 @@
 
 
 
-html,body { height:100%; user-select: none}
+html,body { height:100%;user-select: none}
 body {
     font-family: "Space Mono", monospace;
     font-weight: 400;
@@ -18,6 +18,9 @@ body {
     /* Don't set height: 100vh! */
 }
 
+button{
+    cursor: pointer;
+}
 
 
 

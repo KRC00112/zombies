@@ -15,11 +15,11 @@ function HomeScreenController({acquiredResourcesList}) {
 
             />
 
-            <div className='resources-display'>
+            <ul className='resources-display'>
                 {acquiredResourcesList.map(obj=>{
-                    return <div key={obj.name}>{obj.name}: {obj.amount}</div>
+                    return <li key={obj.name}>{obj.name}: {obj.amount}</li>
                 })}
-            </div>
+            </ul>
             <CommunityGrid/>
         </div>
     )

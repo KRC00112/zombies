@@ -5,6 +5,7 @@ function NavBar({onHomeClick,onManageStaffClick,onDevelopmentClick,onMissionSele
 
 
     return (
+
             <ul className='nav-bar'>
                 <li><button className={currentTab==='TeamAndMissionSelectionTab'?"selected bg-white text-black font-bold":''} onClick={onMissionSelectionClick}>Missions</button></li>
                 <li><button className={currentTab==='homeTab'?"selected bg-white text-black font-bold":''} onClick={onHomeClick}>Home</button></li>

@@ -64,7 +64,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                 </div>
 
                 <div className='member-profile-image-box'>
-                    <img className={membersList.length>0 ?`border-5 border-solid border-white`:``}  src={membersList.length > 0 ?  import.meta.env.BASE_URL + selectedMember?.profileLocation : import.meta.env.BASE_URL + "/staff-profiles/default.png"}
+                    <img className={membersList.length>0 ?`border-5 border-solid border-white `:``}  src={membersList.length > 0 ?  import.meta.env.BASE_URL + selectedMember?.profileLocation : import.meta.env.BASE_URL + "/staff-profiles/default.png"}
                          width='270px' draggable='false'/>
                 </div>
 
