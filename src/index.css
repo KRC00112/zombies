@@ -9,12 +9,19 @@ body {
     font-family: "Space Mono", monospace;
     font-weight: 400;
     font-style: normal;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .page-default-alignment {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
+
+    flex-direction: row;
+    @media (max-width: 800px) {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
     /* Don't set height: 100vh! */
 }
 
