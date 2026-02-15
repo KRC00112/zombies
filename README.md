@@ -2,4 +2,4 @@ A base management/building game with some turn based combat. Currently a work in
 
 But feel free to check it out.
 
-krc00112.github.io/zombies/
+[Link to the app](krc00112.github.io/zombies/)
