@@ -38,6 +38,8 @@
 
     flex-direction: column;
     width: 150px;
+    position: sticky;
+
 
     @media (max-width: 800px) {
         flex-direction: row;
