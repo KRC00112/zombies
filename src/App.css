@@ -490,10 +490,14 @@
     color: white;
     display: flex;
     min-width: 300px;
-    height: 200px;
+    height:fit-content;
     gap:10px;
     padding: 5px;
     overflow: hidden;
+    @media(min-width: 768px){
+        height: 200px;
+
+    }
 }
 .item-name{
     background: rgba(0, 0, 0);
