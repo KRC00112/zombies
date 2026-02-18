@@ -48,6 +48,7 @@
         position: fixed;
         bottom: 0;
         z-index: 999;
+        height: 70px;
 
 
     }
@@ -64,6 +65,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 800px) {
+        height: 100%;
+
+
+    }
 }
 
 .nav-bar button:hover:not(.selected){
@@ -155,7 +162,6 @@
     height: 100%;
     background: black;
     padding-top: 1px;
-
 }
 
 .staff-Details{
