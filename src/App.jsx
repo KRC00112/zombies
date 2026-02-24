@@ -58,6 +58,13 @@ function App() {
     const [showInventorySelectBox,setShowInventorySelectBox] = useState(false);
     const [selectedMission, setSelectedMission] = useState('M1');
     const [acquiredResourcesList, setAcquiredResourcesList] = useState(acquiredResources);
+    const [clearSelection, setClearSelection] = useState(false);
+
+    const handleClearSelection2 = (x) => {
+        setClearSelection(x);
+    }
+
+
     let baseDevelopmentDataset=useRef([]);
 
     const music=useRef(null);
@@ -115,22 +122,6 @@ function App() {
         setItemObtained(item)
     }
 
-    const handleClearSelection=(slotNo, itemFor)=>{
-
-        setFullDataset(fullDataset.map((obj) => {
-            if(obj.id===itemFor.id){
-
-                let newArray=[...obj.inventory];
-                newArray[slotNo-1]=null;
-                return {...obj, inventory:newArray}
-            }
-            return obj;
-
-        }))
-
-        setItemObtained(null);
-
-    }
 
     const handleItemAssign =(itemNo, scout)=>{
 
@@ -145,24 +136,41 @@ function App() {
 
 
 
-        setFullDataset(fullDataset.map(obj=>{
+        if(clearSelection){
+            setFullDataset(fullDataset.map((obj) => {
                 if(obj.id===itemFor.id){
 
                     let newArray=[...obj.inventory];
-                    if(itemObtained) {
-                        newArray[inventoryItemNo-1]=itemObtained;
-                    }
+                    newArray[inventoryItemNo-1]=null;
                     return {...obj, inventory:newArray}
                 }
                 return obj;
-            }
-        ))
 
+            }))
+
+        }
+
+        else {
+            setFullDataset(fullDataset.map(obj => {
+                    if (obj.id === itemFor.id) {
+
+                        let newArray = [...obj.inventory];
+                        if (itemObtained) {
+                            newArray[inventoryItemNo - 1] = itemObtained;
+                        }
+                        return {...obj, inventory: newArray}
+                    }
+                    return obj;
+                }
+            ))
+        }
 
         setShowInventorySelectBox(false);
         setItemFor({});
         setItemObtained(null)
         setInventoryItemNo(null);
+        setClearSelection(false)
+
     }
 
 
@@ -443,7 +451,7 @@ function App() {
                                       handleItemObtained={handleItemObtained}
                                       handleItemAssign={handleItemAssign}
                                       closeInventoryBox={closeInventoryBox}
-                                      handleClearSelection={handleClearSelection}
+                                      handleClearSelection2={handleClearSelection2}
                                       handleKickOutClick={handleKickOutClick}
                                       handleTeamTransfer={handleTeamTransfer}
                                       changeDevelopmentStatus={changeDevelopmentStatus}

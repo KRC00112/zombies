@@ -6,7 +6,7 @@ import TeamAndMissionSelectTab from "./root-tabs/TeamAndMissionSelectTab.jsx";
 
 
 
-function InteractionInterface({currentTab,handleStartMission,onListNameClick,selectedIds,fullDataset,fullDevelopmentDataset,itemObtained,itemFor,inventoryItemNo,showInventorySelectBox,handleItemObtained,handleItemAssign,closeInventoryBox,handleClearSelection,handleKickOutClick,handleTeamTransfer,changeDevelopmentStatus,waitRoomList,scoutTeamList,rAndDdeptList,kitchenStaffList,calculateDeptLevel,scoutTeamSkillAggregatePoints,rAndDdeptSkillAggregatePoints,kitchenStaffSkillAggregatePoints,MissionsList,selectedMission,handleMissionSelect,acquiredResourcesList}) {
+function InteractionInterface({currentTab,handleStartMission,onListNameClick,selectedIds,fullDataset,fullDevelopmentDataset,itemObtained,itemFor,inventoryItemNo,showInventorySelectBox,handleItemObtained,handleItemAssign,closeInventoryBox,handleClearSelection2,handleKickOutClick,handleTeamTransfer,changeDevelopmentStatus,waitRoomList,scoutTeamList,rAndDdeptList,kitchenStaffList,calculateDeptLevel,scoutTeamSkillAggregatePoints,rAndDdeptSkillAggregatePoints,kitchenStaffSkillAggregatePoints,MissionsList,selectedMission,handleMissionSelect,acquiredResourcesList}) {
 
 
 
@@ -30,7 +30,7 @@ function InteractionInterface({currentTab,handleStartMission,onListNameClick,sel
                 handleItemObtained={handleItemObtained}
                 handleItemAssign={handleItemAssign}
                 closeInventoryBox={closeInventoryBox}
-                handleClearSelection={handleClearSelection}
+                handleClearSelection2={handleClearSelection2}
                 handleStartMission={handleStartMission}
                 onListNameClick={onListNameClick}
                 selectedIds={selectedIds}

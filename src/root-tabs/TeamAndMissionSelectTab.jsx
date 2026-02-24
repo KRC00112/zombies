@@ -8,7 +8,7 @@ import {TypeAnimation} from "react-type-animation";
 
 
 
-function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, itemObtained, inventoryItemNo, showInventorySelectBox, handleItemObtained, handleItemAssign, closeInventoryBox,handleClearSelection,handleStartMission,onListNameClick,selectedIds, MissionsList,selectedMission,handleMissionSelect}) {
+function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, itemObtained, inventoryItemNo, showInventorySelectBox, handleItemObtained, handleItemAssign, closeInventoryBox,handleClearSelection2,handleStartMission,onListNameClick,selectedIds, MissionsList,selectedMission,handleMissionSelect}) {
     const ScoutTeamData=[...fullDataset].sort((a, b) => b.scoutSkill-a.scoutSkill).filter(member => member.department === "scout_team");
 
 
@@ -29,7 +29,7 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
                     closeInventoryBox={closeInventoryBox}
                     handleItemObtained={handleItemObtained}
                     itemObtained={itemObtained}
-                    handleClearSelection={handleClearSelection}/>
+                    handleClearSelection2={handleClearSelection2}/>
                 </div>}
             <div className='team-selection-and-mission-start'>
                 <section className='team-members-and-mission-select-section'>
@@ -112,7 +112,7 @@ function SelectedTeamMember({memberId, list, handleItemAssign}){
 
 }
 
-function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItemNo,closeInventoryBox,handleItemObtained,itemObtained,handleClearSelection}){
+function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItemNo,closeInventoryBox,handleItemObtained,itemObtained,handleClearSelection2}){
 
     const [selectedTab, setSelectedTab] = useState('weapons');
 
@@ -148,19 +148,19 @@ function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItem
             </ul>
             {selectedTab==='weapons'?
                 <div className='all-developed-items'>
-                    {melee_weapons.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Melee Weapons" itemList={melee_weapons} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} />}
-                    {handguns.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Handguns" itemList={handguns} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
-                    {shotguns.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Shotguns" itemList={shotguns} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
-                    {throwables.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Throwables" itemList={throwables} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
+                    {melee_weapons.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Melee Weapons" itemList={melee_weapons} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} handleClearSelection2={handleClearSelection2}/>}
+                    {handguns.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Handguns" itemList={handguns} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} handleClearSelection2={handleClearSelection2}/>}
+                    {shotguns.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Shotguns" itemList={shotguns} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} handleClearSelection2={handleClearSelection2}/>}
+                    {throwables.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Throwables" itemList={throwables} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} handleClearSelection2={handleClearSelection2}/>}
 
                 </div>:
                 <div className='all-developed-items'>
-                    {health.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Health" itemList={health} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
-                    {action_points.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Action Points" itemList={action_points} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor}/>}
+                    {health.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Health" itemList={health} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} handleClearSelection2={handleClearSelection2}/>}
+                    {action_points.length>0 && <ItemCategory selectedTab={selectedTab} itemCategory="Action Points" itemList={action_points} handleItemObtained={handleItemObtained} itemObtained={itemObtained} itemFor={itemFor} handleClearSelection2={handleClearSelection2}/>}
                 </div>
             }
 
-            <div className='clear-selection-btn-and-label'><input type='radio' className='clear-selection-btn' name='item' onChange={()=>handleClearSelection(inventoryItemNo,itemFor)}/> <label>Clear Selection</label></div>
+            <div className='clear-selection-btn-and-label'><input type='radio' className='clear-selection-btn' name='item' onChange={()=>{handleClearSelection2(true);handleItemObtained(null)}}/> <label>Clear Selection</label></div>
 
         </div>
 
@@ -169,7 +169,7 @@ function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItem
 
 }
 
-function ItemCategory({selectedTab, itemCategory, itemList, handleItemObtained}){
+function ItemCategory({selectedTab, itemCategory, itemList, handleItemObtained,handleClearSelection2}){
     const [showTable, setShowTable] = useState(false);
     return (
         <div className='item-category'>
@@ -203,7 +203,7 @@ function ItemCategory({selectedTab, itemCategory, itemList, handleItemObtained})
 
 
 
-                            <td><input type='radio' id={item.id} name='item'  onChange={()=>handleItemObtained(item)}/></td>
+                            <td><input type='radio' id={item.id} name='item'  onChange={()=>{handleItemObtained(item);handleClearSelection2(false)}}/></td>
                             <td>{item.name}</td>
                             <td>{item.ap_consumption}</td>
                             {selectedTab==='weapons'?<td>{item.dmg}</td>:''}
