@@ -115,10 +115,10 @@ function App() {
         setItemObtained(item)
     }
 
-    const handleClearSelection=(slotNo, item)=>{
+    const handleClearSelection=(slotNo, itemFor)=>{
 
         setFullDataset(fullDataset.map((obj) => {
-            if(obj.id===item.id){
+            if(obj.id===itemFor.id){
 
                 let newArray=[...obj.inventory];
                 newArray[slotNo-1]=null;
