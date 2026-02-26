@@ -1298,7 +1298,9 @@ td, th {
     align-items: center;
     padding-inline: 20px;
     padding-block: 30px;
-    background: rgba(255,255,255,0.5);
+    background: rgba(60, 60, 59, 0.90);
+    border-bottom: 2px solid #e2e2dd90;
+
     z-index: 1;
 }
 .user-name-handle{
