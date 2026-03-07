@@ -336,13 +336,26 @@
     padding-inline: 30px;
     color: white;
     font-size: 30px;
+    @media(max-width: 1000px) {
+        flex-direction: column;
+    }
 }
 
 
 .level-and-member-count{
     display: flex;
     gap:30px;
+    @media (max-width: 1000px) {
+        font-size: 20px;
+    }
 
+}
+
+.member-count-img{
+    height: 40px;
+    @media (max-width: 1000px) {
+        height: 30px;
+    }
 }
 
 .member-count{
@@ -420,12 +433,18 @@
     padding-inline: 30px;
     color: white;
     font-size: 30px;
+    @media(max-width:800px){
+        flex-direction: column;
+    }
 
 }
 
 .item-type-name{
     margin-right: 20px;
     color: white;
+    @media(max-width:800px){
+        font-size: 20px;
+    }
 }
 
 .item-type-list{
@@ -484,7 +503,7 @@
 .items-to-develop-list{
     display: grid;
     gap:10px;
-    @media(min-width: 768px){
+    @media(min-width: 800px){
         grid-template-columns:1fr 1fr 1fr 1fr;
 
     }

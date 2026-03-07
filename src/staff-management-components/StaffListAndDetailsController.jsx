@@ -42,7 +42,7 @@ function StaffListAndDetails({departmentTab,fullDataset,onKickOutClick,onTransfe
                     {departmentTab==='scout_team'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
                     {departmentTab==='kitchen_staff'?<div>Lvl.{tabsInfo[departmentTab][3]}</div>:null}
                     <div className='member-count'>
-                        <img src={import.meta.env.BASE_URL + '/icons/head.png'} width='20px' draggable='false'/>:   {membersList.length}/{tabsInfo[departmentTab][4]}
+                        <img src={import.meta.env.BASE_URL + '/icons/head.png'} className='member-count-img' draggable='false'/>:   {membersList.length}/{tabsInfo[departmentTab][4]}
                     </div>
                 </div>
             </div>
