@@ -1048,7 +1048,7 @@ td, th {
     overflow: hidden;
     position:relative;
     display: flex;
-
+    background-color: black;
     border-right: none;
 }
 .header-and-map-and-missions{

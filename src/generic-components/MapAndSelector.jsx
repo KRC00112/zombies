@@ -20,7 +20,7 @@ const goToMission = (setTransform, id, mapRef,mapContainerRef,MissionsList) => {
     const x = (mission.left / 100) * imageWidth;
     const y = (mission.top / 100) * imageHeight;
 
-    setTransform(-x + containerRect.width / 2, -y + containerRect.height / 2, 2, 800);
+    setTransform(-x+containerRect.width/2,-y+containerRect.height/2, 2, 800);
 };
 
 const MissionsListBox = ({setTransform, mapRef,mapContainerRef,handleMissionSelect, selectedMission, MissionsList  }) => (
