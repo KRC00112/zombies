@@ -170,7 +170,12 @@
     width: 100%;
     padding-inline: 100px;
     margin-top: 10px;
+    gap: 10px;
     /*background-color: #ea2e2e;*/
+    @media (max-width: 1000px) {
+        padding-inline: 40px;
+
+    }
 
 
 
@@ -188,7 +193,7 @@
     flex-direction: column;
     @media(max-width: 1000px){
         height: 200px;
-        width: 300px;
+        width: 250px;
     }
 
 
@@ -270,7 +275,8 @@
     flex-direction: column;
     justify-content: center;
     gap:10px;
-    margin-top: 30px;
+    align-self: center;
+    /*background-color: #75f2f6;*/
 
 
 }
@@ -326,12 +332,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    /*margin-top: 40px;*/
+    align-self: center;
 
     background-color: #34da34;
     @media(max-width: 1000px){
-        margin: 10px;
-        margin-top: 25px;
+        justify-content: flex-end;
 
     }
 
