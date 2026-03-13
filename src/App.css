@@ -3,7 +3,14 @@
 /******************** GENERAL CSS SETTINGS *******************/
 .main-interface{
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    /*overflow: hidden;*/
+    @media (max-width: 1000px) {
+        width: 100%;
+        height: fit-content;
+        padding-bottom: 10px;
+    }
+
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -51,6 +58,7 @@
         height: 70px;
 
 
+
     }
 
 }
@@ -83,6 +91,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+
 
 
 }
@@ -162,6 +171,9 @@
     height: 100%;
     background: black;
     padding-top: 1px;
+    @media (max-width: 1000px) {
+        padding-bottom: 100px;
+    }
 }
 
 .staff-Details{
@@ -289,6 +301,10 @@
         min-width:100% ;
 
     }
+    @media (max-width: 565px) {
+        min-width:60% ;
+
+    }
 
 
 }
@@ -347,9 +363,15 @@
     /*margin-top: 40px;*/
     align-self: flex-end;
 
-    /*background-color: #34da34;*/
+    background-color: #34da34;
     @media(max-width: 1000px){
-        justify-content: flex-end;
+        /*justify-content: flex-end;*/
+
+    }
+    @media (max-width: 565px) {
+
+        align-self: flex-start;
+
 
     }
 
@@ -364,6 +386,12 @@
         width: 200px;
 
     }
+    @media (max-width: 565px) {
+
+        width: 150px;
+
+    }
+
 }
 
 /******************** DEPARTMENT TAB NAME AND LEVEL AND HEAD COUNT*******************/
@@ -412,8 +440,9 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 20px;
     gap:20px;
+    margin: 40px;
+
 }
 
 .staff-operations button{
@@ -1347,9 +1376,9 @@ td, th {
 
 .home-tab{
     width: 100%;
-    height: 100vh;
+    min-height: 100%;
     flex-direction: column;
-    overflow: hidden;
+    /*overflow: hidden;*/
     position: relative;
 }
 

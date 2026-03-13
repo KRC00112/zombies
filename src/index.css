@@ -4,7 +4,7 @@
 
 
 
-html,body { height:100%;user-select: none}
+html,body { min-height:100%;user-select: none}
 body {
     font-family: "Space Mono", monospace;
     font-weight: 400;
@@ -14,12 +14,13 @@ body {
 
 .page-default-alignment {
     display: flex;
-    height: 100vh;
+    min-height: 100%;
 
     flex-direction: row;
     @media (max-width: 800px) {
         flex-direction: column-reverse;
         width: 100%;
+
     }
 
     /* Don't set height: 100vh! */

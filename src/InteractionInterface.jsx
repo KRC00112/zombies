@@ -19,7 +19,7 @@ function InteractionInterface({currentTab,handleStartMission,onListNameClick,sel
         'kitchen_staff':['Kitchen Staff',kitchenStaffList.length, 'Kitchen Staff',calculateDeptLevel(kitchenStaffSkillAggregatePoints),5],
     }
     return (
-        <div className='main-interface' style={{overflow: 'hidden'}}>
+        <div className='main-interface'>
             {currentTab==='TeamAndMissionSelectionTab' && <TeamAndMissionSelectTab
                 fullDataset={fullDataset}
                 fullDevelopmentDataset={fullDevelopmentDataset}
