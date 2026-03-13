@@ -189,7 +189,9 @@
 /******************** STAFF MEMBERS BOX LIST CSS *******************/
 
 .members-list-view{
-    flex-grow: 1;
+    @media(max-width: 1000px) {
+        flex-grow: 1;
+    }
 }
 
 .members-list-box{
