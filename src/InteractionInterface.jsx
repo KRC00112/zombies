@@ -49,7 +49,8 @@ function InteractionInterface({currentTab,handleStartMission,onListNameClick,sel
                 scoutTeamLevel={tabsInfo['scout_team'][3]}
                 kitchenStaffLevel={tabsInfo['kitchen_staff'][3]}
                 fullDevelopmentDataset={fullDevelopmentDataset}
-                changeDevelopmentStatus={changeDevelopmentStatus}/>}
+                changeDevelopmentStatus={changeDevelopmentStatus}
+                acquiredResourcesList={acquiredResourcesList}/>}
         </div>
     )
 }

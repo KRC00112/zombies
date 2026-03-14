@@ -1,7 +1,7 @@
 import React from 'react'
 import {TypeAnimation} from "react-type-animation";
 
-function DevelopmentTabHeader({rAndDLevel, scoutTeamLevel, kitchenStaffLevel}) {
+function DevelopmentTabHeader() {
     return (
         <header className="development-tab-header">
 
@@ -12,13 +12,6 @@ function DevelopmentTabHeader({rAndDLevel, scoutTeamLevel, kitchenStaffLevel}) {
                     speed={50}
                     cursor={false}/>
             </div>
-
-            <div className='department-levels'>
-                <div>R&D Dept Lvl: {rAndDLevel} </div>
-                <div>Scout Team Lvl:{scoutTeamLevel}</div>
-                <div>Kitchen Staff Lvl: {kitchenStaffLevel}</div>
-            </div>
-
         </header>
     )
 }
