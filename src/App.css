@@ -5,6 +5,7 @@
     width: 100%;
     height: 100vh;
     /*overflow: hidden;*/
+
     @media (max-width: 1000px) {
         width: 100%;
         height: fit-content;
@@ -47,7 +48,7 @@
     width: 150px;
 
 
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
         flex-direction: row;
         width: 100%;
         justify-content: center;
@@ -74,7 +75,7 @@
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
         height: 100%;
 
 
@@ -288,7 +289,7 @@
 /******************** MEMBERS STATS BOX CSS *******************/
 
 .members-stats-box{
-    min-width:400px ;
+    min-width:200px ;
     height: fit-content;
 
     display: flex;
@@ -297,14 +298,15 @@
     gap:10px;
     align-self: center;
     /*background-color: #75f2f6;*/
-    @media (max-width: 1000px) {
-        min-width:100% ;
+    flex-grow: 1;
+    /*@media (max-width: 1000px) {*/
+    /*    min-width:100% ;*/
 
-    }
-    @media (max-width: 565px) {
-        min-width:60% ;
+    /*}*/
+    /*@media (max-width: 565px) {*/
+    /*    min-width:60% ;*/
 
-    }
+    /*}*/
 
 
 }
@@ -441,7 +443,11 @@
     flex-direction: row;
     justify-content: center;
     gap:20px;
-    margin: 40px;
+    margin-top: 20px;
+
+    @media (max-width: 1000px) {
+        margin: 40px;
+    }
 
 }
 
@@ -575,7 +581,7 @@
 .items-to-develop-list{
     display: grid;
     gap:10px;
-    @media(min-width: 800px){
+    @media(min-width: 1000px){
         grid-template-columns:1fr 1fr 1fr 1fr;
 
     }
@@ -592,7 +598,7 @@
     padding: 5px;
     overflow: hidden;
     
-    @media(min-width: 768px){
+    @media(min-width: 1000px){
         height: 200px;
 
     }
