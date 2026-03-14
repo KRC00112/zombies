@@ -6,6 +6,7 @@
     height: auto;
     min-height: 100vh;
     /*overflow: hidden;*/
+    background: #000;
 
     @media (max-width: 1000px) {
         width: 100%;
@@ -164,6 +165,7 @@
     border-top-right-radius: 8px;
     padding: 5px;
     border-bottom: none;
+
 
 }
 
@@ -411,7 +413,7 @@
 /******************** DEPARTMENT TAB NAME AND LEVEL AND HEAD COUNT*******************/
 
 .department-name-and-level-and-head-count{
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: 10px;
     display: flex;
     justify-content: space-between;
