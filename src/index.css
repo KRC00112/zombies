@@ -4,7 +4,7 @@
 
 
 
-html,body { min-height:100%;user-select: none}
+html,body { min-height:100%;user-select: none;}
 body {
     font-family: "Space Mono", monospace;
     font-weight: 400;
