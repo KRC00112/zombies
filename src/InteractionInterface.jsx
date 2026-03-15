@@ -6,7 +6,7 @@ import TeamAndMissionSelectTab from "./root-tabs/TeamAndMissionSelectTab.jsx";
 
 
 
-function InteractionInterface({currentTab,handleStartMission,onListNameClick,selectedIds,fullDataset,fullDevelopmentDataset,itemObtained,itemFor,inventoryItemNo,showInventorySelectBox,handleItemObtained,handleItemAssign,closeInventoryBox,handleClearSelection2,handleKickOutClick,handleTeamTransfer,changeDevelopmentStatus,waitRoomList,scoutTeamList,rAndDdeptList,kitchenStaffList,calculateDeptLevel,scoutTeamSkillAggregatePoints,rAndDdeptSkillAggregatePoints,kitchenStaffSkillAggregatePoints,MissionsList,selectedMission,handleMissionSelect,acquiredResourcesList}) {
+function InteractionInterface({calculateDeptLimit,baseLevel,currentTab,handleStartMission,onListNameClick,selectedIds,fullDataset,fullDevelopmentDataset,itemObtained,itemFor,inventoryItemNo,showInventorySelectBox,handleItemObtained,handleItemAssign,closeInventoryBox,handleClearSelection2,handleKickOutClick,handleTeamTransfer,changeDevelopmentStatus,waitRoomList,scoutTeamList,rAndDdeptList,kitchenStaffList,calculateDeptLevel,scoutTeamSkillAggregatePoints,rAndDdeptSkillAggregatePoints,kitchenStaffSkillAggregatePoints,MissionsList,selectedMission,handleMissionSelect,acquiredResourcesList}) {
 
 
 
@@ -14,9 +14,9 @@ function InteractionInterface({currentTab,handleStartMission,onListNameClick,sel
 
     const tabsInfo={
         'waiting_room':['Waiting Room',waitRoomList.length,'Waiting Room',0,50],
-        'scout_team':['Scout Team',scoutTeamList.length, 'Scout  Team',calculateDeptLevel(scoutTeamSkillAggregatePoints),20],
-        'r&d_dept':['Research And Development Department',rAndDdeptList.length, 'R&D Dept',calculateDeptLevel(rAndDdeptSkillAggregatePoints),10],
-        'kitchen_staff':['Kitchen Staff',kitchenStaffList.length, 'Kitchen Staff',calculateDeptLevel(kitchenStaffSkillAggregatePoints),5],
+        'scout_team':['Scout Team',scoutTeamList.length, 'Scout  Team',calculateDeptLevel(scoutTeamSkillAggregatePoints),calculateDeptLimit(baseLevel,7,5)],
+        'r&d_dept':['Research And Development Department',rAndDdeptList.length, 'R&D Dept',calculateDeptLevel(rAndDdeptSkillAggregatePoints),calculateDeptLimit(baseLevel,6,3)],
+        'kitchen_staff':['Kitchen Staff',kitchenStaffList.length, 'Kitchen Staff',calculateDeptLevel(kitchenStaffSkillAggregatePoints),calculateDeptLimit(baseLevel,5,2)],
     }
     return (
         <div className='main-interface'>
@@ -37,7 +37,9 @@ function InteractionInterface({currentTab,handleStartMission,onListNameClick,sel
                 MissionsList={MissionsList}
                 selectedMission={selectedMission}
                 handleMissionSelect={handleMissionSelect}/>}
-            {currentTab==='homeTab' && <HomeTab acquiredResourcesList={acquiredResourcesList}/>}
+            {currentTab==='homeTab' && <HomeTab
+                baseLevel={baseLevel}
+                acquiredResourcesList={acquiredResourcesList}/>}
             {currentTab==='staffManagementTab' && <ManageStaffTab
                 handleKickOutClick={handleKickOutClick}
                 handleTeamTransfer={handleTeamTransfer}

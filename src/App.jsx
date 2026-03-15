@@ -10,6 +10,14 @@ function calculateDeptLevel(total_points){
     return Math.min(100, Math.floor(total_points / 60))
 }
 
+
+function calculateDeptLimit(baseLevel,limit,growthRate){
+
+
+    return limit+Math.floor(baseLevel*growthRate);
+
+}
+
 const MissionsList = [
     { id:'M1', name:'Find Survivors', desc:'Faint signals hint someone endured the collapse.', top:'50', left:'45', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'water',amount:40},{name:'cloth',amount:20},{name:'medicine',amount:12},{name:'seeds',amount:25}], max_survivors:2 }},
     { id:'M2', name:'Find Supplies', desc:'Abandoned stockpiles may still remain untouched.', top:'45', left:'47', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'wood',amount:45},{name:'metal',amount:30},{name:'wire',amount:15},{name:'glass',amount:10},{name:'fuel',amount:12}], max_survivors:1 }},
@@ -40,6 +48,9 @@ const acquiredResources = [
 
 
 function App() {
+
+    let baseLevel=0;
+
 
     const [currentTab, setCurrentTab] = useState('homeTab');
     const [selectedIds, setSelectedIds] = useState([]);
@@ -438,7 +449,8 @@ function App() {
                     onDevelopmentClick={handleDevelopmentClick}
                     onMissionSelectionClick={handleMissionSelectionClick}
                     currentTab={currentTab}/>
-                <InteractionInterface currentTab={currentTab}
+                <InteractionInterface baseLevel={baseLevel}
+                                      currentTab={currentTab}
                                       handleStartMission={handleStartMission}
                                       onListNameClick={onListNameClick}
                                       selectedIds={selectedIds}
@@ -460,6 +472,7 @@ function App() {
                                       rAndDdeptList={rAndDdeptList}
                                       kitchenStaffList={kitchenStaffList}
                                       calculateDeptLevel={calculateDeptLevel}
+                                      calculateDeptLimit={calculateDeptLimit}
                                       scoutTeamSkillAggregatePoints={scoutTeamSkillAggregatePoints}
                                       rAndDdeptSkillAggregatePoints={rAndDdeptSkillAggregatePoints}
                                       kitchenStaffSkillAggregatePoints={kitchenStaffSkillAggregatePoints}

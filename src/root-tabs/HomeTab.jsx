@@ -4,10 +4,10 @@ import DevelopmentScreenController from "../development-components/DevelopmentSc
 import HomeScreenController from "../home-components/HomeScreenController.jsx";
 import {Snowfall} from "react-snowfall";
 
-function HomeTab({acquiredResourcesList}) {
+function HomeTab({baseLevel,acquiredResourcesList}) {
     return (
         <div className='home-tab bg-black'>
-            <HomeTabHeader />
+            <HomeTabHeader baseLevel={baseLevel}/>
 
 
             <section>
