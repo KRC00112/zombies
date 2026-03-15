@@ -161,17 +161,11 @@
 }
 .staff-management-department-tab-list li button,.development-type-tab-list li button{
     border: 2px solid black;
-    border-top-left-radius: 1px;
-    border-top-right-radius: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     padding: 5px;
     border-bottom: none;
-    border-left: none;
 
-
-}
-.staff-management-department-tab-list li:first-child,.development-type-tab-list li:first-child{
-
-    border-left: 2px solid black;
 
 }
 
@@ -221,7 +215,7 @@
     width: 400px;
     display: flex;
     flex-direction: column;
-    @media(max-width: 1000px){
+    @media(max-width: 1160px){
         height: 200px;
         width: 100%;
         flex-grow: 1;
