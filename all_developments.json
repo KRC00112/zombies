@@ -12,7 +12,8 @@
     "range": 1,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "MELEE_WEAPONS"
+    "subtype": "MELEE_WEAPONS",
+    "base_level_to_meet": 3
   },
   {
     "id": 2,
@@ -30,7 +31,8 @@
     "range": 3,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "MELEE_WEAPONS"
+    "subtype": "MELEE_WEAPONS",
+    "base_level_to_meet": 7
   },
   {
     "id": 3,
@@ -48,7 +50,8 @@
     "range": 4,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "MELEE_WEAPONS"
+    "subtype": "MELEE_WEAPONS",
+    "base_level_to_meet": 9
   },
   {
     "id": 4,
@@ -68,7 +71,8 @@
     "ammo": 7,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "HANDGUNS"
+    "subtype": "HANDGUNS",
+    "base_level_to_meet": 4
   },
   {
     "id": 5,
@@ -88,7 +92,8 @@
     "ammo": 12,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "HANDGUNS"
+    "subtype": "HANDGUNS",
+    "base_level_to_meet": 8
   },
   {
     "id": 6,
@@ -108,7 +113,8 @@
     "ammo": 10,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "HANDGUNS"
+    "subtype": "HANDGUNS",
+    "base_level_to_meet": 2
   },
   {
     "id": 7,
@@ -128,7 +134,8 @@
     "ammo": 6,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "SHOTGUNS"
+    "subtype": "SHOTGUNS",
+    "base_level_to_meet": 6
   },
   {
     "id": 8,
@@ -148,7 +155,8 @@
     "ammo": 8,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "SHOTGUNS"
+    "subtype": "SHOTGUNS",
+    "base_level_to_meet": 1
   },
   {
     "id": 9,
@@ -168,7 +176,8 @@
     "ammo": 7,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "SHOTGUNS"
+    "subtype": "SHOTGUNS",
+    "base_level_to_meet": 10
   },
   {
     "id": 10,
@@ -186,7 +195,8 @@
     "range": 4,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "THROWABLES"
+    "subtype": "THROWABLES",
+    "base_level_to_meet": 5
   },
   {
     "id": 11,
@@ -204,7 +214,8 @@
     "range": 3,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "THROWABLES"
+    "subtype": "THROWABLES",
+    "base_level_to_meet": 0
   },
   {
     "id": 12,
@@ -223,7 +234,8 @@
     "range": 2,
     "development_status": "unmet_requirements",
     "type": "weapon",
-    "subtype": "THROWABLES"
+    "subtype": "THROWABLES",
+    "base_level_to_meet": 4
   },
   {
     "id": 13,
@@ -241,7 +253,8 @@
     "health_recovered": 10,
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "HEALTH"
+    "subtype": "HEALTH",
+    "base_level_to_meet": 7
   },
   {
     "id": 14,
@@ -259,7 +272,8 @@
     "health_recovered": 50,
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "HEALTH"
+    "subtype": "HEALTH",
+    "base_level_to_meet": 6
   },
   {
     "id": 15,
@@ -277,7 +291,8 @@
     "ap_recovered": 10,
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "ACTION_POINTS"
+    "subtype": "ACTION_POINTS",
+    "base_level_to_meet": 1
   },
   {
     "id": 16,
@@ -294,7 +309,8 @@
     "ap_recovered": 8,
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "ACTION_POINTS"
+    "subtype": "ACTION_POINTS",
+    "base_level_to_meet": 5
   },
   {
     "id": 17,
@@ -312,7 +328,8 @@
     "ap_recovered": 5,
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "ACTION_POINTS"
+    "subtype": "ACTION_POINTS",
+    "base_level_to_meet": 2
   },
   {
     "id": 18,
@@ -328,7 +345,8 @@
     "description": "For when you feel like farming AND fighting.",
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "SEEDS"
+    "subtype": "SEEDS",
+    "base_level_to_meet": 9
   },
   {
     "id": 19,
@@ -344,7 +362,8 @@
     "description": "Grow tall, stay fed.",
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "SEEDS"
+    "subtype": "SEEDS",
+    "base_level_to_meet": 4
   },
   {
     "id": 20,
@@ -360,7 +379,8 @@
     "description": "Protein packed and plot convenient.",
     "development_status": "unmet_requirements",
     "type": "aid",
-    "subtype": "SEEDS"
+    "subtype": "SEEDS",
+    "base_level_to_meet": 6
   },
   {
     "id": 21,
@@ -377,7 +397,8 @@
     "description": "Bigger house, bigger ambitions.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "THE_HOUSE"
+    "subtype": "THE_HOUSE",
+    "base_level_to_meet": 3
   },
   {
     "id": 22,
@@ -396,7 +417,8 @@
     "description": "Is it really a zombie apocalypse at this point.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "THE_HOUSE"
+    "subtype": "THE_HOUSE",
+    "base_level_to_meet": 8
   },
   {
     "id": 23,
@@ -413,7 +435,8 @@
     "description": "Keep an eye out… mostly for trouble, sometimes for birds.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "PERIMETER"
+    "subtype": "PERIMETER",
+    "base_level_to_meet": 0
   },
   {
     "id": 24,
@@ -430,7 +453,8 @@
     "description": "prickly welcome for unwanted guests.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "PERIMETER"
+    "subtype": "PERIMETER",
+    "base_level_to_meet": 10
   },
   {
     "id": 25,
@@ -447,7 +471,8 @@
     "description": "Spot intruders… or make your soldiers squint.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "PERIMETER"
+    "subtype": "PERIMETER",
+    "base_level_to_meet": 4
   },
   {
     "id": 26,
@@ -464,7 +489,8 @@
     "description": "Grow your greens and keep your soldiers fed.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "FARM"
+    "subtype": "FARM",
+    "base_level_to_meet": 7
   },
   {
     "id": 27,
@@ -481,7 +507,8 @@
     "description": "Fresh eggs daily, morale boost guaranteed.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "FARM"
+    "subtype": "FARM",
+    "base_level_to_meet": 2
   },
   {
     "id": 28,
@@ -498,7 +525,8 @@
     "description": "Watering your crops like a pro, minus the garden gnome.",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "FARM"
+    "subtype": "FARM",
+    "base_level_to_meet": 9
   },
   {
     "id": 29,
@@ -515,6 +543,7 @@
     "description": "Practice makes perfect… ",
     "development_status": "unmet_requirements",
     "type": "base",
-    "subtype": "TRAINING_AREA"
+    "subtype": "TRAINING_AREA",
+    "base_level_to_meet": 5
   }
 ]
