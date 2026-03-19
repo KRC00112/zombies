@@ -19,9 +19,65 @@ function calculateDeptLimit(baseLevel,limit,growthRate){
 }
 
 const MissionsList = [
-    { id:'M1', name:'Find Survivors', desc:'Faint signals hint someone endured the collapse.', top:'50', left:'45', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'water',amount:40},{name:'cloth',amount:20},{name:'medicine',amount:12},{name:'seeds',amount:25}], max_survivors:2 }},
-    { id:'M2', name:'Find Supplies', desc:'Abandoned stockpiles may still remain untouched.', top:'45', left:'47', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'wood',amount:45},{name:'metal',amount:30},{name:'wire',amount:15},{name:'glass',amount:10},{name:'fuel',amount:12}], max_survivors:1 }},
-    { id:'M3', name:'Investigate the Abandoned Mine', desc:'Investigate disturbances reported by passing scouts.', top:'38', left:'34', cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}], rewards:{ resources:[{name:'stone',amount:60},{name:'cement',amount:25},{name:'chemicals',amount:18},{name:'gunpowder',amount:12},{name:'electronics',amount:8}], max_survivors:1 }}
+    { id:'M1', name:'Find Survivors', desc:'Faint signals hint someone endured the collapse.', top:'50', left:'45',
+        base_level_to_meet: 0,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'water',amount:40},{name:'cloth',amount:20},{name:'medicine',amount:12},{name:'seeds',amount:25}], max_survivors:2 }
+    },
+
+    { id:'M2', name:'Find Supplies', desc:'Abandoned stockpiles may still remain untouched.', top:'45', left:'47',
+        base_level_to_meet: 0,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'wood',amount:45},{name:'metal',amount:30},{name:'wire',amount:15},{name:'glass',amount:10},{name:'fuel',amount:12}], max_survivors:1 }
+    },
+
+    { id:'M3', name:'Investigate the Abandoned Mine', desc:'Investigate disturbances reported by passing scouts.', top:'38', left:'34',
+        base_level_to_meet: 0,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'stone',amount:60},{name:'cement',amount:25},{name:'chemicals',amount:18},{name:'gunpowder',amount:12},{name:'electronics',amount:8}], max_survivors:1 }
+    },
+
+    { id:'M4', name:'Scout the Old Highway', desc:'The cracked roads might still hide valuable remnants.', top:'42', left:'52',
+        base_level_to_meet: 1,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'rubber',amount:25},{name:'metal',amount:20},{name:'fuel',amount:18},{name:'glass',amount:14}], max_survivors:1 }
+    },
+
+    { id:'M5', name:'Recover Lost Tech', desc:'Ruins of an old research outpost may contain working devices.', top:'60', left:'20',
+        base_level_to_meet: 1,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'electronics',amount:30},{name:'batteries',amount:18},{name:'wire',amount:20},{name:'chemicals',amount:10}], max_survivors:0 }
+    },
+
+    { id:'M6', name:'Search the Fallen Tower', desc:'A collapsed communication tower emits faint energy pulses.', top:'32', left:'50',
+        base_level_to_meet: 2,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'electronics',amount:40},{name:'metal',amount:35},{name:'wire',amount:25},{name:'glass',amount:18}], max_survivors:1 }
+    },
+
+    { id:'M7', name:'Survey the Toxic Forest', desc:'Strange bioluminescent growths appear to be spreading.', top:'30', left:'10',
+        base_level_to_meet: 2,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'chemicals',amount:45},{name:'medicine',amount:15},{name:'seeds',amount:30}], max_survivors:2 }
+    },
+
+    { id:'M8', name:'Retrieve Caravan Cargo', desc:'A damaged caravan left its goods scattered after a raider attack.', top:'53', left:'55',
+        base_level_to_meet: 2,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'food',amount:50},{name:'cloth',amount:18},{name:'water',amount:30},{name:'wood',amount:20}], max_survivors:1 }
+    },
+
+    { id:'M9', name:'Explore the Sunken Tunnels', desc:'Underground passages have opened after recent quakes.', top:'36', left:'28',
+        base_level_to_meet: 2,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'stone',amount:70},{name:'metal',amount:20},{name:'gunpowder',amount:15},{name:'chemicals',amount:22}], max_survivors:0 }
+    },
+
+    { id:'M10', name:'Investigate Ruined Farmstead', desc:'Overgrown fields may conceal forgotten harvest stores.', top:'62', left:'60',
+        base_level_to_meet: 3,
+        cellPositions:[{row:0,col:1},{row:1,col:2},{row:0,col:3},{row:1,col:4},{row:0,col:5},{row:1,col:6}],
+        rewards:{ resources:[{name:'seeds',amount:45},{name:'water',amount:20},{name:'wood',amount:15},{name:'cloth',amount:10}], max_survivors:2 }
+    }
 ];
 
 
@@ -49,8 +105,9 @@ const acquiredResources = [
 
 function App() {
 
-    let baseLevel=0;
 
+
+    const [baseLevel, setBaseLevel] = useState(1);
 
     const [currentTab, setCurrentTab] = useState('homeTab');
     const [selectedIds, setSelectedIds] = useState([]);
@@ -455,7 +512,7 @@ function App() {
                                       onListNameClick={onListNameClick}
                                       selectedIds={selectedIds}
                                       fullDataset={fullDataset}
-                                      fullDevelopmentDataset={fullDevelopmentDataset}
+                                      fullDevelopmentDataset={fullDevelopmentDataset.filter(obj=>baseLevel>=obj.base_level_to_meet)}
                                       itemFor={itemFor}
                                       itemObtained={itemObtained}
                                       inventoryItemNo={inventoryItemNo}
@@ -476,7 +533,7 @@ function App() {
                                       scoutTeamSkillAggregatePoints={scoutTeamSkillAggregatePoints}
                                       rAndDdeptSkillAggregatePoints={rAndDdeptSkillAggregatePoints}
                                       kitchenStaffSkillAggregatePoints={kitchenStaffSkillAggregatePoints}
-                                      MissionsList={MissionsList}
+                                      MissionsList={MissionsList.filter(obj=>baseLevel>=obj.base_level_to_meet)}
                                       selectedMission={selectedMission}
                                       handleMissionSelect={handleMissionSelect}
                                       acquiredResourcesList={acquiredResourcesList}/>
