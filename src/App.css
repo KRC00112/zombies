@@ -1467,6 +1467,20 @@ td, th {
     display: flex;
     align-items: center;
     justify-content: center;
+    position:absolute;
+
+    @media (max-width:1250px ) {
+        top: 0;
+        left: -300px;
+    }
+    @media (max-width:1000px ) {
+        top: 0;
+        left: -400px;
+    }
+    @media (max-width:640px ) {
+        top: 0;
+        left: -600px;
+    }
 
 }
 
