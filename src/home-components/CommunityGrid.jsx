@@ -82,9 +82,10 @@ function CommunityGrid() {
         <TransformWrapper
             limitToBounds={false}
             onPanningStop={(ref) => ref.resetTransform(300)}>
-            <TransformComponent>
-
-
+            <TransformComponent
+                wrapperStyle={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
+                contentStyle={{ width: '100%', height: '100%' }}
+            >
                 <div className='canvas' style={{transform:'scale(0.66)', transformOrigin: 'top left', marginLeft:'20px'}}>
                     {/*grid foundation*/}
                     { grid.map((row, j) =>{

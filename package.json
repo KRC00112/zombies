@@ -11,13 +11,13 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-  }
-,
+  },
   "dependencies": {
     "@ramonak/react-progress-bar": "^5.4.0",
     "@tailwindcss/vite": "^4.1.11",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-router-dom": "^7.13.1",
     "react-snowfall": "^2.4.0",
     "react-type-animation": "^3.2.0",
     "react-zoom-pan-pinch": "^3.7.0",
