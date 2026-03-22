@@ -1477,10 +1477,7 @@ td, th {
         top: 0;
         left: -400px;
     }
-    @media (max-width:640px ) {
-        top: 0;
-        left: -600px;
-    }
+
 
 }
 
