@@ -770,6 +770,7 @@
 
 .mission-select-screen{
     height: 100%;
+
     /*background-image:url("/map/world_map.png");*/
     /*background-repeat: no-repeat;*/
     /*background-size: cover;*/
@@ -780,7 +781,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    width: fit-content;
+    width: 100%;
     flex-grow: 1;
 
 }
@@ -859,11 +860,16 @@
 
 .selected-members-showcase{
     display: flex;
+    flex-wrap: wrap;
 }
 .team-members-and-start{
     display: flex;
     align-items: center;
     margin-top: 100px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+
 
 
 }
@@ -1105,12 +1111,17 @@ td, th {
 
 }
 .team-selection-and-mission-start{
+    width: 100%;
 }
 .team-members-and-mission-select-section{
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: stretch;
+    justify-content: center;
     height:300px;
+    gap: 20px;
+    flex-wrap: wrap;
+
 
 }
 
@@ -1149,6 +1160,7 @@ td, th {
 }
 .header-and-map-and-missions{
     position:relative;
+    height:300px;
 }
 .mission-name-and-description{
     background-color: #d11010;
