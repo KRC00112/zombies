@@ -8,11 +8,10 @@
     /*overflow: hidden;*/
     background: #000;
     display: flex;
-    padding-top:60px;
+    /*padding-top:60px;*/
     @media (max-width: 1000px) {
         width: 100%;
         height: fit-content;
-        padding-bottom: 100px;
     }
 
 }
@@ -788,10 +787,9 @@
 }
 
 .selected-scout-profile{
-    background: #b30b0b;
     display: flex;
     width:fit-content;
-    margin-right: 20px;
+    margin-right: 15px;
     border: 1px solid white;
 }
 .scout-face{
@@ -862,6 +860,7 @@
 .selected-members-showcase{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .team-members-and-start{
     display: flex;
@@ -870,7 +869,10 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    @media (max-width: 1500px) {
+        gap:10px;
 
+    }
 
 
 }
@@ -907,6 +909,12 @@
     touch-action: manipulation;
     vertical-align: baseline;
     white-space: nowrap;
+    width: 190px;
+    @media (max-width: 1500px) {
+        gap:10px;
+        flex-grow: 1;
+
+    }
 }
 .mission-start-btn.fill-enabled:before {
     animation: opacityFallbackOut .5s step-end forwards;
@@ -1126,7 +1134,7 @@ td, th {
     flex-wrap: wrap;
     height: fit-content;
     /*border: 5px solid green;*/
-    @media(max-width: 1200px){
+    @media(max-width: 1410px){
         gap: 100px;
 
     }
@@ -1199,6 +1207,7 @@ td, th {
     justify-content: space-between;
     flex: 1;
     margin-left: 50px;
+
 
 
 }
