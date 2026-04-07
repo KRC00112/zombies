@@ -771,6 +771,7 @@
 .mission-select-screen{
     height: 100%;
 
+
     /*background-image:url("/map/world_map.png");*/
     /*background-repeat: no-repeat;*/
     /*background-size: cover;*/
@@ -783,6 +784,8 @@
     padding: 10px;
     width: 100%;
     flex-grow: 1;
+    /*padding-bottom: 100px;*/
+
 
 }
 
@@ -871,6 +874,8 @@
     justify-content: center;
     @media (max-width: 1500px) {
         gap:10px;
+        margin-bottom: 100px;
+
 
     }
 
@@ -910,6 +915,7 @@
     vertical-align: baseline;
     white-space: nowrap;
     width: 190px;
+
     @media (max-width: 1500px) {
         gap:10px;
         flex-grow: 1;
@@ -1123,7 +1129,7 @@ td, th {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap:100px;
+    gap:50px;
 
 }
 .team-members-and-mission-select-section{
@@ -1135,7 +1141,9 @@ td, th {
     height: fit-content;
     /*border: 5px solid green;*/
     @media(max-width: 1410px){
+        padding-top: 60px;
         gap: 100px;
+        flex-direction: column-reverse;
 
     }
 
@@ -1168,12 +1176,13 @@ td, th {
 .map-window{
     width:500px;
 
-    border:2px solid #e2e2dd90;
+    border-right:1px solid #e2e2dd90;
     overflow: hidden;
     position:relative;
     display: flex;
     background-color: black;
-    border-right: none;
+    height: 100%;
+    flex-grow: 1;
 }
 .header-and-map-and-missions{
     position:relative;
@@ -1188,6 +1197,7 @@ td, th {
     top:80%;
     left:38%;
     padding:10px;
+
 
 }
 
@@ -1205,8 +1215,11 @@ td, th {
     display:flex;
     height: 100%;
     justify-content: space-between;
-    flex: 1;
+    flex-grow: 0;
     margin-left: 50px;
+    flex-wrap: wrap;
+    border: 2px solid #e2e2dd90;
+
 
 
 
@@ -1214,8 +1227,9 @@ td, th {
 
 .mission-list-div{
     /*background-color: #34da34;*/
-    border:2px solid #e2e2dd90;
+    /*border:2px solid #e2e2dd90;*/
     padding: 3px;
+    flex-grow: 1;
 }
 
 .missions-list{
@@ -1224,7 +1238,10 @@ td, th {
     border:0.5px solid #e2e2dd90;
     overflow: auto;
     height:230px;
-    width:300px;
+    min-width:300px;
+    border-left:1px solid #e2e2dd90;
+
+
 
 
 
