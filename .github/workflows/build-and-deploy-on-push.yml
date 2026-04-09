@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
-        uses:actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: install dependencies
         run: npm install
 
       - name: build project
-        run : npm run build
+        run: npm run build
 
       - name: deploy project
-        run : npm run deploy
+        run: npm run deploy
