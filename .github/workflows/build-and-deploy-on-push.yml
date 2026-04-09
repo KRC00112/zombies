@@ -11,18 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
-          uses:actions/checkout@v4
+        uses:actions/checkout@v4
+
       - name: install dependencies
         run: npm install
+
       - name: build project
         run : npm run build
+
       - name: deploy project
         run : npm run deploy
-
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: '18'
-#          npm install
-#          npm run build
-#          npm run deploy
-
