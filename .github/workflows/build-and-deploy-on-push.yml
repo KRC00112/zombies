@@ -17,6 +17,7 @@ jobs:
           cd zombies
           echo "npm version: $(npm -v)"
           echo "repo files:"
+          npm install
           npm run build
           npm run deploy
           ls -a
