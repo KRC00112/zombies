@@ -15,8 +15,10 @@ jobs:
           git --version
           git clone "https://github.com/KRC00112/zombies.git"
           cd zombies
+          echo "npm version: $(npm -v)"
           echo "repo files:"
-          npm --version
+          npm run build
+          npm run deploy
           ls -a
 
 
