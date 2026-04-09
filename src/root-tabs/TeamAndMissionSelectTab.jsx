@@ -37,7 +37,7 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
                     <div className='header-and-map-and-missions'>
                         <div className='select-mission-header'><TypeAnimation
 
-                            sequence={['SELECT A MISSION:']}
+                            sequence={['SELECT A MISSION XOXOX:']}
                             wrapper="h1"
                             speed={70}
                             cursor={false}/>
