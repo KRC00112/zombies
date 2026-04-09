@@ -23,5 +23,5 @@ jobs:
       - name: deploy project on github pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{secrets.GH_PAGES_PAT}}
+          github_token: ${{secrets.GITHUB_TOKEN}}
           publish_dir: ./dist
