@@ -16,7 +16,7 @@ jobs:
           git clone "https://github.com/KRC00112/zombies.git"
           cd zombies
           echo "repo files:"
-          npm -v
+          npm --version
           ls -a
 
 
