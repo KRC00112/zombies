@@ -10,16 +10,19 @@ jobs:
   push-job:
     runs-on: ubuntu-latest
     steps:
-      - name: show-payload
-        run: |
-          uses:actions/checkout@v3
-          ls -a
-          git config user.name "KRC00112"
-          git config user.email "nylonstripe5u@gmail.com"
-          uses: actions/setup-node@v3
-          with:
-            node-version: '18'
-          npm install
-          npm run build
-          npm run deploy
+      - name: checkout repo
+          uses:actions/checkout@v4
+      - name: install dependencies
+        run: npm install
+      - name: build project
+        run : npm run build
+      - name: deploy project
+        run : npm run deploy
+
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: '18'
+#          npm install
+#          npm run build
+#          npm run deploy
 
