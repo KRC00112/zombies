@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: show-payload
-        run: ls
+        run: ls -a
 
 
