@@ -15,8 +15,8 @@ jobs:
           git --version
           git clone "https://github.com/KRC00112/zombies.git"
           cd zombies
-          git config user.name "KRC00112"
-          git config user.email "nylonstripe5u@gmail.com"
+          git config --global user.name "KRC00112"
+          git config --global user.email "nylonstripe5u@gmail.com"
           echo "npm version: $(npm -v)"
           echo "repo files:"
           npm install
