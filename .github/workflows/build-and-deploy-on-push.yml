@@ -14,5 +14,6 @@ jobs:
         run: |
           git --version
           git clone "https://github.com/KRC00112/zombies.git"
+          ls
 
 
