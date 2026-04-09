@@ -13,6 +13,7 @@ jobs:
       - name: show-payload
         run: |
           uses:actions/checkout@v3
+          ls -a
           git config user.name "KRC00112"
           git config user.email "nylonstripe5u@gmail.com"
           uses: actions/setup-node@v3
