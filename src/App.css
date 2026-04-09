@@ -1142,9 +1142,8 @@ td, th {
     /*border: 5px solid green;*/
     @media(max-width: 1410px){
         padding-top: 60px;
-        gap: 100px;
+        /*gap: 300px;*/
         flex-direction: column-reverse;
-
     }
 
 
@@ -1161,6 +1160,9 @@ td, th {
     margin-left: 25px;
     padding-bottom: 30px;
     font-size: 30px;
+    @media(max-width: 1410px){
+        position: static;
+    }
 }
 
 .mission-select-section{
@@ -1181,12 +1183,11 @@ td, th {
     position:relative;
     display: flex;
     background-color: black;
-    height: 100%;
+    height: 300px;
     flex-grow: 1;
 }
 .header-and-map-and-missions{
     position:relative;
-    height:300px;
 
 }
 .mission-name-and-description{
@@ -1197,6 +1198,9 @@ td, th {
     top:80%;
     left:38%;
     padding:10px;
+    @media(max-width: 1410px){
+        position:static
+    }
 
 
 }
@@ -1213,12 +1217,13 @@ td, th {
 
 .map-and-missions{
     display:flex;
-    height: 100%;
+    height: fit-content;
     justify-content: space-between;
     flex-grow: 0;
     margin-left: 50px;
     flex-wrap: wrap;
-    border: 2px solid #e2e2dd90;
+    /*border: 10px solid rgba(220, 220, 46, 0.56);*/
+    border:2px solid #e2e2dd90;
 
 
 
@@ -1240,6 +1245,7 @@ td, th {
     height:230px;
     min-width:300px;
     border-left:1px solid #e2e2dd90;
+    background-color: #000000;
 
 
 
