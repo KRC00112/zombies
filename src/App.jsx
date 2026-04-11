@@ -74,13 +74,15 @@ function App() {
     let baseDevelopmentDataset=useRef([]);
 
     const music=useRef(null);
-    music.current=new Audio(import.meta.env.BASE_URL + '/music/skyrim-like-ambient-442533.mp3')
-    music.current.volume = 0.2;
-    music.current.loop=true;
 
     useEffect(() => {
 
+
+        music.current=new Audio(import.meta.env.BASE_URL + '/music/skyrim-like-ambient-442533.mp3')
+        music.current.volume = 0.2;
+        music.current.loop=true;
         music.current.play();
+
     }, []);
 
 
