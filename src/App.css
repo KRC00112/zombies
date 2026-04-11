@@ -97,7 +97,7 @@
     flex-direction: column;
     height: 100%;
     flex-grow: 1;
-    width:100%
+    width: 100%;
 
 
 
@@ -209,17 +209,21 @@
 /******************** STAFF MEMBERS BOX LIST CSS *******************/
 
 .members-list-view{
-
+    /*background-color: #0fc2c8;*/
     @media(max-width: 1000px) {
         flex-grow: 1;
 
     }
 
+
+
 }
 
 .members-list-box{
     height: 300px;
-    min-width: 400px;
+    min-width: 0;
+    width: 400px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     @media(max-width: 1200px){
@@ -239,6 +243,7 @@
     width: 100%;
     border: 2px solid #e2e2dd90;
     border-top: none;
+
 
 }
 .members-list-box-heading{
