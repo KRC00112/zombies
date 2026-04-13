@@ -1196,6 +1196,9 @@ td, th {
     background-color: black;
     height: 300px;
     flex-grow: 1;
+    @media(max-width: 1410px) {
+        border-bottom: 1px solid #e2e2dd90;
+    }
 
 }
 .header-and-map-and-missions{

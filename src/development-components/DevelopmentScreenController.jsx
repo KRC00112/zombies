@@ -208,15 +208,15 @@ function ItemCard({itemName, itemRandDlevelReq, itemKitchenStaffReq, itemScoutTe
                 <button className='close-show-req-btn' onClick={()=>setShowReqs(false)}><span>&#8592; </span>Go Back</button>
                 <div className='all-requirements'>
                     <div className='level-requirements'>
-                        <div>R&d Lvl: {itemRandDlevelReq}<span style={rAndDLevel>=itemRandDlevelReq?{color:"darkgreen"}:{color:"red"}}>[{rAndDLevel}]</span></div>
-                        <div>Scout Team Lvl: {itemScoutTeamReq}<span style={scoutTeamLevel>=itemScoutTeamReq?{color:"darkgreen"}:{color:"red"}}>[{scoutTeamLevel}]</span></div>
-                        <div>Kit.Staff Lvl: {itemKitchenStaffReq}<span style={kitchenStaffLevel>=itemKitchenStaffReq?{color:"darkgreen"}:{color:"red"}}>[{kitchenStaffLevel}]</span></div>
+                        <div>R&d Lvl: {itemRandDlevelReq}<span style={rAndDLevel>=itemRandDlevelReq?{color:"greenyellow"}:{color:"red"}}>[{rAndDLevel}]</span></div>
+                        <div>Scout Team Lvl: {itemScoutTeamReq}<span style={scoutTeamLevel>=itemScoutTeamReq?{color:"greenyellow"}:{color:"red"}}>[{scoutTeamLevel}]</span></div>
+                        <div>Kit.Staff Lvl: {itemKitchenStaffReq}<span style={kitchenStaffLevel>=itemKitchenStaffReq?{color:"greenyellow"}:{color:"red"}}>[{kitchenStaffLevel}]</span></div>
                     </div>
                     <hr/>
                     <ul className='items-resources-requirements'>
                         {itemResources.map(item => (
                             item.amount>0?<li key={item.name}>
-                                {item.name[0].toUpperCase()+item.name.slice(1)}: {item.amount}<span style={acquiredResourcesList.find(obj=>obj.name===item.name).amount>=item.amount?{color:"darkgreen"}:{color:"red"}}>[{acquiredResourcesList.find(obj=>obj.name===item.name).amount}]</span>
+                                {item.name[0].toUpperCase()+item.name.slice(1)}: {item.amount}<span style={acquiredResourcesList.find(obj=>obj.name===item.name).amount>=item.amount?{color:"greenyellow"}:{color:"red"}}>[{acquiredResourcesList.find(obj=>obj.name===item.name).amount}]</span>
                             </li>:null
                             ))
                         }
