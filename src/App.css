@@ -226,7 +226,7 @@
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    @media(max-width: 1200px){
+    @media(max-width: 1410px){
         height: 200px;
         width: 100%;
         flex-grow: 1;
@@ -1216,16 +1216,27 @@ td, th {
     top:80%;
     left:38%;
     padding:10px;
-    width: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    width: 500px;
+
     @media(max-width: 1410px){
         position:static;
         margin-bottom:10px;
+        width:100%;
+
+
     }
 
 
 }
 
 .mission-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    width: 100%;
 }
 
 .mission-desc{
@@ -1233,6 +1244,7 @@ td, th {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: wrap;
+    width: 100%;
 
 }
 
