@@ -1284,10 +1284,14 @@ td, th {
     flex-direction: column;
     border:0.5px solid #e2e2dd90;
     overflow: auto;
-    height:230px;
+    height: 230px;
     min-width:300px;
     border-left:1px solid #e2e2dd90;
     background-color: #000000;
+    @media(max-width: 1410px){
+        height:100%;
+
+    }
 
 
 
