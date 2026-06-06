@@ -490,7 +490,7 @@
     width: 100%;
     text-align: left;
     padding-inline: 10px;
-    box-shadow: -5px 5px #037a03;
+    border: #067506 2px solid;
 
 
 }
@@ -506,8 +506,7 @@
     background-color: #d11010;
     color: white;
     height: fit-content;
-    box-shadow: -5px 5px #870404;
-
+    border: #810808 2px solid;
 }
 /******************** SORTING DROP DOWN *******************/
 

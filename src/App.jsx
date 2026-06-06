@@ -44,7 +44,7 @@ function App() {
 
 
 
-    const [baseLevel, setBaseLevel] = useState(10);
+    const [baseLevel, setBaseLevel] = useState(1);
 
     const [currentTab, setCurrentTab] = useState('homeTab');
     const [selectedIds, setSelectedIds] = useState([]);
