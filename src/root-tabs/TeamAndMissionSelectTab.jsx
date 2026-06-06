@@ -140,7 +140,7 @@ function InventoryWeaponsSelectBox({fullDevelopmentDataset,itemFor,inventoryItem
         <div className='inventory-items-select-container'>
             <div className='inventory-items-select-container-title'>
                 <div className='name-overflow '>Set {itemFor.name}'s {itemNoInWords} Item</div>
-                <button className='close-inventory-items-select-container' onClick={closeInventoryBox}>X</button>
+                <button className='close-inventory-items-select-container' onClick={closeInventoryBox}>✕</button>
             </div>
             <ul className='inventory-items-select-list'>
                 <li><button onClick={()=>setSelectedTab('weapons')}  className={selectedTab==='weapons'?'active-tab':'inventory-items-inactive-tab'}>Weapons</button></li>
