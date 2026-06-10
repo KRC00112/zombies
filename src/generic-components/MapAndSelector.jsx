@@ -1,5 +1,5 @@
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import {useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import PulsingMarker from "./PulsingMarker.jsx";
 
 
@@ -25,6 +25,10 @@ const goToMission = (setTransform, id, mapRef,mapContainerRef,MissionsList) => {
 
 const MissionsListBox = ({setTransform, mapRef,mapContainerRef,handleMissionSelect, selectedMission, MissionsList  }) => (
     <div className='mission-list-div'>
+        <div className='mission-name-and-description'>
+            <div className='mission-name'>{MissionsList.find(obj=>obj.id===selectedMission).name.toUpperCase()}</div>
+            <div className='mission-desc'>{MissionsList.find(obj=>obj.id===selectedMission).desc}</div>
+        </div>
         <ul className='missions-list'>
             {MissionsList.map(obj => {
                 return <li className={`mission-list-item ${selectedMission===obj.id?'mission-list-item-active':''}`} key={obj.id}>

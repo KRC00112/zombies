@@ -42,12 +42,7 @@ function TeamAndMissionSelectTab({fullDataset,fullDevelopmentDataset,itemFor, it
                             speed={70}
                             cursor={false}/>
                         </div>
-                         <MapAndSelector MissionsList={MissionsList} selectedMission={selectedMission} handleMissionSelect={handleMissionSelect}/>
-                        <div className='mission-name-and-description'>
-                            <div className='mission-name'>{MissionsList.find(obj=>obj.id===selectedMission).name.toUpperCase()}</div>
-                            <div className='mission-desc'>{MissionsList.find(obj=>obj.id===selectedMission).desc}</div>
-                        </div>
-
+                        <MapAndSelector MissionsList={MissionsList} selectedMission={selectedMission} handleMissionSelect={handleMissionSelect}/>
                     </div>
                     </section>
                 <div className='team-members-and-start'>
