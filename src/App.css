@@ -9,9 +9,12 @@
     background: #000;
     display: flex;
     /*padding-top:60px;*/
+    padding-left: 150px;
+
     @media (max-width: 1000px) {
         width: 100%;
         height: fit-content;
+        padding-left: 0px;
     }
 
 }
@@ -40,17 +43,16 @@
 .nav-bar{
 
     background: #000000;
-    height: auto;
     align-self: stretch;
     display: flex;
     border-right: white solid 2px;
     color: white;
     flex-direction: column;
     width: 150px;
-
-
-
+    position: fixed;
+    left: 0;
     z-index: 999;
+    height: 100%;
 
 
     @media (max-width: 1000px) {
