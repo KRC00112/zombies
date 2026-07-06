@@ -5,6 +5,6 @@ TO-DOS:
 - FOOD% must have a target the player must meet or go beyond.
 - FOOD% target increases on baseLevel increment(but not on every increment).
 - FOOD% target achieved by assigning people to kitchen staff.
-- If player fails to maintain the target, after every mission(success or fail) some staff people will be leave.
+- If player fails to maintain the target, after every mission(success or fail) some staff people will leave.
 
 
