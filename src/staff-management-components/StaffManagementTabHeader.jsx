@@ -1,7 +1,7 @@
 import React from 'react'
 import {TypeAnimation} from "react-type-animation";
 
-function StaffManagementTabHeader() {
+function StaffManagementTabHeader({foodPercent}) {
     return (
         <header className="staff-management-tab-header">
             <div className='tab-title-display'>
@@ -11,6 +11,7 @@ function StaffManagementTabHeader() {
                     speed={50}
                     cursor={false}/>
             </div>
+            <div>FOOD: {Math.floor(foodPercent()/5)}/50</div>
         </header>
     )
 }

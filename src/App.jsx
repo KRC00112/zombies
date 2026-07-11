@@ -11,12 +11,17 @@ function calculateDeptLevel(total_points){
 }
 
 
+
+
 function calculateDeptLimit(baseLevel,limit,growthRate){
 
 
     return limit+Math.floor(baseLevel*growthRate);
 
 }
+
+
+
 
 const acquiredResources = [
     { name: "wood", amount: 4, reserved: 0 },
@@ -290,6 +295,12 @@ function App() {
         return accu;
     },0)
 
+    const foodPercent=()=>{
+        return kitchenStaffSkillAggregatePoints;
+    }
+
+
+
 
     const handleKickOutClick=(memberId)=>{
 
@@ -492,7 +503,8 @@ function App() {
                                       MissionsList={MissionsList.filter(obj=>baseLevel>=obj.base_level_to_meet)}
                                       selectedMission={selectedMission}
                                       handleMissionSelect={handleMissionSelect}
-                                      acquiredResourcesList={acquiredResourcesList}/>
+                                      acquiredResourcesList={acquiredResourcesList}
+                                      foodPercent={foodPercent}/>
             </>
         }
 

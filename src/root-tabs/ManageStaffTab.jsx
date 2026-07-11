@@ -2,7 +2,7 @@ import StaffManagementTabHeader from "../staff-management-components/StaffManage
 import StaffListAndDetailsController from "../staff-management-components/StaffListAndDetailsController.jsx";
 import {useMemo, useState} from "react";
 
-function ManageStaffTab({handleKickOutClick,handleTeamTransfer,fullDataset,tabsInfo}) {
+function ManageStaffTab({handleKickOutClick,handleTeamTransfer,fullDataset,tabsInfo,foodPercent}) {
     const [tab, setTab] = useState('waiting_room');
 
 
@@ -53,7 +53,7 @@ function ManageStaffTab({handleKickOutClick,handleTeamTransfer,fullDataset,tabsI
 
     return (
         <div className='management-staff-tab'>
-            <StaffManagementTabHeader/>
+            <StaffManagementTabHeader foodPercent={foodPercent}/>
             <section className='staff-management-tab-body'>
                 <ul className='staff-management-department-tab-list'>
                     <li><button onClick={()=>onTabClick('waiting_room')} className={tab==='waiting_room'?'bg-black text-white':''}>Waiting Room</button></li>

@@ -6,7 +6,7 @@ import TeamAndMissionSelectTab from "./root-tabs/TeamAndMissionSelectTab.jsx";
 
 
 
-function InteractionInterface({calculateDeptLimit,baseLevel,currentTab,handleStartMission,onListNameClick,selectedIds,fullDataset,fullDevelopmentDataset,itemObtained,itemFor,inventoryItemNo,showInventorySelectBox,handleItemObtained,handleItemAssign,closeInventoryBox,handleClearSelection2,handleKickOutClick,handleTeamTransfer,changeDevelopmentStatus,waitRoomList,scoutTeamList,rAndDdeptList,kitchenStaffList,calculateDeptLevel,scoutTeamSkillAggregatePoints,rAndDdeptSkillAggregatePoints,kitchenStaffSkillAggregatePoints,MissionsList,selectedMission,handleMissionSelect,acquiredResourcesList}) {
+function InteractionInterface({calculateDeptLimit,baseLevel,currentTab,handleStartMission,onListNameClick,selectedIds,fullDataset,fullDevelopmentDataset,itemObtained,itemFor,inventoryItemNo,showInventorySelectBox,handleItemObtained,handleItemAssign,closeInventoryBox,handleClearSelection2,handleKickOutClick,handleTeamTransfer,changeDevelopmentStatus,waitRoomList,scoutTeamList,rAndDdeptList,kitchenStaffList,calculateDeptLevel,scoutTeamSkillAggregatePoints,rAndDdeptSkillAggregatePoints,kitchenStaffSkillAggregatePoints,MissionsList,selectedMission,handleMissionSelect,acquiredResourcesList, foodPercent}) {
 
 
 
@@ -44,7 +44,8 @@ function InteractionInterface({calculateDeptLimit,baseLevel,currentTab,handleSta
                 handleKickOutClick={handleKickOutClick}
                 handleTeamTransfer={handleTeamTransfer}
                 fullDataset={fullDataset}
-                tabsInfo={tabsInfo}/>}
+                tabsInfo={tabsInfo}
+                foodPercent={foodPercent}/>}
 
             {currentTab==='developmentTab' && <DevelopmentTab
                 rAndDLevel={tabsInfo['r&d_dept'][3]}
